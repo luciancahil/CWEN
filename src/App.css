@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 
-.navbar {
+nav {
   background-color: black;
   padding: 20px;
   font-size: 150%;
@@ -36,36 +36,15 @@
   margin:0;
 }
 
-.navbar #HomeButton{
-  position: absolute;
-}
-
-.navbar a {
+nav a{
   text-decoration: none;
   color: white;
-  margin: 10px;
-  padding: 10px;
-  background-color:inherit;
-  outline:black;
+  margin: 20px;
 }
 
 
-.navbar button{
-  background:black;
-  font-size:150%;
-  color:white;
-  border:none;
-  outline:none;
-  margin: 0px;
-  padding: 10px;
-  position:absolute;
-  right:5px;
-  top:10px;
-}
-
-.navbar a:hover, .navbar button:hover, .navbar button:focus{
-  background-color:red;
-  
+nav a:hover{
+  text-decoration: underline;
 }
 
 @keyframes App-logo-spin {
