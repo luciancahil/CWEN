@@ -28,44 +28,39 @@
   color: #61dafb;
 }
 
-.navbar {
+nav {
   background-color: black;
-  padding: 20px;
-  font-size: 150%;
-  height: 50px;
+  padding: 0px 20px 20px 20px;
+  font-size: 25px;
+  height: 30px;
   margin:0;
+  vertical-align: middle;
 }
 
-.navbar #HomeButton{
-  position: absolute;
+nav img {
+  height: 20px;
+  padding: 0;
+  margin: 0;
 }
 
-.navbar a {
+nav a{
   text-decoration: none;
   color: white;
-  margin: 10px;
-  padding: 10px;
-  background-color:inherit;
-  outline:black;
+  margin: 0 10px;
+  position: relative;
+  top: 10%;
+  bottom: 10%;
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 
-.navbar button{
-  background:black;
-  font-size:150%;
-  color:white;
-  border:none;
-  outline:none;
-  margin: 0px;
-  padding: 10px;
-  position:absolute;
-  right:5px;
-  top:10px;
+nav a:hover{
+  text-decoration: underline;
 }
 
-.navbar a:hover, .navbar button:hover, .navbar button:focus{
-  background-color:red;
-  
+.vline {
+  margin: 0 15;
 }
 
 @keyframes App-logo-spin {
