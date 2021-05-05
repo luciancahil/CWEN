@@ -1,9 +1,13 @@
 import React from 'react';
 
-class Featured extends React.Component {
-  render() {
-    return <h2>Featured Page</h2>;
-  }
+class Featured extends React.Component { 
+    componentDidMount() {
+        document.title = 'CWEN - Featured Entrepreneur';
+      }
+
+    render() {
+        return <h2>Featured Page</h2>;
+    }
 }
 
 
