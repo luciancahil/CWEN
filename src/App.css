@@ -52,6 +52,7 @@ nav a{
   bottom: 10%;
   overflow: hidden;
   vertical-align: middle;
+  font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -72,9 +73,6 @@ nav .vline {
   height: 500px;
 }
 
-#Homepage_Banner_Image img{
-  height: 100%;
-}
 
 
 #Homepage_Banner_Text{
@@ -83,6 +81,45 @@ nav .vline {
 
 #Homepage_Banner_Image{
   float:  right;
+}
+
+#Homepage_Banner #Homepage_Banner_Text{
+  margin-top: 150px;
+  margin-left: 15%;
+}
+
+#Homepage_Banner #Homepage_Banner_Text h1{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+#Homepage_Banner #Homepage_Banner_Text p{
+  width: 70%;
+}
+
+#Homepage_Banner #Homepage_Banner_Text a{
+  background: #800000;
+  padding: 15px 55px;
+  border-radius:3px;
+  display:inline-block;
+  color: white;
+}
+
+
+#Homepage_Banner_Image #banner_square{
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#Homepage_Banner_Image #banner_tall {
+  position: absolute;
+  border: 10px orange solid;
+  top: 120px;
+  right: 400px;
+  height: 50%;
 }
 
 
