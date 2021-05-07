@@ -59,9 +59,32 @@ nav a:hover{
   text-decoration: underline;
 }
 
-.vline {
+nav .vline {
   margin: 0 15;
 }
+
+#Homepage_Banner div{
+  display: inline-block;
+  margin: auto;
+}
+
+#Homepage_Banner, #Homepage_Banner_Image{
+  height: 500px;
+}
+
+#Homepage_Banner_Image img{
+  height: 100%;
+}
+
+
+#Homepage_Banner_Text{
+  float: left;
+}
+
+#Homepage_Banner_Image{
+  float:  right;
+}
+
 
 @keyframes App-logo-spin {
   from {
