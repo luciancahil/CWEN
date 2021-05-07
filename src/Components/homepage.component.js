@@ -15,7 +15,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div id = "homepage">
+      <div id = "Homepage">
         <Banner/>
         <Slogan/>
         <Stair/>

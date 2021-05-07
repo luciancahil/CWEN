@@ -64,40 +64,40 @@ nav .vline {
   margin: 0 15;
 }
 
-#Homepage_Banner div{
+#Homepage #Homepage_Banner div{
   display: inline-block;
   margin: auto;
 }
 
-#Homepage_Banner, #Homepage_Banner_Image{
+#Homepage #Homepage_Banner, #Homepage_Banner_Image{
   height: 450px;
 }
 
-#Homepage_Banner_Text{
+#Homepage #Homepage_Banner_Text{
   float: left;
 }
 
-#Homepage_Banner_Image{
+#Homepage #Homepage_Banner_Image{
   float:  right;
 }
 
-#Homepage_Banner #Homepage_Banner_Text{
+#Homepage #Homepage_Banner #Homepage_Banner_Text{
   margin-top: 80px;
   margin-left: 10%;
 }
 
-#Homepage_Banner #Homepage_Banner_Text h1{
+#Homepage #Homepage_Banner #Homepage_Banner_Text h1{
   font-family:'Times New Roman', Times, serif;
   font-size: 48px;
   margin-bottom: 0;
 }
 
-#Homepage_Banner #Homepage_Banner_Text p{
+#Homepage #Homepage_Banner #Homepage_Banner_Text p{
   width: 70%;
 }
 
-#Homepage_Banner #Homepage_Banner_Text a{
-  background: #800000;
+#Homepage #Homepage_Banner #Homepage_Banner_Text a{
+  background: #fd5800;
   padding: 15px 55px;
   border-radius:3px;
   display:inline-block;
@@ -105,19 +105,37 @@ nav .vline {
 }
 
 
-#Homepage_Banner_Image #banner_square{
+#Homepage #Homepage_Banner #Homepage_Banner_Image #banner_square{
   height: 100%;
   position: relative;
   top: 0;
   left: 0;
 }
 
-#Homepage_Banner_Image #banner_tall {
+#Homepage #Homepage_Banner #Homepage_Banner_Image #banner_tall {
   position: absolute;
   border: 10px orange solid;
   top: 80px;
   right: 22%;
   height: 50%;
+}
+
+#Homepage #Slogan{
+  background-color:#800000;
+  color:white;
+  margin-bottom: 10px;
+  padding:85px;
+}
+
+#Homepage #Slogan h2{
+  margin:auto;
+  text-align:center;
+  font-size:40px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+#Homepage #Slogan #second_line{
+  font-style:italic;
 }
 
 
