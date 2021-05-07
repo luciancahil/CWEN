@@ -1,4 +1,9 @@
 import React from 'react';
+import Banner from "./Homepage/banner.component";
+import Stair from "./Homepage/stair.component";
+import Pitch from "./Homepage/pitch.component";
+
+
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -6,7 +11,13 @@ class HomePage extends React.Component {
   }
 
   render() {
-    return <h2>HomePage</h2>;
+    return (
+      <div id = "homepage">
+        <Banner/>
+        <Stair/>
+        <Pitch/>
+      </div>
+    );
   }
 }
 
