@@ -5,13 +5,17 @@ import StairLeft from "./Stair/stairLeft.component";
 import Blurbs from "./Stair/Blurbs"
 // The titles that apear besides the images and above the blurgs
 import Headings from "./Stair/Headings"
+//images
+import ShelfPic from "./Stair/Shelf.PNG";
+import AdvocacyPic from "./Stair/Advocacy.PNG";
+import BootcampsPic from "./Stair/Bootcamps.PNG";
+import EventsPic from "./Stair/Events.PNG";
+import MonthPic from "./Stair/Month.PNG";
 
 
 class Stairs extends React.Component { 
     constructor(props) {
         super(props);
-        console.log(Blurbs.Month);
-        console.log(Headings.Month);
     }
     
     
@@ -19,11 +23,8 @@ class Stairs extends React.Component {
         return (
             <div id = "HomeStairs">
                 <h1>Stairs</h1>
-                <StairRight/>
-                <StairLeft/>
-                <StairRight/>
-                <StairLeft/>
-                <StairRight/>
+                <StairRight Heading = {Headings.Shelf} Blurb = {Blurbs.Shelf} pic = {ShelfPic}/>
+                <StairLeft Heading = {Headings.Advocacy} Blurb = {Blurbs.Advocacy} pic = {AdvocacyPic}/>
             </div>
             );
     }

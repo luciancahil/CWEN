@@ -2,7 +2,13 @@ import React from 'react';
 
 class StairLeft extends React.Component { 
     render() {
-        return <h2>StairLeft Component</h2>;
+        return (
+            <div ClassName = "StairLeft">
+                <h2>{this.props.Heading}</h2>
+                <p>{this.props.Blurb}</p>
+                <img src = {this.props.pic}/>
+            </div>
+        );
     }
 }
 
