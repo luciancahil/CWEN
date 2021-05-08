@@ -1,9 +1,16 @@
 import React from 'react';
 import StairRight from "./Stair/stairRight.component";
 import StairLeft from "./Stair/stairLeft.component";
+import Blurbs from "./Stair/Blurbs"
 
 
 class Stairs extends React.Component { 
+    constructor(props) {
+        super(props);
+        console.log(Blurbs.Month);
+    }
+    
+    
     render() {
         return (
             <div id = "HomeStairs">
