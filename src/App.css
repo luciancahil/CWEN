@@ -183,7 +183,7 @@ nav .vline {
   line-height:48px;
   overflow-wrap:break-word;
   font-weight: normal;
-  width: 80%;
+  width: 90%;
   height: auto;
   margin: 0 auto;
   padding: 10px;
@@ -216,15 +216,17 @@ nav .vline {
 #rotation{
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
+  margin:auto;
 }
 
-.test{
+.rotPart{
   display:inline-block;
   background-color: pink;
   height:100px;
   width:500px;
-  margin:10px;
-  
+  margin: 3%;
+  width: 27%;
 }
 
 @keyframes App-logo-spin {

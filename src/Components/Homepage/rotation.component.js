@@ -11,21 +11,25 @@ class Rotation extends React.Component {
 
     render() {
         return (
-            <div id = "rotation">
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
-                <div className = "test"></div>
+            <div id = "rotation-wrapper">
+                <div id = "rotation">
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                    <div className = "rotPart"></div>
+                </div>
             </div>
         );
     }
 }
 
 export default Rotation;
+
+//{this.props.articleTags.map(stuff => <ArticleBox info = {stuff}/>)}
