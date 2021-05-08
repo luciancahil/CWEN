@@ -22,7 +22,6 @@ class Stairs extends React.Component {
     render() {
         return (
             <div id = "HomeStairs">
-                <h1>Stairs</h1>
                 <StairRight Heading = {Headings.Shelf} Blurb = {Blurbs.Shelf} pic = {ShelfPic}/>
                 <StairLeft Heading = {Headings.Advocacy} Blurb = {Blurbs.Advocacy} pic = {AdvocacyPic}/>
             </div>
