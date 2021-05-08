@@ -12,7 +12,12 @@ class HomePage extends React.Component {
   componentDidMount() {
     document.title = 'CWEN - Community Women Enterprise Network';
   }
-
+  /*
+  The banner is the Image to the right of the big text
+  The slogan is the orange part that takes up the entire width of the page
+  The Stair is the part that has a bunch of pictures beside a large title and a Blurb
+  The rest is self-explanatory
+  */
   render() {
     return (
       <div id = "Homepage">
