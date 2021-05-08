@@ -140,11 +140,16 @@ nav .vline {
 }
 
 
+#HomeStairs{
+  max-width: 1230px;
+  margin:auto;
+}
+
 
 #HomeStairs .StairRight, .StairLeft{
   height: 550px;
-  margin-bottom: 50px;
   position:relative;
+  margin-bottom:100px;
 }
 
 
@@ -194,59 +199,6 @@ nav .vline {
 .SR-Text, .SL-Text{
   margin-top: 15%;
 }
-
-/*
-#HomeStairs .StairRight, .StairLeft{
-  height: 550px;
-  margin-bottom: 50px;
-  position:relative;
-  align-items: center;
-}
-
-#HomeStairs .StairRight div, .StairLeft div{
-  display: inline-block;
-  width: 45%;
-}
-
-#HomeStairs .StairRight img, .StairLeft img{
-  height:100%;
-}
-
-
-#HomeStairs .StairRight .SR-Pic, .SL-Pic{
-  text-align: center;
-  height:100%;
-}
-
-.StairLeft .SL-Pic{
-  right: 0;
-  position: absolute;
-}
-
-#HomeStairs .StairRight .SR-Text, .SL-Text{
-  position:absolute;
-  vertical-align: middle;
-  height: 100%;
-  
-}
-
-
-
-#HomeStairs .StairRight .SR-Text h2, .SL-Text h2{
-  font-size: 40px;
-  line-height:48px;
-  overflow-wrap:break-word;
-  width: 70%;
-  font-weight: normal;
-  margin: auto;
-}
-
-#HomeStairs .StairRight .SR-Text p, .SL-Text p{
-  font-size: 25px;
-  font-family: 'Times New Roman', Times, serif;
-  width: 80%;
-  margin: auto;
-}*/
 
 @keyframes App-logo-spin {
   from {
