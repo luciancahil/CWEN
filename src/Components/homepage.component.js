@@ -24,8 +24,8 @@ class HomePage extends React.Component {
         <Banner/>
         <Slogan/>
         <Stairs/>
-        <Members/>
         <News/>
+        <Members/>
         <Pitch/>
       </div>
     );
