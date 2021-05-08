@@ -4,13 +4,27 @@ class Rotation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            length: this.props.images.length
+            length: 2
         };
       }
     
 
     render() {
-        return <h2>Rotation Comp</h2>;
+        return (
+            <div id = "rotation">
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+                <div className = "test"></div>
+            </div>
+        );
     }
 }
 

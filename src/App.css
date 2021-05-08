@@ -213,6 +213,20 @@ nav .vline {
   margin-top: 10%;
 }
 
+#rotation{
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.test{
+  display:inline-block;
+  background-color: pink;
+  height:100px;
+  width:500px;
+  margin:10px;
+  
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
