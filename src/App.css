@@ -193,8 +193,16 @@ nav .vline {
   margin: 0 auto;
   padding: 10px;
   position: relative;
+
 }
 
+
+#HomeStairs a{
+  color: orange;
+  font-size: 25px;
+  margin-left: 47px;
+  padding: 0 10px;
+}
 /* This is the only way I could find to make the text look somewhat vertically centered */
 .SR-Text, .SL-Text{
   margin-top: 15%;

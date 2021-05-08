@@ -8,6 +8,7 @@ class StairLeft extends React.Component {
                     <div className = "SL-Text">
                         <h2>{this.props.Heading}</h2>
                         <p>{this.props.Blurb}</p>
+                        <a href= "/">View Project</a>
                     </div>
                 </div>
                 <div className = "SL-Pic">
