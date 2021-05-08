@@ -122,7 +122,7 @@ nav .vline {
 }
 
 #Homepage #Slogan{
-  background-color:#800000;
+  background-color: #800000;
   color:white;
   margin-bottom: 100px;
   padding:85px;
@@ -216,9 +216,56 @@ nav .vline {
 #rotation{
   white-space: nowrap;
   overflow: hidden;
-  width: 100%;
+  width: 70%;
   margin:auto;
 }
+
+#rotation #rot-head #rot-text, #rot-buttons{
+  display:inline-block;
+  margin: 0 10px;
+
+}
+
+#rot-text {
+  position: absolute;
+  left: 0;
+}
+
+#rot-buttons {
+  position: absolute;
+  right: 0;
+}
+
+#rotation #rot-head{
+  width: 100%;
+  margin:auto;
+  position: relative;
+}
+
+#rot-head-wrapper{
+  height: 60px;
+  margin-bottom: 10px;
+  border-bottom: 3px black solid;
+  margin-top: 20px;
+}
+
+#rot-buttons a, #rot-text h2{
+  font-size: 50px;
+  font-weight: normal;
+  font-family: "Red Hat",Sans-serif;
+  margin:0;
+}
+
+#rot-buttons a{
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  background: none;
+  margin-left: 30px;
+  color: grey;
+}
+
+
 
 .rotPart{
   display:inline-block;
