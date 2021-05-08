@@ -24,6 +24,9 @@ class Stairs extends React.Component {
             <div id = "HomeStairs">
                 <StairRight Heading = {Headings.Shelf} Blurb = {Blurbs.Shelf} pic = {ShelfPic}/>
                 <StairLeft Heading = {Headings.Advocacy} Blurb = {Blurbs.Advocacy} pic = {AdvocacyPic}/>
+                <StairRight Heading = {Headings.Bootcamps} Blurb = {Blurbs.Bootcamps} pic = {BootcampsPic}/>
+                <StairLeft Heading = {Headings.Events} Blurb = {Blurbs.Events} pic = {EventsPic}/>
+                <StairRight Heading = {Headings.Month} Blurb = {Blurbs.Month} pic = {MonthPic}/>
             </div>
             );
     }
