@@ -1,4 +1,5 @@
 import React from 'react';
+import Rotpart from "./rotpart.component"
 
 class Rotation extends React.Component { 
     constructor(props) {
@@ -13,17 +14,7 @@ class Rotation extends React.Component {
         return (
             <div id = "rotation-wrapper">
                 <div id = "rotation">
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
-                    <div className = "rotPart"></div>
+                    {this.props.parts.map(stuff => <Rotpart parts = {stuff}/>)}
                 </div>
             </div>
         );
@@ -31,5 +22,3 @@ class Rotation extends React.Component {
 }
 
 export default Rotation;
-
-//{this.props.articleTags.map(stuff => <ArticleBox info = {stuff}/>)}
