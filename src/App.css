@@ -272,13 +272,34 @@ nav .vline {
 
 .rotPart{
   display:inline-block;
-  background-color: pink;
-  height:100px;
-  width:500px;
   margin: 1.8%;
   width: 16.2%;
+  overflow-wrap: break-word;
 }
 
+
+.rotPart img{
+  width: 100%;
+}
+
+.rotPart h2{
+  display:inline-block;
+  white-space: normal;
+  max-width:100%;
+  margin:0;
+  text-align:center;
+}
+
+.rotPart p{
+  white-space: normal;
+  max-width:100%;
+  margin:0;
+  text-align:center;
+}
+
+
+
+/*The next two parts are used to control animation*/
 .rotPart[sliding = "L"]{
   transform: translate(-122%,0);
   -webkit-transform: translate(-122%,0); /** Chrome & Safari **/
@@ -289,6 +310,7 @@ nav .vline {
   -moz-transition: all 2s ease-in-out; /** Firefox **/
   -o-transition: all 2s ease-in-out; /** Opera **/
 }
+
 
 .rotPart[sliding = "R"]{
   transform: translate(122%,0);

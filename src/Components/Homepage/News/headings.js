@@ -3,7 +3,7 @@ const Headings ={
     "Mapping":"Mapping entrepreneurs",
     "Crisis":"Entrepreneurs & Crisis",
     "Shelf":"Winning Shelf Space",
-    "Waluigi":"Waluigi Test!",
+    "Waluigi":"Waluigi Test! aasdfas asdfasdfa s",
     "Dutchman":"Dutchman Test!"
  }
 
