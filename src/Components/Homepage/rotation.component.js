@@ -6,7 +6,7 @@ class Rotation extends React.Component {
         super(props);
         this.state = {
             length: 2,
-            sliding: 0
+            sliding: "N"
         };
 
         this.moveLeft = this.moveLeft.bind(this);
@@ -15,12 +15,12 @@ class Rotation extends React.Component {
 
     moveLeft(e) {
         e.preventDefault();
-        alert("Move Left");
+        this.setState({sliding: "L"})
     };
 
     moveRight(e) {
         e.preventDefault();
-        alert("Move Left");
+        this.setState({sliding: "R"})
     };
     
 

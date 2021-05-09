@@ -1,8 +1,12 @@
 import React from 'react';
 
 class Rotpart extends React.Component { 
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
-        return <div className = "rotPart"/>
+        return <div sliding = {this.props.sliding} className = "rotPart"/>
     }
 }
 
