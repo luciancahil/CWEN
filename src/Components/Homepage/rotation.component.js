@@ -5,33 +5,45 @@ class Rotation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            length: 2
+            length: 2,
+            sliding: 0
         };
+
+        this.moveLeft = this.moveLeft.bind(this);
+        this.moveRight = this.moveRight.bind(this);
     }
 
-    handleClick(e) {
+    moveLeft(e) {
         e.preventDefault();
-        console.log('The link was clicked.');
-      };
+        alert("Move Left");
+    };
+
+    moveRight(e) {
+        e.preventDefault();
+        alert("Move Left");
+    };
     
 
     render() {
         return (
                 <div id = "rotation-wrapper">
+
                     <div id = "rotation">
                         <div id = "rot-head-wrapper">
                             <div id = "rot-head">
                                 <div id = "rot-text">
                                     <h2>{this.props.type}</h2>
                                 </div>
+
                                 <div id = "rot-buttons">
-                                    <a href="#" onClick={this.handleClick}>&lt;</a>
-                                    <a href="#" onClick={this.handleClick}>&gt;</a>
+                                    <a href="#" onClick={this.moveLeft}>&lt;</a>
+                                    <a href="#" onClick={this.moveRight}>&gt;</a>
                                 </div>
                             </div>
                         </div>
+
                         <div id = "rotating">
-                            {this.props.parts.map(stuff => <Rotpart parts = {stuff}/>)}
+                            {this.props.parts.map(stuff => <Rotpart parts = {stuff} sliding = {this.state.sliding}/>)}
                         </div>
                     </div>
                 </div>
