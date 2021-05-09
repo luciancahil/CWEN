@@ -18,42 +18,42 @@ class News extends React.Component {
 
         var parts = [];
 
-        parts[1] = {
+        parts[0] = {
             image: NetworkingPic,
             heading : Headings.Networking,
             blub : Blurbs.Networking,
             link : "/" + Headings.Networking
         };
 
-        parts[2] = {
+        parts[1] = {
             image : MappingPic,
             heading : Headings.Mapping,
             blub : Blurbs.Mapping,
             link : "/" + Headings.Mapping
         };
 
-        parts[3] = {
+        parts[2] = {
             image : CrisisPic,
             heading : Headings.Crisis,
             blub : Blurbs.Crisis,
             link : "/" + Headings.Crisis
         };
 
-        parts[4] = {
+        parts[3] = {
             image : ShelfPic,
             heading : Headings.Shelf,
             blub : Blurbs.Shelf,
             link : "/" + Headings.Shelf
         };
 
-        parts[5] = {
+        parts[4] = {
             image : WaluigiPic,
             heading : Headings.Waluigi,
             blub : Blurbs.Waluigi,
             link : "/" + Headings.Waluigi
         };
 
-        parts[6] = {
+        parts[5] = {
             image : DutchmanPic,
             heading : Headings.Dutchman,
             blub : Blurbs.Dutchman,

@@ -4,8 +4,30 @@ import Rotpart from "./rotpart.component"
 class Rotation extends React.Component { 
     constructor(props) {
         super(props);
+
+        /* Setting the state Index parts array */
+        let buildingPartsIndex = [];
+
+        // the 0th value should be the final index
+        buildingPartsIndex[0] = this.props.parts.length - 1;
+
+        for(let i = 1; i < 5; i++){
+            buildingPartsIndex[i] = i - 1;
+        }
+
+
+        /* building the state parts array */
+        let buildingStateParts = [];
+        for(let i = 0; i < 5; i++){
+            console.log(buildingPartsIndex[i])
+            buildingStateParts[i] = this.props.parts[buildingPartsIndex[i]];
+        }
+
         this.state = {
-            sliding: "N"
+            length: this.props.parts.length,
+            sliding: "N",
+            partsIndex: buildingPartsIndex,
+            parts: buildingStateParts
         };
 
         this.moveLeft = this.moveLeft.bind(this);
@@ -24,6 +46,8 @@ class Rotation extends React.Component {
     
 
     render() {
+        console.log(this.state.parts);
+        
         return (
                 <div id = "rotation-wrapper">
 
@@ -43,7 +67,7 @@ class Rotation extends React.Component {
 
                         <div id = "rotatingWrapper">
                             <div id = "rotating">
-                                {this.props.parts.map(stuff => <Rotpart key = {stuff.heading} parts = {stuff} sliding = {this.state.sliding}/>)}
+                                {this.state.parts.map(stuff => <Rotpart key = {stuff.heading} parts = {stuff} sliding = {this.state.sliding}/>)}
                             </div>
                         </div>
                     </div>
