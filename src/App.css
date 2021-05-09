@@ -185,7 +185,7 @@ nav .vline {
   font-weight: normal;
   width: 90%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 45px;
   padding: 10px;
   position: relative;
 }
@@ -195,7 +195,7 @@ nav .vline {
   font-family: 'Times New Roman', Times, serif;
   width: 80%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 45px;
   padding: 10px;
   position: relative;
 
