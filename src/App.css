@@ -330,21 +330,74 @@ nav .vline {
   -o-transition: all 2s ease-in-out; /** Opera **/
 }
 
+#foot-wrapper{
+  background-color: black;
+}
 
 #footer{
   background-color: black;
   color:white;
   margin:0;
+  width: 90%;
+  margin: auto;
 }
 
 #footer h2{
   margin:0;
+
+}
+
+.footPart{
+  width: calc(100% / 4);  
+  display: inline-block;
+  vertical-align: top;   
+  margin:2%;    
+  padding:20px;
+}
+
+.footPart h3{
+  font-weight: normal;
+  border-bottom: 3px #800000 solid;
+}
+
+
+.footPart p{
+  margin: 0;
+}
+
+.footPart ul a{
+  text-decoration: none;
+  color: white;
+}
+
+.footPart input{
+  margin-top: 20px;
 }
 
 .social-container {
   background: black;
   padding: 25px 50px;
 }
+
+.footPart #emails{
+  vertical-align: top;
+}
+
+.footPart button{
+  border:none;
+  background-color: #800000;
+  color:white;
+  width: 90px;
+  height:100%;
+  margin-left: 20px;
+}
+
+
+.footPart button:active{
+  color:#800000;
+  background-color: white;;
+ }
+
 
 a.social {
   margin: 0 1rem;
