@@ -21,7 +21,6 @@ class Rotation extends React.Component {
         /* building the state parts array */
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
-            console.log(buildingPartsIndex[i])
             buildingStateParts[i] = this.props.parts[buildingPartsIndex[i]];
         }
 
@@ -30,7 +29,6 @@ class Rotation extends React.Component {
             sliding: "N",
             partsIndex: buildingPartsIndex,
             parts: buildingStateParts,
-            isDisabled: "f"
         };
 
         this.moveLeft = this.moveLeft.bind(this);
@@ -41,11 +39,11 @@ class Rotation extends React.Component {
 
     moveLeft(e) {
         e.preventDefault();
-        //disable the buttons to prevent double clicking
-        this.setState({
-            isDisabled: "t"
-        })
 
+        // prevent double clicking
+        if(this.state.sliding !== "N"){
+            return
+        }
 
         this.setState({sliding: "L"})
 
@@ -54,12 +52,18 @@ class Rotation extends React.Component {
     };
 
     moveRight(e) {
+        e.preventDefault()
+        // prevent double clicking
+        if(this.state.sliding !== "N"){
+            return
+        }
+
         e.preventDefault();
         
         this.setState({sliding: "R"});
 
         // onAnimationEnd does not work. This is the hack I came up with
-        setTimeout(this.doneAnimation,2000);
+        setTimeout(this.doneAnimation,2500);
     };
 
     test(){
@@ -75,8 +79,6 @@ class Rotation extends React.Component {
     }
 
     finishedMovingLeft(){
-        
-
         /*updating the parts Index  array*/
         let updatingPartsIndex = this.state.partsIndex.slice();
 
@@ -93,7 +95,6 @@ class Rotation extends React.Component {
         /* building the state parts array */
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
-            console.log(updatingPartsIndex[i])
             buildingStateParts[i] = this.props.parts[updatingPartsIndex[i]];
         }
 
@@ -101,7 +102,7 @@ class Rotation extends React.Component {
         this.setState({
             sliding: "N",
             partsIndex: updatingPartsIndex,
-            parts: buildingStateParts
+            parts: buildingStateParts,
         })
 
     }
@@ -120,8 +121,8 @@ class Rotation extends React.Component {
                                 </div>
 
                                 <div id = "rot-buttons">
-                                    <a disabled={this.state.isDisabled === "t"} href="#" onClick={this.moveLeft}>&lt;</a>
-                                    <a disabled={this.state.isDisabled === "t"} href="#" onClick={this.moveRight}>&gt;</a>
+                                    <a href="#" onClick={this.moveLeft}>&lt;</a>
+                                    <a href="#" onClick={this.moveRight}>&gt;</a>
                                 </div>
                             </div>
                         </div>
