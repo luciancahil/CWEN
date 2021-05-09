@@ -5,7 +5,6 @@ class Rotation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            length: 2,
             sliding: "N"
         };
 

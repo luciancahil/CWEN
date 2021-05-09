@@ -6,6 +6,8 @@ import NetworkingPic from "./News/Networking.PNG";
 import MappingPic from "./News/Mapping.PNG";
 import CrisisPic from "./News/Crisis.PNG";
 import ShelfPic from "./News/Shelf.PNG";
+import WaluigiPic from "./News/Waluigi.jpg";
+import DutchmanPic from "./News/Dutchman.png";
 
 
 class News extends React.Component { 
