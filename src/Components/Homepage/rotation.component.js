@@ -5,6 +5,8 @@ class Rotation extends React.Component {
     constructor(props) {
         super(props);
 
+        this.lefRef= React.createRef();
+
         /* Setting the state Index parts array */
         let buildingPartsIndex = [];
 
@@ -27,7 +29,8 @@ class Rotation extends React.Component {
             length: this.props.parts.length,
             sliding: "N",
             partsIndex: buildingPartsIndex,
-            parts: buildingStateParts
+            parts: buildingStateParts,
+            isDisabled: "f"
         };
 
         this.moveLeft = this.moveLeft.bind(this);
@@ -38,13 +41,24 @@ class Rotation extends React.Component {
 
     moveLeft(e) {
         e.preventDefault();
+        //disable the buttons to prevent double clicking
+        this.setState({
+            isDisabled: "t"
+        })
+
+
         this.setState({sliding: "L"})
+
+        // onAnimationEnd does not work. This is the hack I came up wit
         setTimeout(this.doneAnimation,2000);
     };
 
     moveRight(e) {
         e.preventDefault();
+        
         this.setState({sliding: "R"});
+
+        // onAnimationEnd does not work. This is the hack I came up with
         setTimeout(this.doneAnimation,2000);
     };
 
@@ -54,27 +68,26 @@ class Rotation extends React.Component {
 
     doneAnimation(){
         if(this.state.sliding === "L"){
-            alert("Done Moving Left");
+            this.finishedMovingLeft();
         }else if(this.state.sliding === "R"){
             alert("Done Moving Right");
-        }else{
-            alert("Neither");
         }
     }
 
     finishedMovingLeft(){
+        
 
         /*updating the parts Index  array*/
         let updatingPartsIndex = this.state.partsIndex.slice();
 
-        for(let i = 0; i < 5; i++){
+        for(let i = 0; i < 4; i++){
             updatingPartsIndex[i] = updatingPartsIndex[i + 1];
         }
 
-        if(updatingPartsIndex[5] === this.state.length - 1){
-            updatingPartsIndex[5] = 0;
+        if(updatingPartsIndex[4] === this.state.length - 1){
+            updatingPartsIndex[4] = 0;
         }else{
-            updatingPartsIndex[5] = updatingPartsIndex[5] - 1;
+            updatingPartsIndex[4] = updatingPartsIndex[4] + 1;
         }
 
         /* building the state parts array */
@@ -95,7 +108,6 @@ class Rotation extends React.Component {
     
 
     render() {
-        console.log(this.state.parts);
         
         return (
                 <div id = "rotation-wrapper">
@@ -108,8 +120,8 @@ class Rotation extends React.Component {
                                 </div>
 
                                 <div id = "rot-buttons">
-                                    <a href="#" onClick={this.moveLeft}>&lt;</a>
-                                    <a href="#" onClick={this.moveRight}>&gt;</a>
+                                    <a disabled={this.state.isDisabled === "t"} href="#" onClick={this.moveLeft}>&lt;</a>
+                                    <a disabled={this.state.isDisabled === "t"} href="#" onClick={this.moveRight}>&gt;</a>
                                 </div>
                             </div>
                         </div>
