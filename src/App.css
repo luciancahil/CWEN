@@ -277,7 +277,14 @@ nav .vline {
 }
 
 .rotPart[sliding = "L"]{
-  background-color: lime;
+  transform: translate(-120%,0);
+  -webkit-transform: translate(-120%,0); /** Chrome & Safari **/
+  -o-transform: translate(-120%,0); /** Opera **/
+  -moz-transform: translate(-120%,0); /** Firefox **/
+  transition: all 2s ease-in-out;
+  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 2s ease-in-out; /** Firefox **/
+  -o-transition: all 2s ease-in-out; /** Opera **/
 }
 
 .rotPart[sliding = "R"]{
