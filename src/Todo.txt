@@ -1,7 +1,8 @@
-- Finish Implementing Rotation Barebones
-- Add Rotation animation
+
 - Use Rotation to implement Members.
 
 
 
 - Change news href to ? instead of /
+
+- Fix Rotation Array for < 5 items
