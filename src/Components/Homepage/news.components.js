@@ -11,8 +11,6 @@ import DutchmanPic from "./News/Dutchman.png";
 
 
 class News extends React.Component { 
-
-    
     constructor(props) {
         super(props);
 
