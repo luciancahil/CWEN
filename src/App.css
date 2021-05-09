@@ -275,7 +275,12 @@ nav .vline {
   margin: 1.8%;
   width: 16.2%;
   overflow-wrap: break-word;
-  vertical-align : top
+  vertical-align : top;
+  text-align: center;
+}
+
+.rotText{
+  text-align: center;
 }
 
 
