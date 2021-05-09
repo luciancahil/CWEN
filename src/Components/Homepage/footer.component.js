@@ -1,8 +1,13 @@
 import React from 'react';
+import SocialFollow from "./SocialFollow"
 
 class Footer extends React.Component { 
     render() {
-        return <h2>Footer Component</h2>;
+        return (
+            <div id = "footer">
+                <SocialFollow />
+            </div>
+        );
     }
 }
 

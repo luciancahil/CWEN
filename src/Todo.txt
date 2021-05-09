@@ -6,3 +6,4 @@
 - Change news href to ? instead of /
 
 - Fix Rotation Array for < 5 items
+- Add footer to everything on Mainpage

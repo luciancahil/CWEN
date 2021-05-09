@@ -330,6 +330,37 @@ nav .vline {
   -o-transition: all 2s ease-in-out; /** Opera **/
 }
 
+
+#footer{
+  background-color: black;
+  color:white;
+  margin:0;
+}
+
+#footer h2{
+  margin:0;
+}
+
+.social-container {
+  background: black;
+  padding: 25px 50px;
+}
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+}
+
+.social-container a{
+  color:grey;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
