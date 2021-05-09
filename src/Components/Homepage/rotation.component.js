@@ -41,8 +41,10 @@ class Rotation extends React.Component {
                             </div>
                         </div>
 
-                        <div id = "rotating">
-                            {this.props.parts.map(stuff => <Rotpart parts = {stuff} sliding = {this.state.sliding}/>)}
+                        <div id = "rotatingWrapper">
+                            <div id = "rotating">
+                                {this.props.parts.map(stuff => <Rotpart key = {stuff.heading} parts = {stuff} sliding = {this.state.sliding}/>)}
+                            </div>
                         </div>
                     </div>
                 </div>

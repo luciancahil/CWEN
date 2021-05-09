@@ -1,5 +1,5 @@
 const Headings ={
-    "NetWorking":"The power of networking",
+    "Networking":"The power of networking",
     "Mapping":"Mapping entrepreneurs",
     "Crisis":"Entrepreneurs & Crisis",
     "Shelf":"Winning Shelf Space",

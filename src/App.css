@@ -265,15 +265,18 @@ nav .vline {
   color: grey;
 }
 
-
+#rotating{
+  width: 167%;
+  transform: translate(-20%,0);
+}
 
 .rotPart{
   display:inline-block;
   background-color: pink;
   height:100px;
   width:500px;
-  margin: 3%;
-  width: 27%;
+  margin: 1.8%;
+  width: 16.2%;
 }
 
 .rotPart[sliding = "L"]{

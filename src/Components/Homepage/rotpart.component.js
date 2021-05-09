@@ -6,7 +6,9 @@ class Rotpart extends React.Component {
     }
     
     render() {
-        return <div sliding = {this.props.sliding} className = "rotPart"/>
+        return <div sliding = {this.props.sliding} className = "rotPart">
+            {this.props.parts.heading}
+        </div>
     }
 }
 

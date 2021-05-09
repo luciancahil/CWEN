@@ -46,6 +46,20 @@ class News extends React.Component {
             link : "/" + Headings.Shelf
         };
 
+        parts[5] = {
+            image : WaluigiPic,
+            heading : Headings.Waluigi,
+            blub : Blurbs.Waluigi,
+            link : "/" + Headings.Waluigi
+        };
+
+        parts[6] = {
+            image : DutchmanPic,
+            heading : Headings.Dutchman,
+            blub : Blurbs.Dutchman,
+            link : "/" + Headings.Dutchman
+        };
+
         this.state = {
             rotationParts: parts,
         };
