@@ -63,7 +63,7 @@ class Rotation extends React.Component {
         this.setState({sliding: "R"});
 
         // onAnimationEnd does not work. This is the hack I came up with
-        setTimeout(this.doneAnimation,2500);
+        setTimeout(this.doneAnimation,2000);
     };
 
     test(){
@@ -74,7 +74,7 @@ class Rotation extends React.Component {
         if(this.state.sliding === "L"){
             this.finishedMovingLeft();
         }else if(this.state.sliding === "R"){
-            alert("Done Moving Right");
+            this.finishedMovingRight();
         }
     }
 
@@ -92,6 +92,8 @@ class Rotation extends React.Component {
             updatingPartsIndex[4] = updatingPartsIndex[4] + 1;
         }
 
+        
+
         /* building the state parts array */
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
@@ -104,7 +106,34 @@ class Rotation extends React.Component {
             partsIndex: updatingPartsIndex,
             parts: buildingStateParts,
         })
+    }
 
+    finishedMovingRight(){
+        /*updating the parts Index  array*/
+        let updatingPartsIndex = this.state.partsIndex.slice();
+
+        for(let i = 4; i > 0; i--){
+            updatingPartsIndex[i] = updatingPartsIndex[i - 1];
+        }
+
+        if(updatingPartsIndex[0] === 0){
+            updatingPartsIndex[0] = this.state.length - 1;
+        }else{
+            updatingPartsIndex[0] = updatingPartsIndex[0] - 1;
+        }
+
+        /* building the state parts array */
+        let buildingStateParts = [];
+        for(let i = 0; i < 5; i++){
+            buildingStateParts[i] = this.props.parts[updatingPartsIndex[i]];
+        }
+
+
+        this.setState({
+            sliding: "N",
+            partsIndex: updatingPartsIndex,
+            parts: buildingStateParts,
+        })
     }
     
 
