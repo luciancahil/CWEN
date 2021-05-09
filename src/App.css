@@ -52,6 +52,7 @@ nav a{
   bottom: 10%;
   overflow: hidden;
   vertical-align: middle;
+  font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -59,9 +60,359 @@ nav a:hover{
   text-decoration: underline;
 }
 
-.vline {
+nav .vline {
   margin: 0 15;
 }
+
+#Homepage #Homepage_Banner div{
+  display: inline-block;
+  margin: auto;
+}
+
+#Homepage #Homepage_Banner, #Homepage_Banner_Image{
+  height: 450px;
+}
+
+#Homepage #Homepage_Banner_Text{
+  float: left;
+}
+
+#Homepage #Homepage_Banner_Image{
+  float:  right;
+}
+
+#Homepage #Homepage_Banner #Homepage_Banner_Text{
+  margin-top: 80px;
+  margin-left: 10%;
+}
+
+#Homepage #Homepage_Banner #Homepage_Banner_Text h1{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+#Homepage #Homepage_Banner #Homepage_Banner_Text p{
+  width: 70%;
+  font-size: 18px;
+}
+
+#Homepage #Homepage_Banner #Homepage_Banner_Text a{
+  background: #fd5800;
+  padding: 15px 55px;
+  border-radius:3px;
+  display:inline-block;
+  color: white;
+}
+
+
+#Homepage #Homepage_Banner #Homepage_Banner_Image #banner_square{
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#Homepage #Homepage_Banner #Homepage_Banner_Image #banner_tall {
+  position: absolute;
+  border: 10px orange solid;
+  top: 80px;
+  right: 22%;
+  height: 50%;
+}
+
+#Homepage #Slogan{
+  background-color: #800000;
+  color:white;
+  margin-bottom: 100px;
+  padding:85px;
+}
+
+#Homepage #Slogan h2{
+  margin:auto;
+  text-align:center;
+  font-size:40px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+#Homepage #Slogan #second_line{
+  font-style:italic;
+}
+
+
+#HomeStairs{
+  max-width: 1230px;
+  margin:auto;
+}
+
+
+#HomeStairs .StairRight, .StairLeft{
+  height: 550px;
+  position:relative;
+  margin-bottom: 0px;
+}
+
+
+.SR-Pic, .SL-Pic, .SR-TextWrapper, .SL-TextWrapper{
+  display: inline-block;
+  width: 50%;
+  height:100%;
+  top:0;
+  vertical-align:top;
+  position:relative;
+}
+
+
+
+#HomeStairs .StairRight .SR-Pic, .SL-Pic{
+  text-align: right;
+  height:100%;
+}
+
+.SL-Pic{
+  text-align: left;
+  height:100%;
+}
+
+#HomeStairs .StairRight img, .StairLeft img{
+  height:100%;
+}
+
+#HomeStairs .StairRight .SR-TextWrapper h2, .SL-TextWrapper h2{
+  font-size: 40px;
+  line-height:48px;
+  overflow-wrap:break-word;
+  font-weight: normal;
+  width: 90%;
+  height: auto;
+  margin: 0 45px;
+  padding: 10px;
+  position: relative;
+}
+
+#HomeStairs .StairRight .SR-TextWrapper p, .SL-TextWrapper p{
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+  width: 80%;
+  height: auto;
+  margin: 0 45px;
+  padding: 10px;
+  position: relative;
+
+}
+
+
+#HomeStairs a{
+  color: orange;
+  font-size: 25px;
+  margin-left: 47px;
+  padding: 0 10px;
+}
+/* This is the only way I could find to make the text look somewhat vertically centered */
+.SR-Text, .SL-Text{
+  margin-top: 10%;
+}
+
+#rotation{
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70%;
+  margin:auto;
+}
+
+#rotation #rot-head #rot-text, #rot-buttons{
+  display:inline-block;
+  margin: 0 10px;
+
+}
+
+#rot-text {
+  position: absolute;
+  left: 0;
+}
+
+#rot-buttons {
+  position: absolute;
+  right: 0;
+}
+
+#rotation #rot-head{
+  width: 100%;
+  margin:auto;
+  position: relative;
+}
+
+#rot-head-wrapper{
+  height: 60px;
+  margin-bottom: 10px;
+  border-bottom: 3px black solid;
+  margin-top: 20px;
+}
+
+#rot-buttons a, #rot-text h2{
+  font-size: 50px;
+  font-weight: normal;
+  font-family: "Red Hat",Sans-serif;
+  margin:0;
+}
+
+#rot-buttons a{
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  background: none;
+  margin-left: 30px;
+  color: grey;
+}
+
+#rotating{
+  width: 167%;
+  transform: translate(-20%,0);
+}
+
+.rotPart{
+  display:inline-block;
+  margin: 1.8%;
+  width: 16.2%;
+  overflow-wrap: break-word;
+  vertical-align : top;
+  text-align: center;
+}
+
+.rotText{
+  text-align: center;
+}
+
+
+.rotPart img{
+  width: 100%;
+}
+
+.rotPart h2{
+  display:inline-block;
+  white-space: normal;
+  max-width:100%;
+  margin:0;
+  text-align:center;
+  overflow:hidden;
+}
+
+.rotPart p{
+  white-space: normal;
+  max-width:100%;
+  margin:0;
+  text-align:center;
+}
+
+
+
+/*The next two parts are used to control animation*/
+.rotPart[sliding = "L"]{
+  transform: translate(-122%,0);
+  -webkit-transform: translate(-122%,0); /** Chrome & Safari **/
+  -o-transform: translate(-122%,0); /** Opera **/
+  -moz-transform: translate(-122%,0); /** Firefox **/
+  transition: all 2s ease-in-out;
+  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 2s ease-in-out; /** Firefox **/
+  -o-transition: all 2s ease-in-out; /** Opera **/
+}
+
+
+.rotPart[sliding = "R"]{
+  transform: translate(122%,0);
+  -webkit-transform: translate(122%,0); /** Chrome & Safari **/
+  -o-transform: translate(122%,0); /** Opera **/
+  -moz-transform: translate(122%,0); /** Firefox **/
+  transition: all 2s ease-in-out;
+  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 2s ease-in-out; /** Firefox **/
+  -o-transition: all 2s ease-in-out; /** Opera **/
+}
+
+#foot-wrapper{
+  background-color: black;
+}
+
+#footer{
+  background-color: black;
+  color:white;
+  margin:0;
+  width: 90%;
+  margin: auto;
+}
+
+#footer h2{
+  margin:0;
+
+}
+
+.footPart{
+  width: calc(100% / 4);  
+  display: inline-block;
+  vertical-align: top;   
+  margin:2%;    
+  padding:20px;
+}
+
+.footPart h3{
+  font-weight: normal;
+  border-bottom: 3px #800000 solid;
+}
+
+
+.footPart p{
+  margin: 0;
+}
+
+.footPart ul a{
+  text-decoration: none;
+  color: white;
+}
+
+.footPart input{
+  margin-top: 20px;
+}
+
+.social-container {
+  background: black;
+  padding: 25px 50px;
+}
+
+.footPart #emails{
+  vertical-align: top;
+}
+
+.footPart button{
+  border:none;
+  background-color: #800000;
+  color:white;
+  width: 90px;
+  height:100%;
+  margin-left: 20px;
+}
+
+
+.footPart button:active{
+  color:#800000;
+  background-color: white;;
+ }
+
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+}
+
+.social-container a{
+  color:grey;
+}
+
 
 @keyframes App-logo-spin {
   from {
