@@ -13,9 +13,9 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      sloganTop:"",
-      sloganBottom: ""
-    }
+      sloganTop: "CWEN was built by women, for women. test",
+      sloganBottom: "The buisness world was not. test"
+    };
 
     this.animateSlogan = this.animateSlogan.bind(this);
   }
@@ -26,7 +26,10 @@ class HomePage extends React.Component {
 
 
   animateSlogan(){
-    
+    const sloganTop = "CWEN was built by women, for women.";
+    const sloganBottom = "The buisness world was not.";
+
+
   }
   /*
   The banner is the Image to the right of the big text
@@ -38,7 +41,7 @@ class HomePage extends React.Component {
     return (
       <div id = "Homepage">
         <Banner/>
-        <Slogan/>
+        <Slogan top = {this.state.sloganTop} bottom = {this.state.sloganBottom}/>
         <Stairs/>
         <News/>
         <Members/>
