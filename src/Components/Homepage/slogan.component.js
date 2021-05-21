@@ -17,7 +17,7 @@ class Featured extends React.Component {
         if (string.length === 0) {
           return;
         } else {
-          this.setState((state, props) => ({
+          this.setState((state) => ({
             typed: state.typed.concat(string[0])
           }));
     
