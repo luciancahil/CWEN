@@ -9,8 +9,24 @@ import Footer from "./Homepage/footer.component";
 
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sloganTop:"",
+      sloganBottom: ""
+    }
+
+    this.animateSlogan = this.animateSlogan.bind(this);
+  }
+
   componentDidMount() {
     document.title = 'CWEN - Community Women Enterprise Network';
+  }
+
+
+  animateSlogan(){
+    
   }
   /*
   The banner is the Image to the right of the big text
