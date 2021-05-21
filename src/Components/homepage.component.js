@@ -9,9 +9,19 @@ import Footer from "./Homepage/footer.component";
 
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      slogan: "CWEN was built by women, for women.The buisness world was not."
+    };
+  }
+
   componentDidMount() {
     document.title = 'CWEN - Community Women Enterprise Network';
   }
+
+
   /*
   The banner is the Image to the right of the big text
   The slogan is the orange part that takes up the entire width of the page
@@ -19,10 +29,12 @@ class HomePage extends React.Component {
   The rest is self-explanatory
   */
   render() {
+    
+
     return (
       <div id = "Homepage">
         <Banner/>
-        <Slogan/>
+        <Slogan inputString = {this.state.slogan}/>
         <Stairs/>
         <News/>
         <Members/>

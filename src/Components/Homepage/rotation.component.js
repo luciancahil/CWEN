@@ -137,8 +137,7 @@ class Rotation extends React.Component {
     }
     
 
-    render() {
-        
+    render() {        
         return (
                 <div id = "rotation-wrapper">
 
@@ -150,15 +149,15 @@ class Rotation extends React.Component {
                                 </div>
 
                                 <div id = "rot-buttons">
-                                    <a href="#" onClick={this.moveLeft}>&lt;</a>
-                                    <a href="#" onClick={this.moveRight}>&gt;</a>
+                                    <a href="/" onClick={this.moveLeft}>&lt;</a>
+                                    <a href="/" onClick={this.moveRight}>&gt;</a>
                                 </div>
                             </div>
                         </div>
 
                         <div id = "rotatingWrapper">
                             <div id = "rotating">
-                                {this.state.parts.map(stuff => <Rotpart onAnimationEnd = {this.doneAnimation} key = {stuff.heading} parts = {stuff} sliding = {this.state.sliding}/>)}
+                                {this.state.parts.map(stuff => <Rotpart key = {stuff.image} parts = {stuff} sliding = {this.state.sliding}/>)}
                             </div>
                         </div>
                     </div>
