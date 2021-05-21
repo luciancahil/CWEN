@@ -5,8 +5,8 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav>
-        <a href="/"> <img src = {logo}></img></a>
-        <a id = "vline">|</a>
+        <a href="/"> <img src = {logo} alt = "logo"></img></a>
+        <a id = "vline" href = "/">|</a>
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/services">Services</a>

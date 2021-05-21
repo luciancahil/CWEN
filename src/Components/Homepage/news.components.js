@@ -63,9 +63,6 @@ class News extends React.Component {
         };
       }
     
-    componentDidMount(){
-    }
-    
     render() {
         return <Rotation type = "News" parts = {this.state.rotationParts}/>;
     }

@@ -12,7 +12,7 @@ class StairLeft extends React.Component {
                     </div>
                 </div>
                 <div className = "SL-Pic">
-                    <img src = {this.props.pic}/>
+                    <img src = {this.props.pic} alt = {this.props.Heading}/>
                 </div>
             </div>
         );

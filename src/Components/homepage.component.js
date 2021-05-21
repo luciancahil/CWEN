@@ -13,8 +13,18 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      sloganTop: "CWEN was built by women, for women. test",
-      sloganBottom: "The buisness world was not. test"
+      // what is currently shown in the slogan top part
+      sloganTop: "",
+      // the full index quote for the slogan top part
+      sloganTopFull: "CWEN was built by women, for women.",
+      // how many characters we are currently showing in the slogan top
+      sloganTopIndex: 0,
+      // what is currently shown in the slogan bottom part
+      sloganBottom: "",
+      // the full index quote for the slogan bottom part
+      sloganBottomFull: "The buisness world was not.",
+      // how many characters we are currently showing in the slogan bottom
+      sloganBottomIndex: 0
     };
 
     this.animateSlogan = this.animateSlogan.bind(this);
@@ -26,9 +36,11 @@ class HomePage extends React.Component {
 
 
   animateSlogan(){
-    const sloganTop = "CWEN was built by women, for women.";
-    const sloganBottom = "The buisness world was not.";
+    let topLen = this.state.sloganTopFull.length;
+    let botLen = this.state.sloganBottomFull.length;
 
+    console.log(topLen);
+    console.log(botLen);
 
   }
   /*

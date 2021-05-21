@@ -5,7 +5,7 @@ class StairRight extends React.Component {
         return (
             <div className = "StairRight">
                 <div className = "SR-Pic">
-                    <img src = {this.props.pic}/>
+                    <img src = {this.props.pic} alt = {this.props.Heading}/>
                 </div>
                 <div className = "SR-TextWrapper">
                     <div className = "SR-Text">

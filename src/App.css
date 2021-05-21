@@ -64,6 +64,10 @@ nav .vline {
   margin: 0 15;
 }
 
+#Homepage_Banner_Text a{
+  text-decoration: none;
+}
+
 #Homepage #Homepage_Banner div{
   display: inline-block;
   margin: auto;

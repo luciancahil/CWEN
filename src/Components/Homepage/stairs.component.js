@@ -13,12 +13,7 @@ import EventsPic from "./Stair/Events.PNG";
 import MonthPic from "./Stair/Month.PNG";
 
 
-class Stairs extends React.Component { 
-    constructor(props) {
-        super(props);
-    }
-    
-    
+class Stairs extends React.Component {   
     render() {
         return (
             <div id = "HomeStairs">
