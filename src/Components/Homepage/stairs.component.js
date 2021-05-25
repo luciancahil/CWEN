@@ -6,11 +6,11 @@ import Blurbs from "./Stair/Blurbs"
 // The titles that apear besides the images and above the blurgs
 import Headings from "./Stair/Headings"
 //images
-import ShelfPic from "./Stair/Shelf.PNG";
-import AdvocacyPic from "./Stair/Advocacy.PNG";
-import BootcampsPic from "./Stair/Bootcamps.PNG";
-import EventsPic from "./Stair/Events.PNG";
-import MonthPic from "./Stair/Month.PNG";
+import ShelfPic from "./Stair/Shelf.jpg";
+import AdvocacyPic from "./Stair/Advocacy.jpg";
+import BootcampsPic from "./Stair/Bootcamps.jpg";
+import EventsPic from "./Stair/Events.jpg";
+import MonthPic from "./Stair/Month.jpg";
 
 
 class Stairs extends React.Component {   
