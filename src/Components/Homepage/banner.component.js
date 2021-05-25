@@ -1,6 +1,6 @@
 import React from 'react';
-import banner from "./SquareBanner.PNG"
-import bannerLong from "./Banner-Long.PNG"
+import banner from "./SquareBanner.jpg"
+import bannerLong from "./Banner-Long.jpg"
 
 class Banner extends React.Component { 
     render() {
