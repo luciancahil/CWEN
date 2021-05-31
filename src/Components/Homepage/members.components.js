@@ -1,10 +1,10 @@
 import React from 'react';
 import Rotation from "./rotation.component"
-import CocoPic from "./Members/Coco.PNG"
-import FacePic from "./Members/Face.PNG"
-import GrainPic from "./Members/Grain.PNG"
-import ObuntuPic from "./Members/Obuntu.PNG"
-import VuraPic from "./Members/Vura.PNG"
+import CocoPic from "./Members/Coco.jpg"
+import FacePic from "./Members/Face.jpg"
+import GrainPic from "./Members/Grain.jpg"
+import ObuntuPic from "./Members/Obuntu.jpg"
+import VuraPic from "./Members/Vura.jpg"
 
 
 

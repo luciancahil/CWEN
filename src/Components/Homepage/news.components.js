@@ -2,12 +2,12 @@ import React from 'react';
 import Rotation from './rotation.component';
 import Headings from "./News/headings";
 import Blurbs from "./News/blurbs";
-import NetworkingPic from "./News/Networking.PNG";
-import MappingPic from "./News/Mapping.PNG";
-import CrisisPic from "./News/Crisis.PNG";
-import ShelfPic from "./News/Shelf.PNG";
+import NetworkingPic from "./News/Networking.jpg";
+import MappingPic from "./News/Mapping.jpg";
+import CrisisPic from "./News/Crisis.jpg";
+import ShelfPic from "./News/Shelf.jpg";
 import WaluigiPic from "./News/Waluigi.jpg";
-import DutchmanPic from "./News/Dutchman.png";
+import DutchmanPic from "./News/Dutchman.jpg";
 
 
 class News extends React.Component { 
