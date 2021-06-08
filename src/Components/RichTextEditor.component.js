@@ -1,56 +1,111 @@
-import React from "react";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import React, {Component} from 'react';
+import {EditorState} from "draft-js";
+import {Editor} from "react-draft-wysiwyg";
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+/*
+function uploadImageCallBack(file) {
+        // long story short, every time we upload an image, we
+        // need to save it to the state so we can get it's data
+        // later when we decide what to do with it.
+    
+        // Make sure you have a uploadImages: [] as your default state
+        let uploadedImages = this.state.uploadedImages;
+    
+        const imageObject = {
+          file: file,
+          localSrc: URL.createObjectURL(file),
+        }
+    
+        uploadedImages.push(imageObject);
+    
+        this.setState({ uploadedImages: uploadedImages })
+    
+        // We need to return a promise with the image src
+        // the img src we will use here will be what's needed
+        // to preview it in the browser. This will be different than what
+        // we will see in the index.md file we generate.
+        return new Promise(
+          (resolve, reject) => {
+            resolve({ data: { link: imageObject.localSrc } });
+          }
+        );
+}*/
+  
 
 
 
 
 class RichTextEditor extends React.Component {
-    constructor(props) {
-      super(props);
+  constructor(props){
+    super(props);
+    this.state = {
+      editorState: EditorState.createEmpty(),
+      uploadedImages: []
+    };
+
+    this.onEditorStateChange = this.onEditorStateChange.bind(this);
+    this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
+  }
+
+  onEditorStateChange(editorState){
+    // console.log(editorState)
+    this.setState({
+      editorState,
+    });
+  };
+
+  uploadImageCallBack(file) {
+    // long story short, every time we upload an image, we
+    // need to save it to the state so we can get it's data
+    // later when we decide what to do with it.
+
+    // Make sure you have a uploadImages: [] as your default state
+    let uploadedImages = this.state.uploadedImages;
+
+    const imageObject = {
+      file: file,
+      localSrc: URL.createObjectURL(file),
     }
 
+    uploadedImages.push(imageObject);
+
+    this.setState({ uploadedImages: uploadedImages })
+
+    // We need to return a promise with the image src
+    // the img src we will use here will be what's needed
+    // to preview it in the browser. This will be different than what
+    // we will see in the index.md file we generate.
+    return new Promise(
+      (resolve, reject) => {
+        resolve({ data: { link: imageObject.localSrc } });
+      }
+    );
+    } 
+    
 
     render() {
+      const { editorState } = this.state;
       return (
-        <div className="App">
-                <h2>CKEditor 5 using a custom build - decoupled editor</h2>
-                <CKEditor
-                    onReady={ editor => {
-                        console.log( 'Editor is ready to use!', editor );
-
-                        // Insert the toolbar before the editable area.
-                        editor.ui.getEditableElement().parentElement.insertBefore(
-                            editor.ui.view.toolbar.element,
-                            editor.ui.getEditableElement()
-                        );
-
-                        this.editor = editor;
-                    } }
-                    onError={ ( { willEditorRestart } ) => {
-                        // If the editor is restarted, the toolbar element will be created once again.
-                        // The `onReady` callback will be called again and the new toolbar will be added.
-                        // This is why you need to remove the older toolbar.
-                        if ( willEditorRestart ) {
-                            this.editor.ui.view.toolbar.element.remove();
-                        }
-                    } }
-                    onChange={ ( event, editor ) => {
-                      const data = editor.getData();
-                      console.log( { data } );
-                  } }
-                    editor={ DecoupledEditor }
-                    data="<p>Hello from CKEditor 5's decoupled editor!</p>"
-                    config = {
-                        [
-                          ['Font','FontSize'],
-                          ['Bold','Italic','Underline'],
-                          ['TextColor','BGColor'],
-                          ['JustifyLeft', 'JustifyCenter', 'JustifyRight']
-                      ]
-                  }
-                />
-            </div>
+        
+        <div className='editor'>
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={this.onEditorStateChange}    
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+              image: { 
+                uploadCallback: this.uploadImageCallBack, 
+                alt: { present: true, mandatory: false }, 
+                previewImage: true,
+              },
+            }}
+          />
+        </div>
       );
     }
   }
