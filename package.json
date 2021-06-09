@@ -5,6 +5,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-decoupled-document": "^27.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@draft-js-plugins/editor": "^4.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",

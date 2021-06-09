@@ -1,39 +1,8 @@
 import React, {Component} from 'react';
-import {EditorState} from "draft-js";
+import {ContentState, EditorState} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
+import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
-/*
-function uploadImageCallBack(file) {
-        // long story short, every time we upload an image, we
-        // need to save it to the state so we can get it's data
-        // later when we decide what to do with it.
-    
-        // Make sure you have a uploadImages: [] as your default state
-        let uploadedImages = this.state.uploadedImages;
-    
-        const imageObject = {
-          file: file,
-          localSrc: URL.createObjectURL(file),
-        }
-    
-        uploadedImages.push(imageObject);
-    
-        this.setState({ uploadedImages: uploadedImages })
-    
-        // We need to return a promise with the image src
-        // the img src we will use here will be what's needed
-        // to preview it in the browser. This will be different than what
-        // we will see in the index.md file we generate.
-        return new Promise(
-          (resolve, reject) => {
-            resolve({ data: { link: imageObject.localSrc } });
-          }
-        );
-}*/
-  
-
-
 
 
 class RichTextEditor extends React.Component {
@@ -53,6 +22,17 @@ class RichTextEditor extends React.Component {
     this.setState({
       editorState,
     });
+
+    console.log(convertToRaw(this.state.editorState.getCurrentContent()).blocks);
+  };
+
+  onContentStateChange(contentState){
+    // console.log(editorState)
+    this.setState({
+      contentState,
+    });
+
+    console.log(convertToRaw(this.state.contentState.getCurrentContent()));
   };
 
   uploadImageCallBack(file) {
@@ -91,7 +71,8 @@ class RichTextEditor extends React.Component {
         <div className='editor'>
           <Editor
             editorState={editorState}
-            onEditorStateChange={this.onEditorStateChange}    
+            onEditorStateChange={this.onEditorStateChange}
+            //onContentStateChange = {this.onContentStateChange}    
             toolbar={{
               inline: { inDropdown: true },
               list: { inDropdown: true },
