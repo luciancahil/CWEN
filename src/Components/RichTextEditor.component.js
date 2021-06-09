@@ -22,9 +22,37 @@ class RichTextEditor extends React.Component {
     this.setState({
       editorState,
     });
+    
+    // look at entity map for image information 
+    console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+    console.log(this.state.uploadedImages);
 
-    console.log(convertToRaw(this.state.editorState.getCurrentContent()).blocks);
+    /*
+    Uploading Steps:
+    Step 1: extract files from the state uploaded Images array that matches a source from the entity map.
+    Step 2: Upload all images to S3, and get URL
+    Step 3: edit the entity map sources so thateditorState.getCurrentContent()).entityMap[NUMBER].data.src = url
+    Step 4: JSON the whole thing, and send it to the backend.
+    */
   };
+
+  /*
+    Notes on the raw data information:
+    All text is stored in the blocks array.
+    All image information (but not image itself) is stored in the entity maps array.
+
+    BLocks[0].text says the content of the text
+    Blocks[0].inlineStyleRanges says the range of styles, like bold, italics, and fontsize (default to 16), and color RGB
+
+    Blocks[0].data stores link information
+
+    Blocks[0].type includes text that states if it is normal (p), an h tag, an ordered/unorded list. Will say "atomic" if
+    it is an an image
+
+    Blocks[0].type will not state which order the list item is in. ONly that it is a list element. 
+    We could potentially handle that by creating a type that just has this placed in an "li" component
+    
+  */
 
   onContentStateChange(contentState){
     // console.log(editorState)
@@ -82,7 +110,7 @@ class RichTextEditor extends React.Component {
               image: { 
                 uploadCallback: this.uploadImageCallBack, 
                 alt: { present: true, mandatory: false }, 
-                previewImage: true,
+                previewImage: false,
               },
             }}
           />
