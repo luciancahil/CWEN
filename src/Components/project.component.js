@@ -7,21 +7,53 @@ class Project extends React.Component {
         super(props);
     
         this.state = {
-          slogan: "CWEN was built by women, for women.The buisness world was not."
+          url: "404",
+          text: "",
+          projectName: ""
         };
     }
 
     componentDidMount(){
         let query = this.props.location.search;
         let projectNameIndex = query.indexOf("projectName=");
+        let name = query.substring(projectNameIndex + "projectName=".length);
+        let getURL = "https://cwen-backend.herokuapp.com/projectData?projectName=" + name;
+        
+        this.setState({
+            projectName: name
+        })
 
+        fetch(getURL)
+            .then(response => {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                     return response.json().then(data => {
+                    // process your JSON data further
+                    this.setState({
+                        url: data.url,
+                        text: data.text
+                    })
+                });
+                } else {
+                return response.text().then(text => {
+                    // this is text, do something with it
+                    console.log("TExt!");
+                });
+                }
+            })
+            .catch(err => console.log(err))
         
     }
 
     render() {
-        // the query of the url
-
-        return <Four04/>;
+        if(this.state.url === "404"){
+            return <Four04/>;
+        }else{
+            return(
+                <h2>Valid!</h2>
+            )
+        }
+        
     }
 }
 
