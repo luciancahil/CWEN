@@ -3,7 +3,8 @@ import React from 'react';
 class StairRight extends React.Component { 
     render() {
         // generates url
-        console.log(this.props.Heading.replaceAll(" ", "+").replaceAll("!",""));
+        let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
+
         return (
             <div className = "StairRight">
                 <div className = "SR-Pic">
@@ -13,7 +14,7 @@ class StairRight extends React.Component {
                     <div className = "SR-Text">
                         <h2>{this.props.Heading}</h2>
                         <p>{this.props.Blurb}</p>
-                        <a href= "/">View Project</a>
+                        <a href= {url}>View Project</a>
                     </div>
                 </div>
             </div>
