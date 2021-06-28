@@ -50,7 +50,10 @@ class Project extends React.Component {
             return <Four04/>;
         }else{
             return(
-                <h2>Valid!</h2>
+                <div className = "project">
+                    <img src = {this.state.url}/>
+                    <p>{this.state.text}</p>
+                </div>
             )
         }
         
