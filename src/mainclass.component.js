@@ -10,6 +10,8 @@ import Contact from "./Components/contact.component"
 import Blog from "./Components/blog.component"
 import Login from "./Components/login.component"
 import RichTextEditor from "./Components/RichTextEditor.component";
+import Project from './Components/project.component';
+
 
 
 class MainClass extends React.Component{
@@ -27,6 +29,7 @@ class MainClass extends React.Component{
                 <Route path="/blog" render={(props) => <Blog {...props} />} />
                 <Route path="/edit" render={(props) => <RichTextEditor {...props} />} />
                 <Route path="/login" render={(props) => <Login {...props} />} />
+                <Route path="/projects" render={(props) => <Project {...props} />} />
 
             </Router>
         );
