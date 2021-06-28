@@ -489,6 +489,32 @@ a.social:hover {
   text-align:center;
 }
 
+.project{
+  width: 90%;
+  text-align: center;
+  padding-top: 25px;
+  margin: auto;
+}
+
+.project img{
+  width: 500px;
+  border: 10px orange solid;
+  background-color: orange;
+  background-clip: border-box;
+}
+
+.project p{
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  width: 30%;
+  padding-left: 10px;
+}
+
+.project img, .project p{
+  display:inline-block;
+  vertical-align: top;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

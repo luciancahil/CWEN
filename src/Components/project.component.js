@@ -20,8 +20,10 @@ class Project extends React.Component {
         let getURL = "https://cwen-backend.herokuapp.com/projectData?projectName=" + name;
         
         this.setState({
-            projectName: name
+            projectName: name.replaceAll("+"," ")
         })
+
+        document.title = "CWEN Projects - " + name.replaceAll("+"," ");
 
         fetch(getURL)
             .then(response => {
@@ -37,7 +39,6 @@ class Project extends React.Component {
                 } else {
                 return response.text().then(text => {
                     // this is text, do something with it
-                    console.log("TExt!");
                 });
                 }
             })
@@ -50,9 +51,12 @@ class Project extends React.Component {
             return <Four04/>;
         }else{
             return(
-                <div className = "project">
-                    <img src = {this.state.url}/>
-                    <p>{this.state.text}</p>
+                <div className = "projectWrapper">
+                    <div className = "project">
+                        <h1>{this.state.projectName}</h1>
+                        <img src = {this.state.url}/>
+                        <p>{this.state.text}</p>
+                    </div>
                 </div>
             )
         }
