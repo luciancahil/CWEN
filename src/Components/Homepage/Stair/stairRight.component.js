@@ -2,6 +2,8 @@ import React from 'react';
 
 class StairRight extends React.Component { 
     render() {
+        // generates url
+        console.log(this.props.Heading.replaceAll(" ", "+").replaceAll("!",""));
         return (
             <div className = "StairRight">
                 <div className = "SR-Pic">
