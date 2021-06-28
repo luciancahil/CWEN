@@ -1,4 +1,5 @@
 import React from 'react';
+import Four04 from './404.component';
 
 class Project extends React.Component { 
 
@@ -20,7 +21,7 @@ class Project extends React.Component {
     render() {
         // the query of the url
 
-        return <h2>Project Page</h2>;
+        return <Four04/>;
     }
 }
 
