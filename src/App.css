@@ -492,14 +492,16 @@ a.social:hover {
 
 .project{
   width: 100%;
-  height: 450px;
+  height: 550px;
 }
 
 .project img{
   background-clip: border-box;
   width: 50%;
-  height: 450px;
-  float:left
+  height: 550px;
+  background-position: center center;
+  float:left;
+  object-fit: cover;
 }
 
 .project p{
@@ -515,7 +517,7 @@ a.social:hover {
   width: 50%;
   display:inline-block;
   background-color: 	#ffd7b5;
-  height: 450px;
+  height: 550px;
 }
 
 .projectText h2{
@@ -525,7 +527,7 @@ a.social:hover {
 .ProjectTextWrapper{
   display: table-cell;
   vertical-align: middle;
-  height: 450px;
+  height: 550px;
 }
 
 .project .projectText{
