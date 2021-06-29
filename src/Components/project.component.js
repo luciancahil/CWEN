@@ -53,9 +53,14 @@ class Project extends React.Component {
             return(
                 <div className = "projectWrapper">
                     <div className = "project">
-                        <h1>{this.state.projectName}</h1>
+                        
                         <img src = {this.state.url}/>
-                        <p>{this.state.text}</p>
+                        <div className = "projectText">
+                            <div className = "ProjectTextWrapper">
+                                <h2>{this.state.projectName}</h2>
+                                <p>{this.state.text}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
