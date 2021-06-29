@@ -7,7 +7,7 @@ class Project extends React.Component {
         super(props);
     
         this.state = {
-          url: "404",
+          url: "start",
           text: "",
           projectName: ""
         };
@@ -22,7 +22,6 @@ class Project extends React.Component {
         this.setState({
             projectName: name.replaceAll("+"," ")
         })
-
         document.title = "CWEN Projects - " + name.replaceAll("+"," ");
 
         fetch(getURL)
@@ -38,7 +37,9 @@ class Project extends React.Component {
                 });
                 } else {
                 return response.text().then(text => {
-                    // this is text, do something with it
+                    this.setState({
+                        url:"404"
+                    })
                 });
                 }
             })
@@ -49,6 +50,8 @@ class Project extends React.Component {
     render() {
         if(this.state.url === "404"){
             return <Four04/>;
+        }else if(this.state.url === "start"){
+            return <p>loading...</p>
         }else{
             return(
                 <div className = "projectWrapper">

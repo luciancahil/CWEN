@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Redirect, Route} from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch, Route} from "react-router-dom";
 import Navbar from "./Components//navbar.component";
 import Footer from './Components/footer.component';
 import HomePage from "./Components/homepage.component"
@@ -22,18 +22,19 @@ class MainClass extends React.Component{
             <Router>
                 <Navbar/>
 
-                
-                <Route path="/" exact render={(props) => <HomePage {...props}/>} />
-                <Route path="/about" render={(props) => <About {...props}/>} />
-                <Route path="/services" render={(props) => <Services {...props}/>} />
-                <Route path="/featured" render={(props) => <Featured {...props}/>} />
-                <Route path="/contact" render={(props) => <Contact {...props} />} />
-                <Route path="/blog" render={(props) => <Blog {...props} />} />
-                <Route path="/edit" render={(props) => <RichTextEditor {...props} />} />
-                <Route path="/login" render={(props) => <Login {...props} />} />
-                <Route path="/projects" render={(props) => <Project {...props} />} />
-                <Route path="/404" render ={(props) => <Four04 {...props} />} />
-                <Redirect to="/404"/>
+                <Switch>
+                    <Route path="/" exact render={(props) => <HomePage {...props}/>} />
+                    <Route path="/about" render={(props) => <About {...props}/>} />
+                    <Route path="/services" render={(props) => <Services {...props}/>} />
+                    <Route path="/featured" render={(props) => <Featured {...props}/>} />
+                    <Route path="/contact" render={(props) => <Contact {...props} />} />
+                    <Route path="/blog" render={(props) => <Blog {...props} />} />
+                    <Route path="/edit" render={(props) => <RichTextEditor {...props} />} />
+                    <Route path="/login" render={(props) => <Login {...props} />} />
+                    <Route path="/projects" render={(props) => <Project {...props} />} />
+                    <Route path="/404" render ={(props) => <Four04 {...props} />} />
+                    <Route component={Four04}/>
+                </Switch>
 
                 <Footer/>
             </Router>
