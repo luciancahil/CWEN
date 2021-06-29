@@ -54,17 +54,24 @@ class Project extends React.Component {
             return <p id = "loading">loading...</p>
         }else{
             return(
-                <div className = "projectWrapper">
-                    <div className = "project">
-                        
-                        <img src = {this.state.url}/>
-                        <div className = "projectText">
-                            <div className = "ProjectTextWrapper">
-                                <h2>{this.state.projectName}</h2>
-                                <p>{this.state.text}</p>
+                <div className = "allProject">
+                    
+                    <div className = "projectWrapper">
+                        <div className = "project">
+                            
+                            <img src = {this.state.url}/>
+                            <div className = "projectText">
+                                <div className = "ProjectTextWrapper">
+                                    <h2>{this.state.projectName}</h2>
+                                    <p>{this.state.text}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div id = "buttonwrap">
+                        <a id = "signupButton" href = "/">BECOME A MEMBER</a>
+                    </div>
+
                 </div>
             )
         }

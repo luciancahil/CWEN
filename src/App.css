@@ -64,7 +64,7 @@ nav .vline {
   margin: 0 15;
 }
 
-#Homepage_Banner_Text a{
+#Homepage_Banner_Text a, #signupButton{
   text-decoration: none;
 }
 
@@ -101,7 +101,7 @@ nav .vline {
   font-size: 18px;
 }
 
-#Homepage #Homepage_Banner #Homepage_Banner_Text a{
+#Homepage #Homepage_Banner #Homepage_Banner_Text a, #signupButton{
   background: #fd5800;
   padding: 15px 55px;
   border-radius:3px;
@@ -554,6 +554,17 @@ a.social:hover {
 .project h2{
   font-size: 40px;
   width: 80%;
+}
+
+.allProject #buttonwrap{
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 23%;
+}
+
+.allProject #signupButton{
+  margin:auto;
 }
 
 @keyframes App-logo-spin {

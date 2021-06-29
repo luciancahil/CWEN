@@ -9,7 +9,7 @@ class Banner extends React.Component {
                 <div id = "Homepage_Banner_Text">
                     <h1>Empowering Women <br/>Entrepreneurs</h1>
                     <p>Build, grow, and scale your buisness with the CWEN community</p>
-                    <a href = "/">BECOME A MEMBER</a>
+                    <a id = "signupButton" href = "/">BECOME A MEMBER</a>
                 </div>
                 <div id = "Homepage_Banner_Image">
                     <img id = "banner_square" src = {banner} alt = "A CWEN Bootcamp"/>
