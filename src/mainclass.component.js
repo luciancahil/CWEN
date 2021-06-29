@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import Navbar from "./Components//navbar.component"
+import Navbar from "./Components//navbar.component";
+import Footer from './Components/footer.component';
 import HomePage from "./Components/homepage.component"
 import About from "./Components/about.component"
 import Services from "./Components/services.component"
@@ -31,6 +32,7 @@ class MainClass extends React.Component{
                 <Route path="/login" render={(props) => <Login {...props} />} />
                 <Route path="/projects" render={(props) => <Project {...props} />} />
 
+                <Footer/>
             </Router>
         );
     }

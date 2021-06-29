@@ -3,7 +3,6 @@ import Banner from "./Homepage/banner.component";
 import Slogan from "./Homepage/slogan.component";
 import Stairs from "./Homepage/stairs.component";
 import News from "./Homepage/news.components";
-import Footer from "./Homepage/footer.component";
 
 
 
@@ -36,7 +35,6 @@ class HomePage extends React.Component {
         <Slogan inputString = {this.state.slogan}/>
         <Stairs/>
         <News/>
-        <Footer/>
       </div>
     );
   }
