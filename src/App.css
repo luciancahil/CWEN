@@ -499,6 +499,7 @@ a.social:hover {
   background-clip: border-box;
   width: 50%;
   height: 450px;
+  float:left
 }
 
 .project p{
