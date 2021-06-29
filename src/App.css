@@ -540,6 +540,10 @@ a.social:hover {
   vertical-align: top;
 }
 
+#loading{
+  margin-bottom: 400px;
+}
+
 .project h2, .project p{
   margin: 0;
   text-align: center;

@@ -33,7 +33,7 @@ class MainClass extends React.Component{
                     <Route path="/login" render={(props) => <Login {...props} />} />
                     <Route path="/projects" render={(props) => <Project {...props} />} />
                     <Route path="/404" render ={(props) => <Four04 {...props} />} />
-                    <Route component={Four04}/>
+                    <Redirect to="/404"/>
                 </Switch>
 
                 <Footer/>

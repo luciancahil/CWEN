@@ -51,7 +51,7 @@ class Project extends React.Component {
         if(this.state.url === "404"){
             return <Four04/>;
         }else if(this.state.url === "start"){
-            return <p>loading...</p>
+            return <p id = "loading">loading...</p>
         }else{
             return(
                 <div className = "projectWrapper">

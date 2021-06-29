@@ -1,6 +1,10 @@
 import React from 'react';
 
 class Four04 extends React.Component { 
+    componentDidMount(){
+        document.title = "CWEN - Not Found"
+    }
+
     render() {
         return (
             <div id = "fourohfour">
