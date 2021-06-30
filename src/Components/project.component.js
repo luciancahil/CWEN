@@ -23,6 +23,8 @@ class Project extends React.Component {
             projectName: name.replaceAll("+"," ")
         })
         document.title = "CWEN Projects - " + name.replaceAll("+"," ");
+        
+        console.log(getURL);
 
         fetch(getURL)
             .then(response => {
