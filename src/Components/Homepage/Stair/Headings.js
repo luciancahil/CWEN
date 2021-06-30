@@ -1,9 +1,9 @@
 const Headings ={
-    "Shelf":"Discover women on the shelf!",
-    "Advocacy":"Advocacy and social research",
-    "Bootcamps":"Young women entrepreneur bootcamps",
-    "Events":"CWEN events",
-    "Month":"Woman entrepreneur of the month"
+    "Shelf":"Discover Women on the Shelf!",
+    "Advocacy":"Advocacy and Social Research",
+    "Bootcamps":"Young Women Entrepreneur Bootcamps",
+    "Events":"CWEN Events",
+    "Month":"Woman Entrepreneur of the Month"
  }
 
  export default Headings;

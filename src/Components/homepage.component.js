@@ -2,9 +2,7 @@ import React from 'react';
 import Banner from "./Homepage/banner.component";
 import Slogan from "./Homepage/slogan.component";
 import Stairs from "./Homepage/stairs.component";
-import Members from "./Homepage/members.components";
 import News from "./Homepage/news.components";
-import Footer from "./Homepage/footer.component";
 
 
 
@@ -37,8 +35,6 @@ class HomePage extends React.Component {
         <Slogan inputString = {this.state.slogan}/>
         <Stairs/>
         <News/>
-        <Members/>
-        <Footer/>
       </div>
     );
   }

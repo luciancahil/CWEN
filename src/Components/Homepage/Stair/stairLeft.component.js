@@ -2,13 +2,15 @@ import React from 'react';
 
 class StairLeft extends React.Component { 
     render() {
+        let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
+
         return (
             <div className = "StairLeft">
                 <div className = "SL-TextWrapper">
                     <div className = "SL-Text">
                         <h2>{this.props.Heading}</h2>
                         <p>{this.props.Blurb}</p>
-                        <a href= "/">View Project</a>
+                        <a href= {url}>View Project</a>
                     </div>
                 </div>
                 <div className = "SL-Pic">
