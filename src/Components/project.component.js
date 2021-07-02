@@ -20,7 +20,8 @@ class Project extends React.Component {
         let getURL = "https://cwen-backend.herokuapp.com/projectData?projectName=" + name;
         
         this.setState({
-            projectName: name.replaceAll("+"," ")
+            projectName: name.replaceAll("+"," ").replaceAll("%27","'")
+            
         })
         document.title = "CWEN Projects - " + name.replaceAll("+"," ");
         
