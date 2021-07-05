@@ -74,11 +74,13 @@ class Project extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {isOnEvents ? (<h2>CWEN Events</h2>): (<p></p>)}
-                    <div id = "buttonwrap">
-                        <a id = "signupButton" href = "/">BECOME A MEMBER</a>
-                    </div>
-
+                    {isOnEvents ? (
+                        <img id = "CWENMeets" src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
+                    ): (
+                        <div id = "buttonwrap">
+                            <a id = "signupButton" href = "/">BECOME A MEMBER</a>
+                        </div>
+                    )}
                 </div>
             )
         }
