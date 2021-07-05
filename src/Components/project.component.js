@@ -51,6 +51,9 @@ class Project extends React.Component {
     }
 
     render() {
+        // true if we are on the events project
+        let isOnEvents = this.state.projectName === "CWEN Events";
+        console.log("url: " + this.state.projectName);
         if(this.state.url === "404"){
             return <Four04/>;
         }else if(this.state.url === "start"){
@@ -62,7 +65,7 @@ class Project extends React.Component {
                     <div className = "projectWrapper">
                         <div className = "project">
                             
-                            <img src = {this.state.url}/>
+                            <img src = {this.state.url} alt = {this.state.projectName}/>
                             <div className = "projectText">
                                 <div className = "ProjectTextWrapper">
                                     <h2>{this.state.projectName}</h2>
@@ -71,6 +74,7 @@ class Project extends React.Component {
                             </div>
                         </div>
                     </div>
+                    {isOnEvents ? (<h2>CWEN Events</h2>): (<p></p>)}
                     <div id = "buttonwrap">
                         <a id = "signupButton" href = "/">BECOME A MEMBER</a>
                     </div>
