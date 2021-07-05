@@ -64,21 +64,32 @@ class Project extends React.Component {
                     
                     <div className = "projectWrapper">
                         <div className = "project">
-                            
-                            <img src = {this.state.url} alt = {this.state.projectName}/>
                             <div className = "projectText">
                                 <div className = "ProjectTextWrapper">
                                     <h2>{this.state.projectName}</h2>
                                     <p>{this.state.text}</p>
                                 </div>
                             </div>
+                            <img src = {this.state.url} alt = {this.state.projectName}/>                 
                         </div>
                     </div>
                     {isOnEvents ? (
-                        <img id = "CWENMeets" src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
+                        <div id = "CWENMeets">
+                            <img src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
+                            <div className = "projectText">
+                                <div className = "ProjectTextWrapper">
+                                    <h2>#CWENMeets</h2>
+                                    <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
+                                </div>
+                                <div id = "buttonwrap">
+                                    <a id = "signupButton" href = "/">BECOME A MEMBER</a>
+                                </div>
+                            </div>
+                        </div>
                     ): (
                         <div id = "buttonwrap">
                             <a id = "signupButton" href = "/">BECOME A MEMBER</a>
+                            
                         </div>
                     )}
                 </div>

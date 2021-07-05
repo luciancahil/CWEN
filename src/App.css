@@ -505,7 +505,7 @@ a.social:hover {
   width: 50%;
   height: 550px;
   background-position: center center;
-  float:left;
+  float:right;
   object-fit: cover;
 }
 
@@ -525,6 +525,8 @@ a.social:hover {
   height: 550px;
 }
 
+
+
 .projectText h2{
   margin: 0;
 }
@@ -535,7 +537,7 @@ a.social:hover {
   height: 550px;
 }
 
-.project .projectText{
+.projectText{
   display:inline-block;
   vertical-align: top;
 }
@@ -567,8 +569,30 @@ a.social:hover {
   margin:auto;
 }
 
-#CWENMeets{
+#CWENMeets img{
   width: 50%;
+  height: 1140px;
+  margin: 10px 0;
+}
+
+#CWENMeets .projectText{
+  height: 1140px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#projectText .projectText{
+  width: 75%;
+  margin: auto;
+}
+
+#CWENMeets #signupButton{
+  width: 75%;
+}
+
+#CWENMeets p, #CWENMeets h2{
+  width: 75%;
+  margin: auto;
 }
 
 @keyframes App-logo-spin {
