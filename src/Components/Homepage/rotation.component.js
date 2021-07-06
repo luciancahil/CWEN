@@ -10,15 +10,13 @@ class Rotation extends React.Component {
         /* Setting the state Index parts array */
         let buildingPartsIndex = [];
 
-        // the 0th value should be the final index
-        buildingPartsIndex[0] = this.props.parts.length - 1;
-
+        // this array stores the index of the parts object each rotpart will display
         for(let i = 0; i < 5; i++){
             buildingPartsIndex[i] = i % this.props.parts.length;
         }
 
 
-        /* building the state parts array */
+        // this index stores the parts information that will be displayed, so we can map it.
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
             buildingStateParts[i] = this.props.parts[buildingPartsIndex[i]];
