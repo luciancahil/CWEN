@@ -5,9 +5,6 @@ class Rotation extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("parts: " + this.props.parts[0].heading);
-
-
         this.lefRef= React.createRef();
 
         /* Setting the state Index parts array */
@@ -100,7 +97,6 @@ class Rotation extends React.Component {
         /* building the state parts array */
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
-            console.log(this.props.parts[updatingPartsIndex[i]].heading);
             buildingStateParts[i] = this.props.parts[updatingPartsIndex[i]];
         }
 
@@ -142,7 +138,6 @@ class Rotation extends React.Component {
     
 
     render() {        
-        console.log(this.state.parts.map(stuff => stuff.heading));
         return (
                 <div id = "rotation-wrapper">
 
