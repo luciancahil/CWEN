@@ -26,8 +26,6 @@ class Project extends React.Component {
         })
         document.title = "CWEN Projects - " + name.replaceAll("+"," ");
         
-        console.log(getURL);
-
         fetch(getURL)
             .then(response => {
                 const contentType = response.headers.get("content-type");

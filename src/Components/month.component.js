@@ -7,6 +7,7 @@ class Month extends React.Component {
         this.state = {
           name: "",
           buisiness: "",
+          pic: "",
           products: []
         };
     }
@@ -30,7 +31,11 @@ class Month extends React.Component {
         fetch(entrepreurURL)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                this.setState({
+                    name: data.name,
+                    buisiness: data.company,
+                    pic: data.picURL
+                })
             })
             .catch(err => console.log(err));
 
@@ -42,7 +47,9 @@ class Month extends React.Component {
                     if(text === "404"){
                         moreProducts = false;
                     }else{
-                        console.log(i + " " + text);
+                        this.setState({
+                            products: [...this.state.products, text]
+                        })
                     }
                 })
                 .catch(err => console.log(err));
