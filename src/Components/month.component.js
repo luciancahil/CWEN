@@ -19,10 +19,6 @@ class Month extends React.Component {
         // url to get product information
         let productURL = "https://cwen-backend.herokuapp.com/eOfMonthProduct?productNum=";
 
-        // int to count product
-        let productNum = 1;
-
-
         // false if there are no more products
         let moreProducts = true;
 
