@@ -54,7 +54,6 @@ class Project extends React.Component {
     render() {
         // true if we are on the events project
         let isOnEvents = this.state.projectName === "CWEN Events";
-        console.log("url: " + (this.state.projectName === "Woman Entrepreneur of the Month"));
         if(this.state.projectName === "Woman Entrepreneur of the Month"){
             return <Month/>
         }else if(this.state.url === "404"){
