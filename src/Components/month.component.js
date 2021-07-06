@@ -50,7 +50,7 @@ class Month extends React.Component {
                 })
                 .catch(err => console.log(err));
 
-            if(i === 5){
+            if(i >= 100){
                 break;
             }
         }
