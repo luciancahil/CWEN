@@ -10,7 +10,7 @@ class Month extends React.Component {
           buisiness: "",
           pic: "",
           products: [],
-          done: false
+          status: "none"
         };
     }
 
@@ -35,7 +35,8 @@ class Month extends React.Component {
                 this.setState({
                     name: data.name,
                     buisiness: data.company,
-                    pic: data.picURL
+                    pic: data.picURL,
+                    status: "info"
                 })
             })
             .catch(err => console.log(err));
@@ -78,7 +79,10 @@ class Month extends React.Component {
         console.log(this.state);
         console.log(this.state.done);
 
-        if(this.state.done){
+        if(this.state.status === "none"){
+            // still fetching information
+            return <h2>Month Page</h2>;
+        }else{
             return (
                 <div id = "EofMonth">
                     <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
@@ -86,12 +90,14 @@ class Month extends React.Component {
                         <h2>{this.state.name}</h2>
                         <h3><em>{this.state.buisiness}</em></h3>
                     </div>
-                    <Rotation type = "Products" parts = {this.state.products}/>
+                    {(this.state.status === "products")?
+                        (<Rotation type = "Products" parts = {this.state.products}/>):
+                        (<div/>)}
+                    
                 </div>
                 )
-        }else
-            // still fetching information
-            return <h2>Month Page</h2>;
+        }
+            
     }
 }
 
