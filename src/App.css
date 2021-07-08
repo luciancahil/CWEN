@@ -600,7 +600,7 @@ a.social:hover {
   width: 500px;
   object-fit: cover;
   object-position: left top;
-  display:block;
+  display: inline-block;
   margin:auto;
   
   background-color: orange;
@@ -610,14 +610,24 @@ a.social:hover {
 
 #EofMonth{
   text-align: center;
+  margin-top: 25px;
 }
 
 #EofMonth h2, #EofMonth h3{
   margin:0;
+  font-size: 35px;
 }
 
 #EofMonthText h2{
   margin-top: 20px;
+  font-size: 50px;
+}
+
+#EofMonthInfo{
+  height: 700px;
+  vertical-align: top;
+  width: 50%;
+  display: inline-block;
 }
 
 @keyframes App-logo-spin {

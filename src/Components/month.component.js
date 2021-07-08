@@ -94,15 +94,19 @@ class Month extends React.Component {
         }else{
             return (
                 <div id = "EofMonth">
-                    <div id = "EofMonthText">
-                        <h2>{this.state.name}</h2>
-                        <h3><em>{this.state.buisiness}</em></h3>
-                    </div>
+                    
                     <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
                     
-                    {(this.state.status === "products")?
-                        (<Rotation type = "Products" parts = {this.state.products}/>):
-                        (<div/>)}
+
+                    <div id = "EofMonthInfo">
+                        <div id = "EofMonthText">
+                            <h2>{this.state.name}</h2>
+                            <h3><em>{this.state.buisiness}</em></h3>
+                        </div>
+                        {(this.state.status === "products")?
+                            (<Rotation type = "Products" parts = {this.state.products}/>):
+                            (<div/>)}
+                    </div>
                     
                 </div>
                 )

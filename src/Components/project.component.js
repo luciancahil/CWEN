@@ -5,6 +5,8 @@ import Month from './month.component';
 class Project extends React.Component { 
 
     constructor(props) {
+        //TODO ADD WIDTH CHECK
+        // IF BELOW A CERTAIN WIDTH, ONLY DISPLAY ONE ITEM
         super(props);
     
         this.state = {
