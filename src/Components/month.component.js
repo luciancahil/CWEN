@@ -41,6 +41,8 @@ class Month extends React.Component {
             })
             .catch(err => console.log(err));
 
+
+            // getting product information
         for(let i = 1; moreProducts; i++){
             let currentProductURL = productURL + i;
             fetch(currentProductURL)
@@ -49,15 +51,24 @@ class Month extends React.Component {
                     if(text === "404" && moreProducts){
                         moreProducts = false;
 
-                        if(this.state.products.length < fetchingProducts.length){
+                        // remove every undefined element
+                        let filtered = fetchingProducts.filter(function(x) {
+                            return x !== undefined;
+                        });
+
+                        
+                        if(this.state.products.length < filtered.length){ // to make sure a smaller array doesn't come later
+                            // DO NOT REMOVE
                             console.log("hi");
+
+                            // We are done, and we are altering states for the complete array
                             this.setState({
-                                products: fetchingProducts,
+                                products: filtered,
                                 status: "products"
                             });
                             console.log("once");
                         }
-                    }else if(text !== "404"){
+                    }else if(text !== "404"){ // no product with this number
                         fetchingProducts[i - 1] = {
                             image: text,
                             heading : "",

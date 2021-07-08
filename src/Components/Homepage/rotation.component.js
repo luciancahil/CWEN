@@ -136,6 +136,7 @@ class Rotation extends React.Component {
     
 
     render() {        
+        // DO NOT REMOVE!!!
         console.log(this.state.parts)
 
         if(this.state.parts === undefined){
