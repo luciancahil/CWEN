@@ -1,4 +1,5 @@
 import React from 'react';
+import Rotation from './Homepage/rotation.component';
 
 class Month extends React.Component { 
     constructor(props) {
@@ -8,7 +9,8 @@ class Month extends React.Component {
           name: "",
           buisiness: "",
           pic: "",
-          products: []
+          products: [],
+          done: false
         };
     }
 
@@ -21,6 +23,9 @@ class Month extends React.Component {
 
         // false if there are no more products
         let moreProducts = true;
+
+        // product array we will place in state
+        let fetchingProducts = [];
 
 
         // get information of the entreprenur herself
@@ -40,12 +45,23 @@ class Month extends React.Component {
             fetch(currentProductURL)
                 .then(response => response.text())
                 .then(text =>{
-                    if(text === "404"){
+                    if(text === "404" && moreProducts){
                         moreProducts = false;
-                    }else{
-                        this.setState({
-                            products: [...this.state.products, text]
-                        })
+
+                        if(this.state.products.length < fetchingProducts.length){
+                            this.setState({
+                                products: fetchingProducts,
+                                done: true
+                            });
+                            console.log("once");
+                        }
+                    }else if(text !== "404"){
+                        fetchingProducts[i - 1] = {
+                            image: text,
+                            heading : "",
+                            blub : "",
+                            link : "/"
+                        }
                     }
                 })
                 .catch(err => console.log(err));
@@ -59,7 +75,13 @@ class Month extends React.Component {
 
     
     render() {
-        return <h2>Month Page</h2>;
+        console.log(this.state);
+        console.log(this.state.done);
+
+        if(this.state.done){
+            return <Rotation type = "Products" parts = {this.state.products}/>
+        }else
+            return <h2>Month Page</h2>;
     }
 }
 
