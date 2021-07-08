@@ -136,6 +136,11 @@ class Rotation extends React.Component {
     
 
     render() {        
+        console.log(this.state.parts)
+
+        if(this.state.parts === undefined){
+            return null;
+        }
         return (
                 <div id = "rotation-wrapper">
 

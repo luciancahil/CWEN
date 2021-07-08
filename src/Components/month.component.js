@@ -50,9 +50,10 @@ class Month extends React.Component {
                         moreProducts = false;
 
                         if(this.state.products.length < fetchingProducts.length){
+                            console.log("hi");
                             this.setState({
                                 products: fetchingProducts,
-                                done: true
+                                status: "products"
                             });
                             console.log("once");
                         }
@@ -76,8 +77,8 @@ class Month extends React.Component {
 
     
     render() {
-        console.log(this.state);
-        console.log(this.state.done);
+        console.log(this.state.products);
+        console.log(this.state.status);
 
         if(this.state.status === "none"){
             // still fetching information
