@@ -58,15 +58,12 @@ class Month extends React.Component {
 
                         
                         if(this.state.products.length < filtered.length){ // to make sure a smaller array doesn't come later
-                            // DO NOT REMOVE
-                            console.log("hi");
 
                             // We are done, and we are altering states for the complete array
                             this.setState({
                                 products: filtered,
                                 status: "products"
                             });
-                            console.log("once");
                         }
                     }else if(text !== "404"){ // no product with this number
                         fetchingProducts[i - 1] = {
@@ -97,11 +94,12 @@ class Month extends React.Component {
         }else{
             return (
                 <div id = "EofMonth">
-                    <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
                     <div id = "EofMonthText">
                         <h2>{this.state.name}</h2>
                         <h3><em>{this.state.buisiness}</em></h3>
                     </div>
+                    <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
+                    
                     {(this.state.status === "products")?
                         (<Rotation type = "Products" parts = {this.state.products}/>):
                         (<div/>)}

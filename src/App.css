@@ -595,6 +595,31 @@ a.social:hover {
   margin: auto;
 }
 
+#EofMonth #EofMonthFace{
+  height: 700px;
+  width: 500px;
+  object-fit: cover;
+  object-position: left top;
+  display:block;
+  margin:auto;
+  
+  background-color: orange;
+  border: 10px orange solid;
+  border-radius: 10px;
+}
+
+#EofMonth{
+  text-align: center;
+}
+
+#EofMonth h2, #EofMonth h3{
+  margin:0;
+}
+
+#EofMonthText h2{
+  margin-top: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
