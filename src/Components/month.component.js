@@ -60,7 +60,7 @@ class Month extends React.Component {
                             image: text,
                             heading : "",
                             blub : "",
-                            link : "/"
+                            link : ""
                         }
                     }
                 })
@@ -79,8 +79,18 @@ class Month extends React.Component {
         console.log(this.state.done);
 
         if(this.state.done){
-            return <Rotation type = "Products" parts = {this.state.products}/>
+            return (
+                <div id = "EofMonth">
+                    <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
+                    <div id = "EofMonthText">
+                        <h2>{this.state.name}</h2>
+                        <h3><em>{this.state.buisiness}</em></h3>
+                    </div>
+                    <Rotation type = "Products" parts = {this.state.products}/>
+                </div>
+                )
         }else
+            // still fetching information
             return <h2>Month Page</h2>;
     }
 }
