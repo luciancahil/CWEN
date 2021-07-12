@@ -6,8 +6,6 @@ import NetworkingPic from "./News/Networking.jpg";
 import MappingPic from "./News/Mapping.jpg";
 import CrisisPic from "./News/Crisis.jpg";
 import ShelfPic from "./News/Shelf.jpg";
-import WaluigiPic from "./News/Waluigi.jpg";
-import DutchmanPic from "./News/Dutchman.jpg";
 
 
 class News extends React.Component { 
@@ -42,20 +40,6 @@ class News extends React.Component {
             heading : Headings.Shelf,
             blub : Blurbs.Shelf,
             link : "/" + Headings.Shelf
-        };
-
-        parts[4] = {
-            image : WaluigiPic,
-            heading : Headings.Waluigi,
-            blub : Blurbs.Waluigi,
-            link : "/" + Headings.Waluigi
-        };
-
-        parts[5] = {
-            image : DutchmanPic,
-            heading : Headings.Dutchman,
-            blub : Blurbs.Dutchman,
-            link : "/" + Headings.Dutchman
         };
 
         this.state = {

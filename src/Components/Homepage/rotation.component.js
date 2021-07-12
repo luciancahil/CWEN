@@ -10,15 +10,13 @@ class Rotation extends React.Component {
         /* Setting the state Index parts array */
         let buildingPartsIndex = [];
 
-        // the 0th value should be the final index
-        buildingPartsIndex[0] = this.props.parts.length - 1;
-
-        for(let i = 1; i < 5; i++){
-            buildingPartsIndex[i] = i - 1;
+        // this array stores the index of the parts object each rotpart will display
+        for(let i = 0; i < 5; i++){
+            buildingPartsIndex[i] = i % this.props.parts.length;
         }
 
 
-        /* building the state parts array */
+        // this index stores the parts information that will be displayed, so we can map it.
         let buildingStateParts = [];
         for(let i = 0; i < 5; i++){
             buildingStateParts[i] = this.props.parts[buildingPartsIndex[i]];
@@ -82,17 +80,17 @@ class Rotation extends React.Component {
         /*updating the parts Index  array*/
         let updatingPartsIndex = this.state.partsIndex.slice();
 
+
         for(let i = 0; i < 4; i++){
             updatingPartsIndex[i] = updatingPartsIndex[i + 1];
         }
 
-        if(updatingPartsIndex[4] === this.state.length - 1){
+        if(updatingPartsIndex[4] === this.props.parts.length - 1){
             updatingPartsIndex[4] = 0;
         }else{
             updatingPartsIndex[4] = updatingPartsIndex[4] + 1;
         }
 
-        
 
         /* building the state parts array */
         let buildingStateParts = [];
@@ -117,7 +115,7 @@ class Rotation extends React.Component {
         }
 
         if(updatingPartsIndex[0] === 0){
-            updatingPartsIndex[0] = this.state.length - 1;
+            updatingPartsIndex[0] = this.props.parts.length - 1;
         }else{
             updatingPartsIndex[0] = updatingPartsIndex[0] - 1;
         }
@@ -138,6 +136,10 @@ class Rotation extends React.Component {
     
 
     render() {        
+
+        if(this.state.parts === undefined){
+            return null;
+        }
         return (
                 <div id = "rotation-wrapper">
 
@@ -157,7 +159,7 @@ class Rotation extends React.Component {
 
                         <div id = "rotatingWrapper">
                             <div id = "rotating">
-                                {this.state.parts.map(stuff => <Rotpart key = {stuff.image} parts = {stuff} sliding = {this.state.sliding}/>)}
+                                {this.state.parts.map((stuff, index) => <Rotpart key = {stuff.heading + " " + index} parts = {stuff} sliding = {this.state.sliding}/>)}
                             </div>
                         </div>
                     </div>
