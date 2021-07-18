@@ -387,6 +387,8 @@ nav .vline {
 .social-container {
   background: black;
   padding: 25px 50px;
+  width: 40%;
+  margin: 0;
 }
 
 .footPart #emails{
