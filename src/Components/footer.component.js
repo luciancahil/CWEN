@@ -1,5 +1,6 @@
 import React from 'react';
 import SocialFollow from "./SocialFollow";
+import Miscellaneous from '../miscellaneous.component';
 
 class Footer extends React.Component { 
     render() {
@@ -37,6 +38,7 @@ class Footer extends React.Component {
                         </div>
                     </div>
                     <SocialFollow />
+                    <Miscellaneous/>
                 </div>
             </div>
         );
