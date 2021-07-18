@@ -90,7 +90,7 @@ class Month extends React.Component {
 
         if(this.state.status === "none"){
             // still fetching information
-            return <h2>Month Page</h2>;
+            return <p id = "loading">loading...</p>
         }else{
             return (
                 <div id = "EofMonth">
