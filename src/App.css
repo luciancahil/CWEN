@@ -391,6 +391,10 @@ nav .vline {
   margin: 0;
 }
 
+#news_email{
+  margin-right: 20px;
+}
+
 .footPart #emails{
   vertical-align: top;
 }
@@ -401,7 +405,7 @@ nav .vline {
   color:white;
   width: 90px;
   height:100%;
-  margin-left: 20px;
+  margin-left:;
 }
 
 
