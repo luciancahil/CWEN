@@ -386,6 +386,18 @@ nav .vline {
 
 #footer #Miscellaneous{
   color: grey;
+  background-color: black;
+}
+
+#Miscellaneous a{
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  color: white;
+  background-color: black;
+  text-align: center;
+  width: 15%;
 }
 
 .social-container {

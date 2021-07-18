@@ -4,7 +4,9 @@ class Miscellaneous extends React.Component {
     render() {
         return (
             <div id = "Miscellaneous">
-                <h2>Misc. Part</h2>
+                <a href = "/writer">Writer Login</a>
+                <a href = "/admin_login">Admin Login</a>
+                <a href = "/advertise_signup">Advertise With Us</a>
             </div>
         );
 
