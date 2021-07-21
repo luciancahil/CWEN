@@ -676,7 +676,8 @@ a.social:hover {
 
 .Box .BoxBottom{
   padding:10px;
-  background-color: #d4cab8;
+  background-color:#e6b167;
+  border: solid;
 }
 
 .Box .BoxForms{
