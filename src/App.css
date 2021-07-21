@@ -387,6 +387,7 @@ nav .vline {
 #footer #Miscellaneous{
   color: grey;
   background-color: black;
+  padding-bottom: 10px;
 }
 
 #Miscellaneous a{
@@ -397,7 +398,7 @@ nav .vline {
   color: white;
   background-color: black;
   text-align: center;
-  width: 15%;
+  width: 30%;
 }
 
 .social-container {
