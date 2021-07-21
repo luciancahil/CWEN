@@ -655,6 +655,93 @@ a.social:hover {
   display: inline-block;
 }
 
+
+/*Styling for Login Box*/
+.Box{
+  width: 60%;
+  margin: 0 auto;
+  margin-top:30px;
+}
+
+.Box h2{
+  padding:0;
+  width: 16%;
+  color:white;
+  margin: 0 auto;
+}
+
+.Box .BoxTop{
+  background-color:#282828;
+}
+
+.Box .BoxBottom{
+  padding:10px;
+  background-color: #d4cab8;
+}
+
+.Box .BoxForms{
+  margin-bottom: 20px;
+}
+
+.Box plaintext{
+  display: inline-block;
+  margin: 10px;
+}
+
+.Box input{
+  width:99%;
+}
+
+.Box button{
+  border: solid;
+  background-color: white;
+  border-radius: 10px;
+  
+}
+
+.Box #BoxError{
+  font-size: 100%;
+  color:red;
+  margin: 0;
+}
+
+.Box button:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.Box button:active{
+  background:red;
+}
+
+.Box button, .Box plaintext{
+  font-size: 200%;
+}
+
+.Box .inputWrapper{
+  margin: auto;
+}
+
+.Box .LoginButtonOuter{
+  width:50%;
+  display:inline-block;
+}
+
+.Box .LoginButtonInner{
+  width:45%;
+  margin:auto;
+}
+
+.Box .SignupButtonOuter{
+  width:100%;
+  display:inline-block;
+}
+
+.Box .SignupButtonInner button{
+  width:100%;
+  margin:auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
