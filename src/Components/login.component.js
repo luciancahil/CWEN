@@ -39,7 +39,6 @@ class Login extends React.Component {
         let userN = this.state.login_username;
         let passW = this.state.login_password;
         let fetchURL = "https://cwen-backend.herokuapp.com/login?username=" + userN + "&password=" + passW;
-        console.log(fetchURL);
 
 
         fetch(fetchURL)
