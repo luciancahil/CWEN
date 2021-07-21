@@ -69,15 +69,21 @@ class Login extends React.Component {
                             <plaintext>Password:</plaintext><input type = "password" value = {this.state.login_password} onChange = {this.onChangePassword}></input><br></br>
                             
                         </div>
-
-                        <div className = "LoginButtonOuter">
-                            <div className = "LoginButtonInner">
-                                <button onClick = {this.onSubmit}>Sign in</button>
+                        <div id = "boxButtons">
+                            <div className = "LoginButtonOuter">
+                                <div className = "LoginButtonInner">
+                                    <button onClick = {this.onSubmit}>Sign in</button>
+                                </div>
                             </div>
-                        </div>
-                        <div className = "LoginButtonOuter">
-                            <div className = "LoginButtonInner">
-                                <a href = "/signup"><button>Sign up</button></a>
+                            <div className = "LoginButtonOuter">
+                                <div className = "LoginButtonInner">
+                                    <a href = "/signup"><button>Sign up</button></a>
+                                </div>
+                            </div>
+                            <div className = "LoginButtonOuter">
+                                <div className = "LoginButtonInner">
+                                    <a href = "/signup"><button>Reset</button></a>
+                                </div>
                             </div>
                         </div>
                     </div>

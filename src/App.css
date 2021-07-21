@@ -658,7 +658,7 @@ a.social:hover {
 
 /*Styling for Login Box*/
 .Box{
-  width: 60%;
+  width: 40%;
   margin: 0 auto;
   margin-top:30px;
 }
@@ -723,12 +723,13 @@ a.social:hover {
 }
 
 .Box .LoginButtonOuter{
-  width:50%;
+  width:33%;
+  margin:auto;
   display:inline-block;
 }
 
 .Box .LoginButtonInner{
-  width:45%;
+  width:75%;
   margin:auto;
 }
 
