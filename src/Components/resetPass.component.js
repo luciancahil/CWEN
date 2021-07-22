@@ -6,38 +6,34 @@ class ResetPass extends React.Component {
             super(props);
             
             this.onSubmit = this.onSubmit.bind(this);
-            this.onChangeUsername = this.onChangeUsername.bind(this);
-            this.onChangePassword = this.onChangePassword.bind(this);
+            this.onChangeFirstPass = this.onChangeFirstPass.bind(this);
+            this.onChangeSecondPass = this.onChangeSecondPass.bind(this);
             this.state = {
-                login_username: "" ,
-                login_password: "",
-                login_status: ""
+                first_password: "" ,
+                second_password: "",
             };
-            if(sessionStorage.getItem(this.props.randomSession + "username") !== null){
-                props.quickStart(sessionStorage.getItem(this.props.randomSession + "username"))
-            }
         }
     
-        onChangeUsername(e){
+        onChangeFirstPass(e){
             e.preventDefault();
     
             this.setState({
-                login_username: e.target.value
+                first_password: e.target.value
             })
         }
     
-        onChangePassword(e){
+        onChangeSecondPass(e){
             e.preventDefault();
     
             this.setState({
-                login_password: e.target.value
+                second_password: e.target.value
             })
         }
     
         onSubmit(e){
             e.preventDefault();
-            let userN = this.state.login_username;
-            let passW = this.state.login_password;
+            let userN = this.state.first_password;
+            let passW = this.state.second_password;
             let fetchURL = "https://cwen-backend.herokuapp.com/login?username=" + userN + "&password=" + passW;
     
     
@@ -83,12 +79,12 @@ class ResetPass extends React.Component {
             return(
                 <div className = "BoxBoxOuter">
                     <div className = "Box">
-                        <div className = "BoxTop"><h2>Login</h2></div>
+                        <div className = "BoxTop"><h2>Reset</h2></div>
     
                         <div className = "BoxBottom">
                             <div className = "BoxForms">
-                                <plaintext>Password:</plaintext><input type = "password" value = {this.state.login_username} onChange = {this.onChangeUsername}></input><br></br>
-                                <plaintext>Confirm Password:</plaintext><input type = "password" value = {this.state.login_password} onChange = {this.onChangePassword}></input><br></br>
+                                <plaintext>Password:</plaintext><input type = "password" value = {this.state.first_password} onChange = {this.onChangeFirstPass}></input><br></br>
+                                <plaintext>Confirm Password:</plaintext><input type = "password" value = {this.state.second_password} onChange = {this.onChangeSecondPass}></input><br></br>
                                 
                             </div>
                             <div id = "boxButtons">

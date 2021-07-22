@@ -1,43 +1,29 @@
 import React from 'react';
 
-class Login extends React.Component { 
+class ResetRequest extends React.Component { 
+    /*A page to enter your email and request a new password */
     constructor(props){
         super(props);
         
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.state = {
-            login_username: "" ,
-            login_password: "",
-            login_status: ""
+            email: "" ,
         };
-        if(sessionStorage.getItem(this.props.randomSession + "username") !== null){
-            props.quickStart(sessionStorage.getItem(this.props.randomSession + "username"))
-        }
     }
 
-    onChangeUsername(e){
+    onChangeEmail(e){
         e.preventDefault();
 
         this.setState({
-            login_username: e.target.value
-        })
-    }
-
-    onChangePassword(e){
-        e.preventDefault();
-
-        this.setState({
-            login_password: e.target.value
+            email: e.target.value
         })
     }
 
     onSubmit(e){
         e.preventDefault();
-        let userN = this.state.login_username;
-        let passW = this.state.login_password;
-        let fetchURL = "https://cwen-backend.herokuapp.com/login?username=" + userN + "&password=" + passW;
+        let email = this.state.email;
+        let fetchURL = "https://cwen-backend.herokuapp.com/reset_request?email=" + email;
 
 
         fetch(fetchURL)
@@ -86,24 +72,12 @@ class Login extends React.Component {
 
                     <div className = "BoxBottom">
                         <div className = "BoxForms">
-                            <plaintext>Username:</plaintext><input type = "text" value = {this.state.login_username} onChange = {this.onChangeUsername}></input><br></br>
-                            <plaintext>Password:</plaintext><input type = "password" value = {this.state.login_password} onChange = {this.onChangePassword}></input><br></br>
-                            
+                            <plaintext>Email:</plaintext><input type = "text" value = {this.state.login_username} onChange = {this.onChangeEmail}></input><br></br>                            
                         </div>
                         <div id = "boxButtons">
                             <div className = "LoginButtonOuter">
                                 <div className = "LoginButtonInner">
-                                    <button onClick = {this.onSubmit}>Sign in</button>
-                                </div>
-                            </div>
-                            <div className = "LoginButtonOuter">
-                                <div className = "LoginButtonInner">
-                                    <a href = "/signup"><button>Sign up</button></a>
-                                </div>
-                            </div>
-                            <div className = "LoginButtonOuter">
-                                <div className = "LoginButtonInner">
-                                    <a href = "/reset_password"><button>Reset</button></a>
+                                    <button onClick = {this.onSubmit}>Get Reset Link</button>
                                 </div>
                             </div>
                         </div>
@@ -115,4 +89,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default ResetRequest;

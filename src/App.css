@@ -665,9 +665,10 @@ a.social:hover {
 
 .Box h2{
   padding:0;
-  width: 16%;
+  width: 30%;
   color:white;
   margin: 0 auto;
+  text-align: center;
 }
 
 .Box .BoxTop{

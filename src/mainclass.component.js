@@ -15,6 +15,8 @@ import Project from './Components/project.component';
 import Four04 from './Components/404.component';
 import LoggedIn from './Components/loggedIn.component';
 import SignedOut from './Components/signedOut.component';
+import ResetPass from './Components/resetPass.component';
+import ResetRequest from './Components/resetRequest.component';
 
 
 
@@ -37,6 +39,8 @@ class MainClass extends React.Component{
                     <Route path="/404" render ={(props) => <Four04 {...props} />} />
                     <Route path="/signout" render={(props) => <SignedOut {...props} />} />
                     <Route path="/logged_in" render ={(props) => <LoggedIn {...props} />} />
+                    <Route path="/reset" render ={(props) => <ResetPass {...props} />} />
+                    <Route path="/reset_request" render ={(props) => <ResetRequest {...props} />} />
                     <Redirect to="/404"/>
                 </Switch>
 
