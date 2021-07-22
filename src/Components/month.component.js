@@ -4,13 +4,20 @@ import Rotation from './Homepage/rotation.component';
 class Month extends React.Component { 
     constructor(props) {
         super(props);
+        let isAdmin = false;
+
+        if(localStorage.getItem("title") === "admin"){
+            isAdmin = true;
+        }
+        
     
         this.state = {
           name: "",
           buisiness: "",
           pic: "",
           products: [],
-          status: "none"
+          status: "none",
+          admin: isAdmin
         };
     }
 
@@ -108,6 +115,11 @@ class Month extends React.Component {
                             (<div/>)}
                     </div>
                     
+
+                    {  
+                        (this.state.admin) ?
+                            (<button>Edit page</button>) : (<div/>)
+                    }
                 </div>
                 )
         }
