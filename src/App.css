@@ -384,9 +384,34 @@ nav .vline {
   margin-top: 20px;
 }
 
+#footer #Miscellaneous{
+  color: grey;
+  background-color: black;
+  padding-bottom: 10px;
+}
+
+#Miscellaneous a{
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  color: white;
+  background-color: black;
+  text-align: center;
+  width: 45%;
+}
+
 .social-container {
   background: black;
   padding: 25px 50px;
+  width: 40%;
+  margin: 0;
+  box-sizing:border-box;
+
+}
+
+#news_email{
+  margin-right: 20px;
 }
 
 .footPart #emails{
@@ -399,7 +424,6 @@ nav .vline {
   color:white;
   width: 90px;
   height:100%;
-  margin-left: 20px;
 }
 
 
@@ -422,6 +446,7 @@ a.social:hover {
 .social-container a{
   color:grey;
 }
+
 
 /* The next bit is the rich text editor */
 
@@ -628,6 +653,115 @@ a.social:hover {
   vertical-align: top;
   width: 50%;
   display: inline-block;
+}
+
+
+/*Styling for Login Box*/
+.Box{
+  width: 40%;
+  margin: 0 auto;
+  margin-top:30px;
+}
+
+.Box h2{
+  padding:0;
+  width: 30%;
+  color:white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Box .BoxTop{
+  background-color:#282828;
+}
+
+.Box .BoxBottom{
+  padding:10px;
+  background-color:#e6b167;
+  border: solid;
+}
+
+.Box .BoxForms{
+  margin-bottom: 20px;
+}
+
+.Box plaintext{
+  display: inline-block;
+  margin: 10px;
+}
+
+.Box input{
+  width:99%;
+}
+
+.Box button{
+  border: solid;
+  background-color: white;
+  border-radius: 10px;
+  
+}
+
+.Box #BoxError{
+  font-size: 100%;
+  color:red;
+  margin: 0;
+}
+
+.Box button:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.Box button:active{
+  background:red;
+}
+
+.Box button, .Box plaintext{
+  font-size: 200%;
+}
+
+.Box .inputWrapper{
+  margin: auto;
+}
+
+.Box .LoginButtonOuter{
+  width:33%;
+  margin:auto;
+  display:inline-block;
+}
+
+
+
+
+
+.Box .LoginButtonInner{
+  width:75%;
+  margin:auto;
+}
+
+
+
+.Box .SignupButtonOuter{
+  width:100%;
+  display:inline-block;
+}
+
+.Box .SignupButtonInner button{
+  width:100%;
+  margin:auto;
+}
+
+#ResetRequestButtons{
+  width: 100%;
+}
+
+#ResetRequestButtons .LoginButtonInner{
+  width: 30%;
+  margin: auto;
+}
+
+.loggedInInfo, .generic{
+  margin-bottom: 220px;
 }
 
 @keyframes App-logo-spin {
