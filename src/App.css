@@ -730,10 +730,16 @@ a.social:hover {
   display:inline-block;
 }
 
+
+
+
+
 .Box .LoginButtonInner{
   width:75%;
   margin:auto;
 }
+
+
 
 .Box .SignupButtonOuter{
   width:100%;
@@ -743,6 +749,15 @@ a.social:hover {
 .Box .SignupButtonInner button{
   width:100%;
   margin:auto;
+}
+
+#ResetRequestButtons{
+  width: 100%;
+}
+
+#ResetRequestButtons .LoginButtonInner{
+  width: 30%;
+  margin: auto;
 }
 
 .loggedInInfo{
