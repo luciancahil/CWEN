@@ -13,6 +13,8 @@ import Login from "./Components/login.component"
 import RichTextEditor from "./Components/RichTextEditor.component";
 import Project from './Components/project.component';
 import Four04 from './Components/404.component';
+import LoggedIn from './Components/loggedIn.component';
+import SignedOut from './Components/signedOut.component';
 
 
 
@@ -33,6 +35,8 @@ class MainClass extends React.Component{
                     <Route path="/login" render={(props) => <Login {...props} />} />
                     <Route path="/projects" render={(props) => <Project {...props} />} />
                     <Route path="/404" render ={(props) => <Four04 {...props} />} />
+                    <Route path="/signout" render={(props) => <SignedOut {...props} />} />
+                    <Route path="/logged_in" render ={(props) => <LoggedIn {...props} />} />
                     <Redirect to="/404"/>
                 </Switch>
 

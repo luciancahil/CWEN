@@ -1,8 +1,14 @@
 import React from 'react';
 
 class LoggedIn extends React.Component { 
+    constructor(){
+        if(localStorage.getItem("title") === null){
+            window.location.href = "/404"
+        }
+    }
+
     render() {
-        return <h3 className = "loggedInInfo">You have signed in as an {localStorage.getItem("title")}</h3>
+        return <h2 className = "loggedInInfo">You have signed in as an {localStorage.getItem("title")}</h2>
     }
 }
 
