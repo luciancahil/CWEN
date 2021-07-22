@@ -18,6 +18,7 @@ import SignedOut from './Components/signedOut.component';
 import ResetPass from './Components/resetPass.component';
 import ResetRequest from './Components/resetRequest.component';
 import Requested from './Components/requested.component';
+import ChangedPassword from './Components/changedPassword.component';
 
 
 
@@ -43,6 +44,7 @@ class MainClass extends React.Component{
                     <Route path="/reset" render ={(props) => <ResetPass {...props} />} />
                     <Route path="/reset_request" render ={(props) => <ResetRequest {...props} />} />
                     <Route path="/request_sent" render ={(props) => <Requested {...props} />} />
+                    <Route path="/changed_password" render ={(props) => <ChangedPassword {...props} />} />
                     <Redirect to="/404"/>
                 </Switch>
 

@@ -58,8 +58,12 @@ class ResetPass extends React.Component {
                                 resetStatus: "The provided token is invalid. Please request a new link using your email."
                             })
                             console.log(fetchURL);
+                        }else if(text === "success"){
+                            window.location.href = "/changed_password"
                         }else{
-                            alert("your password has changed");
+                            this.setState({
+                                resetStatus: "We are experiencing server issues. Please try again in a few minutes"
+                            })
                         }
                     })
             }
