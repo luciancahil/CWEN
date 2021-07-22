@@ -11,7 +11,7 @@ class Login extends React.Component {
         this.state = {
             login_username: "" ,
             login_password: "",
-            signup_status: "Hello"
+            login_status: ""
         };
         if(sessionStorage.getItem(this.props.randomSession + "username") !== null){
             props.quickStart(sessionStorage.getItem(this.props.randomSession + "username"))
@@ -45,13 +45,22 @@ class Login extends React.Component {
             .then((response) => response.text())
             .then((text) => {
                // console.log(text)
-                this.setState({
-                    login_status: text
-                })
-                if(this.state.login_status == "Granted"){
-                    this.props.chageUser(userN, passW);
-                    window.history.pushState('page2', 'Title', '/home');
-                    
+                
+                if(text === "unfound"){
+                    this.setState({
+                        login_status: "That username is not registered. Would you like to sign up?"
+                    })
+                }else if(text === "incorrect"){
+                    this.setState({
+                        login_status: "That password is incorrect. Would you like to reset your password?"
+                    })
+                }else if(text === "err"){
+                    this.setState({
+                        login_status: "Server Error! Please try again."
+                    })
+                }else{
+                    console.log(text);
+                    document.location.href = "/"
                 }
             })
     }
@@ -86,6 +95,7 @@ class Login extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <p id = "loginError">{this.state.login_status}</p>
                     </div>
                 </div>
             </div>
