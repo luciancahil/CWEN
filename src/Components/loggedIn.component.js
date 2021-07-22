@@ -1,7 +1,8 @@
 import React from 'react';
 
 class LoggedIn extends React.Component { 
-    constructor(){
+    constructor(props){
+        super(props);
         if(localStorage.getItem("title") === null){
             window.location.href = "/404"
         }

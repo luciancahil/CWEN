@@ -4,6 +4,10 @@ class ResetPass extends React.Component {
         // this is the box for both loging in and signing up
         constructor(props){
             super(props);
+
+            let query = window.location.href;
+            let start = "token="
+            let urlToken = query.substring(query.indexOf(start) + start.length)
             
             this.onSubmit = this.onSubmit.bind(this);
             this.onChangeFirstPass = this.onChangeFirstPass.bind(this);
@@ -11,6 +15,8 @@ class ResetPass extends React.Component {
             this.state = {
                 first_password: "" ,
                 second_password: "",
+                token: urlToken,
+                resetStatus: ""
             };
         }
     
@@ -32,46 +38,31 @@ class ResetPass extends React.Component {
     
         onSubmit(e){
             e.preventDefault();
-            let userN = this.state.first_password;
-            let passW = this.state.second_password;
-            let fetchURL = "https://cwen-backend.herokuapp.com/login?username=" + userN + "&password=" + passW;
-    
-    
-            fetch(fetchURL)
-                .then((response) => response.text())
-                .then((text) => {
-                   // console.log(text)
-                    
-                    if(text === "unfound"){
-                        this.setState({
-                            login_status: "That username is not registered. Would you like to sign up?"
-                        })
-                    }else if(text === "incorrect"){
-                        this.setState({
-                            login_status: "That password is incorrect. Would you like to reset your password?"
-                        })
-                    }else if(text === "err"){
-                        this.setState({
-                            login_status: "Server Error! Please try again."
-                        })
-                    }else{
-                        // everything before this is the type, everything after this is the token
-                        let cutoff = text.indexOf(",");
-    
-                        let title = text.substr(0,cutoff);
-                        
-                        let token = text.substr(cutoff + 1);
-    
-                        this.setState({
-                            login_status: ""
-                        })
-    
-                        localStorage.setItem("title", title);
-                        localStorage.setItem("token", token);
-    
-                        window.location.href = "/logged_in"
-                    }
+            let passOne = this.state.first_password;
+            let passTwo = this.state.second_password;
+
+            if(passOne !== passTwo){
+                this.setState({
+                    resetStatus: "Error! Passwords do not match."
                 })
+                
+            }else{
+                let fetchURL = "https://cwen-backend.herokuapp.com/new_password?newPass=" + this.state.first_password + "&token=" + this.state.token
+                fetch(fetchURL)
+                    .then((response) => response.text())
+                    .then((text) => {
+                    console.log(text)
+                        
+                        if(text === "reject"){
+                            this.setState({
+                                resetStatus: "The provided token is invalid. Please request a new link using your email."
+                            })
+                            console.log(fetchURL);
+                        }else{
+                            alert("your password has changed");
+                        }
+                    })
+            }
         }
     
     
@@ -104,7 +95,7 @@ class ResetPass extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <p id = "loginError">{this.state.login_status}</p>
+                            <p id = "loginError">{this.state.resetStatus}</p>
                         </div>
                     </div>
                 </div>

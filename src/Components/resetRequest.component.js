@@ -9,6 +9,7 @@ class ResetRequest extends React.Component {
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.state = {
             email: "" ,
+            requestStatus: ""
         };
     }
 
@@ -30,6 +31,18 @@ class ResetRequest extends React.Component {
             .then((text) => {
                 console.log(fetchURL);
                 console.log(text);
+
+                if(text === "unfound"){
+                    this.setState({
+                        requestStatus: "There is no registered user with that email"
+                    })
+                }else if(text === "email error" || text === "err"){
+                    this.setState({
+                        requestStatus: "We are experiencing server issues. Please try again in a few minutes"
+                    })
+                }else if(text === "token and email"){
+                    window.location.href = "/request_sent"
+                }
             })
     }
 
@@ -51,7 +64,7 @@ class ResetRequest extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <p id = "loginError">{this.state.login_status}</p>
+                        <p id = "loginError">{this.state.requestStatus}</p>
                     </div>
                 </div>
             </div>
