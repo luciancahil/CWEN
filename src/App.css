@@ -744,6 +744,10 @@ a.social:hover {
   margin:auto;
 }
 
+.loggedInInfo{
+  margin-bottom: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
