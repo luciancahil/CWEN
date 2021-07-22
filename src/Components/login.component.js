@@ -59,8 +59,19 @@ class Login extends React.Component {
                         login_status: "Server Error! Please try again."
                     })
                 }else{
-                    console.log(text);
-                    document.location.href = "/"
+                    // everything before this is the type, everything after this is the token
+                    let cutoff = text.indexOf(",");
+
+                    let title = text.substr(0,cutoff);
+                    
+                    let token = text.substr(cutoff + 1);
+
+                    this.setState({
+                        login_status: ""
+                    })
+
+                    localStorage.setItem("title", title);
+                    localStorage.setItem("token", token);
                 }
             })
     }
