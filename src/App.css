@@ -760,9 +760,8 @@ a.social:hover {
   margin: auto;
 }
 
-.loggedInInfo .generic{
+.loggedInInfo, .generic{
   margin-bottom: 220px;
-  background-color: pink;
 }
 
 @keyframes App-logo-spin {
