@@ -83,19 +83,9 @@ class ResetPass extends React.Component {
                                 
                             </div>
                             <div id = "boxButtons">
-                                <div className = "LoginButtonOuter">
+                                <div className = "LoginButtonOuter" id = "ResetRequestButtons">
                                     <div className = "LoginButtonInner">
-                                        <button onClick = {this.onSubmit}>Sign in</button>
-                                    </div>
-                                </div>
-                                <div className = "LoginButtonOuter">
-                                    <div className = "LoginButtonInner">
-                                        <a href = "/signup"><button>Sign up</button></a>
-                                    </div>
-                                </div>
-                                <div className = "LoginButtonOuter">
-                                    <div className = "LoginButtonInner">
-                                        <a href = "/signup"><button>Reset</button></a>
+                                        <button onClick = {this.onSubmit}>Reset Password</button>
                                     </div>
                                 </div>
                             </div>
