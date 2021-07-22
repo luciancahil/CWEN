@@ -4,8 +4,11 @@ class Miscellaneous extends React.Component {
     render() {
         return (
             <div id = "Miscellaneous">
-                <a href = "/login?type=writer">Writer Login</a>
-                <a href = "/login?type=admin">Admin Login</a>
+                {
+                    (localStorage.getItem("title") === null) ?
+                       (<a href = "/login">Login</a>) : (<a href = "/signout">Sign out</a>)
+                }
+                
                 <a href = "/advertise_signup">Advertise With Us</a>
             </div>
         );
