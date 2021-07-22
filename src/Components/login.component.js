@@ -103,7 +103,7 @@ class Login extends React.Component {
                             </div>
                             <div className = "LoginButtonOuter">
                                 <div className = "LoginButtonInner">
-                                    <a href = "/reset_password"><button>Reset</button></a>
+                                    <a href = "/reset_request"><button>Reset</button></a>
                                 </div>
                             </div>
                         </div>
