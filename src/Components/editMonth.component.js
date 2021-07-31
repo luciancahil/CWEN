@@ -1,6 +1,12 @@
 import React from 'react';
 
 class EditMonth extends React.Component { 
+    constructor(props){
+        super(props);
+
+
+    }
+    // we really need to finish this page. For now, assume nothing is done, since we have just done mostly backend stuff.
     componentDidMount(){
         // url to get entrepreur information
         let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
@@ -71,7 +77,18 @@ class EditMonth extends React.Component {
 
 
     render() {
-        return <h2>EditMonth Page</h2>;
+        return (
+            <div id = "editMonth">
+                <h3>Title</h3>
+                <input type = "text"/>
+                <h3>Photo</h3>
+                <input type = "file"/>
+                <h3>Products</h3>
+                <input type = "file" multiple/>
+                <h3>Description</h3>
+                <input type = "text"/>
+            </div>
+        )
     }
 }
 
