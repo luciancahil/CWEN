@@ -1,26 +1,12 @@
 import React from 'react';
-import Rotation from './Homepage/rotation.component';
 
-class Month extends React.Component { 
-    constructor(props) {
+class EditMonth extends React.Component { 
+    constructor(props){
         super(props);
-        let isAdmin = false;
 
-        if(localStorage.getItem("title") === "admin"){
-            isAdmin = true;
-        }
-        
-    
-        this.state = {
-          name: "",
-          buisiness: "",
-          pic: "",
-          products: [],
-          status: "none",
-          admin: isAdmin
-        };
+
     }
-
+    // we really need to finish this page. For now, assume nothing is done, since we have just done mostly backend stuff.
     componentDidMount(){
         // url to get entrepreur information
         let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
@@ -90,41 +76,20 @@ class Month extends React.Component {
     }
 
 
-    
     render() {
-        console.log(this.state.products);
-        console.log(this.state.status);
-
-        if(this.state.status === "none"){
-            // still fetching information
-            return <p id = "loading">loading...</p>
-        }else{
-            return (
-                <div id = "EofMonth">
-                    
-                    <img id = "EofMonthFace" src = {this.state.pic} alt = {this.state.name}/>
-                    
-
-                    <div id = "EofMonthInfo">
-                        <div id = "EofMonthText">
-                            <h2>{this.state.name}</h2>
-                            <h3><em>{this.state.buisiness}</em></h3>
-                        </div>
-                        {(this.state.status === "products")?
-                            (<Rotation type = "Products" parts = {this.state.products}/>):
-                            (<div/>)}
-                    </div>
-                    
-
-                    {  
-                        (this.state.admin) ?
-                            (<button>Edit page</button>) : (<div/>)
-                    }
-                </div>
-                )
-        }
-            
+        return (
+            <div id = "editMonth">
+                <h3>Title</h3>
+                <input type = "text"/>
+                <h3>Photo</h3>
+                <input type = "file"/>
+                <h3>Products</h3>
+                <input type = "file" multiple/>
+                <h3>Description</h3>
+                <input type = "text"/>
+            </div>
+        )
     }
 }
 
-export default Month;
+export default EditMonth;
