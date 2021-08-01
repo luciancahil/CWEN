@@ -8,7 +8,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <div id = "homepage">
+      <div id = "AboutUs">
         <img src = {logo}/>
         <h2>About Us</h2>
         <p>Community Women Enterprise Network Uganda Limited is a not for profit organization limited by guarantee. We are a  business resource for women entrepreneurs across all sectors. We provide business information, technical support and guidance  for our members to reach greater markets, create growing revenues and promote their businesses with more focus and clarity.</p>
