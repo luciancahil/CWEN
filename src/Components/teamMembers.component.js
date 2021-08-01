@@ -2,13 +2,8 @@ import React from 'react';
 import TeamMember from './teamMember.component';
 
 class TeamMembers extends React.Component { 
-    constructor(props){
-        super(props);
 
-        // props.information contains the array of information about team members
-    }
-
-
+// props.information contains the array of information about team members
     render() {
         return (
             <div id = "teamMembers">

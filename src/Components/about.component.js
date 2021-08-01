@@ -29,7 +29,7 @@ class About extends React.Component {
   render() {
     return (
       <div id = "AboutUs">
-        <img src = {logo}/>
+        <img src = {logo} alt = "CWEN Logo"/>
         <h2>About Us</h2>
         <p>Community Women Enterprise Network Uganda Limited is a not for profit organization limited by guarantee. We are a  business resource for women entrepreneurs across all sectors. We provide business information, technical support and guidance  for our members to reach greater markets, create growing revenues and promote their businesses with more focus and clarity.</p>
         <p>Our aim is to reinforce the capacity of high potential low income entrepreneurs to become more productive, gain larger market shares in leading local and regional markets so they can promote and grow their businesses to sustainable economic empowerment.</p>

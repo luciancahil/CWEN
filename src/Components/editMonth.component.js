@@ -1,11 +1,6 @@
 import React from 'react';
 
 class EditMonth extends React.Component { 
-    constructor(props){
-        super(props);
-
-
-    }
     // we really need to finish this page. For now, assume nothing is done, since we have just done mostly backend stuff.
     componentDidMount(){
         // url to get entrepreur information
