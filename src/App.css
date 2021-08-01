@@ -38,7 +38,7 @@ nav {
 }
 
 nav img {
-  height: 20px;
+  height: 40px;
   padding: 0;
   margin: 0;
 }
@@ -762,6 +762,54 @@ a.social:hover {
 
 .loggedInInfo, .generic{
   margin-bottom: 220px;
+}
+
+#AboutUs{
+  width: 80%;
+  margin: auto;
+}
+
+#AboutUs img{
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+#teamMembers{
+  width: 95%;
+ 
+}
+
+#teamMembers .teamMember{
+  width: 30%;
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+
+#teamMembers .teamMember img{
+  height: 300px;
+  width: 240px;
+  object-fit: cover; 
+}
+
+#teamMembers .teamMember h2, #teamMembers .teamMember h3{
+  margin: 0;
+}
+
+#services{
+  width: 80%;
+  margin:auto;
+  margin-bottom: 90px;
+}
+
+#services p, #services h2{
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+}
+
+#services p{
+  font-size: 25px;
 }
 
 @keyframes App-logo-spin {

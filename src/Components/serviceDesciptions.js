@@ -1,0 +1,10 @@
+const ServiceDesciptions ={
+    "Co-Production and Processing Facility":"Food businesses through value addition and processing create jobs. A lack of affordable on standards spaces available for rent and high upfront cost to build out a food grade space creates a significant barrier to growth for women entrepreneurs in the sector. Our facility removes these barriers to growth to growth and creates good jobs for communities we serve.",
+    "Contract Packaging":"Whether for promotional products, trial products or short runs, peak-season requirements or on-going outsourced services for private label, we offer a full packing service with a broad range of benefits, encompassing reduced bottlenecks, increased capacity and flexibility.",
+    "Packaging and Branding":"Many customers require smaller packing runs and their products require specific attention to detail which cannot be achieved by large automated processes in big factories. We partner with like-minded businesses producing natural food products that retain their intrinsic properties and offer affordable design packages.",
+    "Business Consultations":"We support women entrepreneurs   improve their performance and efficiency from ideation to production. We offer solutions while also helping women entrepreneurs meet their goals on their chosen path.",
+    "Sales And Marketing":"Our members have an opportunity to access expert information, tools and training on how to target their markets, create winning promotions and how to market and sell their products for greater returns. These programs are available right through the membership.",
+    "Networking And Events":"We curate women’s events that are aimed at growth, sales leads, business relations   partnerships and fun! We host the Annual Women Entrepreneurs Social, specialized Roundtables and #cwenmeets. These  strengthen the existing network of women  in agribusiness and other sectors, increase information flow within these networks and their markets, including investment and financing partners."
+ }
+
+ export default ServiceDesciptions;
