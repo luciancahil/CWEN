@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from "./logo.jpg"
+import TeamMembers from './teamMembers.component';
 
 class About extends React.Component {
   constructor(props){
@@ -26,7 +27,6 @@ class About extends React.Component {
   }
 
   render() {
-    console.log(this.state.teamInfo)
     return (
       <div id = "AboutUs">
         <img src = {logo}/>
@@ -35,7 +35,8 @@ class About extends React.Component {
         <p>Our aim is to reinforce the capacity of high potential low income entrepreneurs to become more productive, gain larger market shares in leading local and regional markets so they can promote and grow their businesses to sustainable economic empowerment.</p>
         <p>Become a member of our network and access professional support and advicee. Our carefully curated events are designed to support entrepreneurs with strong networks, partnerships, markets, social support and wellbeing. Click on the become a member link below to join us.</p>
         <a id = "signupButton" href = "/">BECOME A MEMBER</a>
-        <h2>OUR TEAM</h2>
+        
+        <TeamMembers information = {this.state.teamInfo}/>
       </div>
       // All images in OUR TEARM are 10:8 ratio, taller than wider
     )
