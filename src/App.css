@@ -797,6 +797,21 @@ a.social:hover {
   margin: 0;
 }
 
+#services{
+  width: 80%;
+  margin:auto;
+  margin-bottom: 90px;
+}
+
+#services p, #services h2{
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+}
+
+#services p{
+  font-size: 25px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
