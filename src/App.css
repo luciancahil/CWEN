@@ -790,6 +790,7 @@ a.social:hover {
 #teamMembers .teamMember img{
   height: 300px;
   width: 240px;
+  object-fit: cover; 
 }
 
 #teamMembers .teamMember h2, #teamMembers .teamMember h3{

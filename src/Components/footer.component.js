@@ -21,11 +21,11 @@ class Footer extends React.Component {
                     <div className = "footPart">
                         <h3>Our Services</h3>
                         <ul>
-                            <li><a href = "/">Networking</a></li>
-                            <li><a href = "/">Sales and Marketing</a></li>
-                            <li><a href = "/">Business Consultations</a></li>
-                            <li><a href = "/">Packaging and Branding</a></li>
-                            <li><a href = "/">Technical Services</a></li>
+                            <li><a href = "/Services?type=Networking">Networking</a></li>
+                            <li><a href = "/Services?type=Sales+And+Marketing">Sales and Marketing</a></li>
+                            <li><a href = "/Services?type=Buisness+Consultations">Business Consultations</a></li>
+                            <li><a href = "/Services?type=Packaging+And+Branding">Packaging and Branding</a></li>
+                            <li><a href = "/Services?type=Technical+Services">Technical Services</a></li>
                         </ul>
                     </div>
 
