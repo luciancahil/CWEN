@@ -2,11 +2,31 @@ import React from 'react';
 import logo from "./logo.jpg"
 
 class About extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      teamInfo: []
+    }
+
+  }
+
   componentDidMount() {
     document.title = 'CWEN - About us';
+
+    
+    // get teamInfo
+    fetch("https://cwen-backend.herokuapp.com/get_members")
+      .then((response) => response.json())
+      .then(info => {
+        this.setState({
+          teamInfo: info
+        })
+      })
   }
 
   render() {
+    console.log(this.state.teamInfo)
     return (
       <div id = "AboutUs">
         <img src = {logo}/>
@@ -17,6 +37,7 @@ class About extends React.Component {
         <a id = "signupButton" href = "/">BECOME A MEMBER</a>
         <h2>OUR TEAM</h2>
       </div>
+      // All images in OUR TEARM are 10:8 ratio, taller than wider
     )
   }
 }
