@@ -775,6 +775,27 @@ a.social:hover {
   width: 70%;
 }
 
+#teamMembers{
+  width: 95%;
+ 
+}
+
+#teamMembers .teamMember{
+  width: 30%;
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+
+#teamMembers .teamMember img{
+  height: 300px;
+  width: 240px;
+}
+
+#teamMembers .teamMember h2, #teamMembers .teamMember h3{
+  margin: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
