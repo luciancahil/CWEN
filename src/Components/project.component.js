@@ -68,7 +68,9 @@ class Project extends React.Component {
                         <div className = "project">
                             <div className = "projectText">
                                 <div className = "ProjectTextWrapper">
-                                    <h2>{this.state.projectName}</h2>
+                                {isOnEvents ?
+                                    (<h2>The Women Entrepreneurs' Social</h2>):
+                                    (<h2>{this.state.projectName}</h2>)}
                                     <p>{this.state.text}</p>
                                 </div>
                             </div>
