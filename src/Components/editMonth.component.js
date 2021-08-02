@@ -173,7 +173,13 @@ class EditMonth extends React.Component {
 
     updateMonth(e){
         e.preventDefault();
+        let url = "http://localhost:4000/eOfMonth"
         console.log("hi");
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => console.log(data));
+            //.then(j => console.log(j));
     }
 
 
