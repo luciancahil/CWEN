@@ -35,6 +35,7 @@ class EditMonth extends React.Component {
             
             this.onChangeName = this.onChangeName.bind(this);
             this.onChangeBuisness = this.onChangeBuisness.bind(this);
+            this.onChangePic = this.onChangePic.bind(this);
     }
     
     
@@ -124,8 +125,21 @@ class EditMonth extends React.Component {
         })
     }
 
+    onChangePic(e){
+        console.log("hello!: " + this.state.pic);
+
+        e.preventDefault();
+
+        this.setState({
+            pic: URL.createObjectURL(e.target.files[0])
+        })
+
+        
+    }
+
 
     render() {
+        
         if(!this.state.admin){
             return <Invalid/>
         }
@@ -137,7 +151,8 @@ class EditMonth extends React.Component {
                 <h3>Company</h3>
                 <input type = "text" value = {this.state.buisiness} onChange = {this.onChangeBuisness}/>
                 <h3>Photo</h3>
-                <input type = "file"/>
+                <img src = {this.state.pic} alt = "portrait" /><br/><br/>
+                <input  id = "monthPic" type = "file" onChange = {this.onChangePic}/>
                 <h3>Products</h3>
                 <input type = "file" multiple/> <br/>
                 <br/>
