@@ -1,6 +1,7 @@
 import React from 'react';
 import Invalid from './invalid.component';
 import Rotation from "./Homepage/rotation.component"
+import Month from './month.component';
 
 class EditMonth extends React.Component { 
     constructor(props){
@@ -179,7 +180,7 @@ class EditMonth extends React.Component {
 
         // previewing
         if(this.state.onPreview){
-            return <h2>Preview</h2>
+            return <Month checkProps={true} name = {this.state.name} buisiness = {this.state.buisiness} pic = {this.state.pic} products = {this.state.products}/>
         }
 
         // editing

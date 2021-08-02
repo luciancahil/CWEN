@@ -831,7 +831,7 @@ a.social:hover {
 }
 
 #editMonth #rotation{
-  margin-left: 0;
+  margin-left: 0px;
 }
 
 @keyframes App-logo-spin {
