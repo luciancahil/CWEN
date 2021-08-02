@@ -2,6 +2,7 @@ import React from 'react';
 import Invalid from './invalid.component';
 import Rotation from "./Homepage/rotation.component"
 import Month from './month.component';
+import { faWindows } from '@fortawesome/free-brands-svg-icons';
 
 class EditMonth extends React.Component { 
     constructor(props){
@@ -175,7 +176,7 @@ class EditMonth extends React.Component {
         // add a check to prevent the thing from working if the face has not been changed
         // be much more vigilant about getting products
         e.preventDefault();
-        let url = "http://localhost:4000/updateMonth?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&newName=" +  this.state.name + "&newCompany=" + this.state.buisiness
+        let url = "https://cwen-backend.herokuapp.com/updateMonth?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&newName=" +  this.state.name + "&newCompany=" + this.state.buisiness
        // let url = "http://localhost:4000/eOfMonth";
         let productData = this.state.productData;
 
@@ -195,7 +196,11 @@ class EditMonth extends React.Component {
             body: fData,
           })
             .then(response => response.text())
-            .then(data => console.log(data));
+            .then(data => {
+                if(data === "done"){
+                    window.location.href = "/projects?projectName=Woman+Entrepreneur+of+the+Month";
+                }
+            });
     }
 
 
