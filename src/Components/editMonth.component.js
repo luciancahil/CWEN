@@ -42,6 +42,7 @@ class EditMonth extends React.Component {
             this.onChangeBuisness = this.onChangeBuisness.bind(this);
             this.onChangePic = this.onChangePic.bind(this);
             this.onChangeProducts = this.onChangeProducts.bind(this);
+            this.updateMonth = this.updateMonth.bind(this);
     }
     
     
@@ -170,6 +171,11 @@ class EditMonth extends React.Component {
         })
     }
 
+    updateMonth(e){
+        e.preventDefault();
+        console.log("hi");
+    }
+
 
     render() {
         
@@ -180,7 +186,15 @@ class EditMonth extends React.Component {
 
         // previewing
         if(this.state.onPreview){
-            return <Month checkProps={true} name = {this.state.name} buisiness = {this.state.buisiness} pic = {this.state.pic} products = {this.state.products}/>
+            return (
+                <div id = "monthPreview">
+                    <Month checkProps={true} name = {this.state.name} buisiness = {this.state.buisiness} pic = {this.state.pic} products = {this.state.products}/>
+                    <br/>
+                    <div id = "previewButton">
+                        <button onClick={(e) => this.updateMonth(e)} id = "submit">Confirm Updates</button> <br/> <br/>
+                        <button onClick={() => this.setState({onPreview: false})} id = "cancel">Cancel</button>
+                    </div>
+                </div>)
         }
 
         // editing

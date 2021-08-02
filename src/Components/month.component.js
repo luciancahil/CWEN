@@ -35,7 +35,6 @@ class Month extends React.Component {
 
     // tells component to use props to control information. Used for previewing edits.
     getFromProps(){
-        console.log(this.props.buisiness)
         this.setState({
             admin: false,
             name: this.props.name,
@@ -119,7 +118,6 @@ class Month extends React.Component {
 
     
     render() {
-        console.log(this.state.buisiness)
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>

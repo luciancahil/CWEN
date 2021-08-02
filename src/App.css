@@ -834,6 +834,11 @@ a.social:hover {
   margin-left: 0px;
 }
 
+#monthPreview #previewButton{
+  width: 85%;
+  margin: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
