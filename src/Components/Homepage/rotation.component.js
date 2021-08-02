@@ -2,6 +2,7 @@ import React from 'react';
 import Rotpart from "./rotpart.component"
 
 class Rotation extends React.Component { 
+    // to scale this image, change the font size, and then change the width of a wrapper class around this component
     constructor(props) {
         super(props);
 

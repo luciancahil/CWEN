@@ -21,7 +21,9 @@ class EditMonth extends React.Component {
               pic: "",
               products: [],
               status: "none",
-              admin: isAdmin
+              admin: isAdmin,
+              picData: new FormData(),
+              productData: new FormData()
             };
 
             fetch(tokenCheckURL)
@@ -129,41 +131,45 @@ class EditMonth extends React.Component {
 
     onChangePic(e){
         e.preventDefault();
+        let data = new FormData();
+        let file = e.target.files[0];
+
+        data.append('pic', file, file.name)
 
         this.setState({
-            pic: URL.createObjectURL(e.target.files[0])
+            pic: URL.createObjectURL(e.target.files[0]),
+            picData: data
         })
-
-        
     }
 
     onChangeProducts(e){
         e.preventDefault();
+        let data = new FormData();
+        //let file = e.target.files[0];
         
         let newProductsArray = [];
 
         for(let i = 0; i < e.target.files.length; i++){
+            let file = e.target.files[i];
             newProductsArray[i] = {
-                image: URL.createObjectURL(e.target.files[i]),
+                image: URL.createObjectURL(file),
                 heading : "",
                 blub : "",
                 link : ""
             }
+            data.append('products[]', file, file.name);
         }
 
         
 
         this.setState({
-            products: newProductsArray
+            products: newProductsArray,
+            productData: data
         })
-
-        console.log("products");
     }
 
 
     render() {
-        console.log(this.state.products);
-        console.log('pic: ' +  this.state.pic);
         if(!this.state.admin){
             return <Invalid/>
         }
