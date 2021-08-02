@@ -1,6 +1,44 @@
 import React from 'react';
+import Invalid from './invalid.component';
 
 class EditMonth extends React.Component { 
+    constructor(props){
+        super(props);
+            let isAdmin = false;
+            let token = localStorage.getItem("token");
+            let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
+            tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
+    
+            if(localStorage.getItem("title") === "admin"){
+                isAdmin = true;
+            }
+            
+        
+            this.state = {
+              name: "",
+              buisiness: "",
+              pic: "",
+              products: [],
+              status: "none",
+              admin: isAdmin
+            };
+
+            console.log(tokenCheckURL)
+            fetch(tokenCheckURL)
+                .then(response => response.json())
+                .then(data =>{
+                    console.log("data: " + data.title)
+                    if(data.title !== "admin"){
+                        console.log("youre an admin harry")
+                        this.setState({
+                            admin: false
+                        })
+                    }
+                })
+    }
+    
+    
+    
     // we really need to finish this page. For now, assume nothing is done, since we have just done mostly backend stuff.
     componentDidMount(){
         // url to get entrepreur information
@@ -72,6 +110,10 @@ class EditMonth extends React.Component {
 
 
     render() {
+        if(!this.state.admin){
+            return <Invalid/>
+        }
+
         return (
             <div id = "editMonth">
                 <h3>Title</h3>
