@@ -1,5 +1,6 @@
 import React from 'react';
 import Invalid from './invalid.component';
+import Rotation from "./Homepage/rotation.component"
 
 class EditMonth extends React.Component { 
     constructor(props){
@@ -36,6 +37,7 @@ class EditMonth extends React.Component {
             this.onChangeName = this.onChangeName.bind(this);
             this.onChangeBuisness = this.onChangeBuisness.bind(this);
             this.onChangePic = this.onChangePic.bind(this);
+            this.onChangeProducts = this.onChangeProducts.bind(this);
     }
     
     
@@ -69,7 +71,7 @@ class EditMonth extends React.Component {
             .catch(err => console.log(err));
 
 
-            // getting product information
+            // getting product picture
         for(let i = 1; moreProducts; i++){
             let currentProductURL = productURL + i;
             fetch(currentProductURL)
@@ -126,8 +128,6 @@ class EditMonth extends React.Component {
     }
 
     onChangePic(e){
-        console.log("hello!: " + this.state.pic);
-
         e.preventDefault();
 
         this.setState({
@@ -137,9 +137,33 @@ class EditMonth extends React.Component {
         
     }
 
+    onChangeProducts(e){
+        e.preventDefault();
+        
+        let newProductsArray = [];
+
+        for(let i = 0; i < e.target.files.length; i++){
+            newProductsArray[i] = {
+                image: URL.createObjectURL(e.target.files[i]),
+                heading : "",
+                blub : "",
+                link : ""
+            }
+        }
+
+        
+
+        this.setState({
+            products: newProductsArray
+        })
+
+        console.log("products");
+    }
+
 
     render() {
-        
+        console.log(this.state.products);
+        console.log('pic: ' +  this.state.pic);
         if(!this.state.admin){
             return <Invalid/>
         }
@@ -154,7 +178,10 @@ class EditMonth extends React.Component {
                 <img src = {this.state.pic} alt = "portrait" /><br/><br/>
                 <input  id = "monthPic" type = "file" onChange = {this.onChangePic}/>
                 <h3>Products</h3>
-                <input type = "file" multiple/> <br/>
+                {(this.state.status === "products")?
+                            (<Rotation type = "Products" parts = {this.state.products}/>):
+                            (<div/>)}
+                <input type = "file" multiple id = "monthProducts" onChange = {this.onChangeProducts}/> <br/>
                 <br/>
                 <button id = "EditMonthSubmit">See Preview</button>
             </div>
