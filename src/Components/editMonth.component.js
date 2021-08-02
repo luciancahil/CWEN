@@ -23,18 +23,18 @@ class EditMonth extends React.Component {
               admin: isAdmin
             };
 
-            console.log(tokenCheckURL)
             fetch(tokenCheckURL)
                 .then(response => response.json())
                 .then(data =>{
-                    console.log("data: " + data.title)
                     if(data.title !== "admin"){
-                        console.log("youre an admin harry")
                         this.setState({
                             admin: false
                         })
                     }
-                })
+            })
+            
+            this.onChangeName = this.onChangeName.bind(this);
+            this.onChangeBuisness = this.onChangeBuisness.bind(this);
     }
     
     
@@ -108,6 +108,22 @@ class EditMonth extends React.Component {
         }
     }
 
+    onChangeName(e){
+        e.preventDefault();
+
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    onChangeBuisness(e){
+        e.preventDefault();
+
+        this.setState({
+            buisiness: e.target.value
+        })
+    }
+
 
     render() {
         if(!this.state.admin){
@@ -116,14 +132,16 @@ class EditMonth extends React.Component {
 
         return (
             <div id = "editMonth">
-                <h3>Title</h3>
-                <input type = "text"/>
+                <h3>Name</h3>
+                <input type = "text" value = {this.state.name} onChange = {this.onChangeName}/>
+                <h3>Company</h3>
+                <input type = "text" value = {this.state.buisiness} onChange = {this.onChangeBuisness}/>
                 <h3>Photo</h3>
                 <input type = "file"/>
                 <h3>Products</h3>
-                <input type = "file" multiple/>
-                <h3>Description</h3>
-                <input type = "text"/>
+                <input type = "file" multiple/> <br/>
+                <br/>
+                <button id = "EditMonthSubmit">See Preview</button>
             </div>
         )
     }
