@@ -23,7 +23,8 @@ class EditMonth extends React.Component {
               status: "none",
               admin: isAdmin,
               picData: new FormData(),
-              productData: new FormData()
+              productData: new FormData(),
+              onPreview: false
             };
 
             fetch(tokenCheckURL)
@@ -170,10 +171,18 @@ class EditMonth extends React.Component {
 
 
     render() {
+        
+        // invalid
         if(!this.state.admin){
             return <Invalid/>
         }
 
+        // previewing
+        if(this.state.onPreview){
+            return <h2>Preview</h2>
+        }
+
+        // editing
         return (
             <div id = "editMonth">
                 <h3>Name</h3>
@@ -189,7 +198,7 @@ class EditMonth extends React.Component {
                             (<div/>)}
                 <input type = "file" multiple id = "monthProducts" onChange = {this.onChangeProducts}/> <br/>
                 <br/>
-                <button id = "EditMonthSubmit">See Preview</button>
+                <button onClick={() => this.setState({onPreview: true})} id = "EditMonthSubmit">See Preview</button>
             </div>
         )
     }

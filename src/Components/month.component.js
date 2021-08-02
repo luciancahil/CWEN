@@ -92,9 +92,6 @@ class Month extends React.Component {
 
     
     render() {
-        console.log(this.state.products);
-        console.log(this.state.status);
-
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>
