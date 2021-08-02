@@ -812,6 +812,28 @@ a.social:hover {
   font-size: 25px;
 }
 
+#editMonth{
+  width: 80%;
+  margin: auto;
+}
+
+#editMonth #portrait{
+  height: 300px;
+}
+
+#editMonth h2, #editMonth h3{
+  margin:0;
+  font-size: 35px;
+}
+
+#editMonth #monthProducts{
+  width: 50%;
+}
+
+#editMonth #rotation{
+  margin-left: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

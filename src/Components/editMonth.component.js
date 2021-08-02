@@ -175,11 +175,11 @@ class EditMonth extends React.Component {
                 <h3>Company</h3>
                 <input type = "text" value = {this.state.buisiness} onChange = {this.onChangeBuisness}/>
                 <h3>Photo</h3>
-                <img src = {this.state.pic} alt = "portrait" /><br/><br/>
+                <img id = "portrait" src = {this.state.pic} alt = "portrait" /><br/><br/>
                 <input  id = "monthPic" type = "file" onChange = {this.onChangePic}/>
                 <h3>Products</h3>
                 {(this.state.status === "products")?
-                            (<Rotation key={this.state.products[0].image} type = "Products" parts = {this.state.products}/>):
+                            (<div id = "monthProducts"><Rotation key={this.state.products[0].image} type = "Products" parts = {this.state.products}/> </div>):
                             (<div/>)}
                 <input type = "file" multiple id = "monthProducts" onChange = {this.onChangeProducts}/> <br/>
                 <br/>
