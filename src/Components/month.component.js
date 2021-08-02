@@ -134,7 +134,7 @@ class Month extends React.Component {
                             <h3><em>{this.state.buisiness}</em></h3>
                         </div>
                         {(this.state.status === "products")?
-                            (<Rotation type = "Products" parts = {this.state.products}/>):
+                            (<Rotation key = {this.state.products} type = "Products" parts = {this.state.products}/>):
                             (<div/>)}
                     </div>
                     

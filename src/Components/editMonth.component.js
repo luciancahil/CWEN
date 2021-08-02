@@ -172,6 +172,8 @@ class EditMonth extends React.Component {
     }
 
     updateMonth(e){
+        // add a check to prevent the thing from working if the face has not been changed
+        // be much more vigilant about getting products
         e.preventDefault();
         let url = "http://localhost:4000/updateMonth?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&newName=" +  this.state.name + "&newCompany=" + this.state.buisiness
        // let url = "http://localhost:4000/eOfMonth";
