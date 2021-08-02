@@ -23,8 +23,8 @@ class EditMonth extends React.Component {
               products: [],
               status: "none",
               admin: isAdmin,
-              picData: new FormData(),
-              productData: new FormData(),
+              picData: null,
+              productData: [],
               onPreview: false
             };
 
@@ -141,7 +141,7 @@ class EditMonth extends React.Component {
 
         this.setState({
             pic: URL.createObjectURL(e.target.files[0]),
-            picData: data
+            picData: e.target.files[0]
         })
     }
 
@@ -160,26 +160,40 @@ class EditMonth extends React.Component {
                 blub : "",
                 link : ""
             }
-            data.append('products[]', file, file.name);
+            data.append('products', file, file.name);
         }
 
         
 
         this.setState({
             products: newProductsArray,
-            productData: data
+            productData: e.target.files
         })
     }
 
     updateMonth(e){
         e.preventDefault();
-        let url = "http://localhost:4000/eOfMonth"
-        console.log("hi");
+        let url = "http://localhost:4000/updateMonth?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&newName=" +  this.state.name + "&newCompany=" + this.state.buisiness
+       // let url = "http://localhost:4000/eOfMonth";
+        let productData = this.state.productData;
 
-        fetch(url)
-            .then(response => response.json())
+        let fData = new FormData();
+        
+
+        fData.append('photos', this.state.picData);
+        //fData.append("products", this.state.productData.get('products'))
+
+        for(let i = 0; i < productData.length; i++){
+            fData.append('photos', productData[i]);
+        }
+
+        console.log(fData.getAll('photos'));
+        fetch(url, {
+            method: 'POST',
+            body: fData,
+          })
+            .then(response => response.text())
             .then(data => console.log(data));
-            //.then(j => console.log(j));
     }
 
 
