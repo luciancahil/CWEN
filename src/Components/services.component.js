@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceDesciptions from './serviceDesciptions';
 import Four04 from './404.component';
+import Image from './ServicePics/Networking And Events.jpg'
 
 class Services extends React.Component {
   constructor(props){
@@ -20,8 +21,10 @@ class Services extends React.Component {
   }
   
   render() {
-    let content = ServiceDesciptions[this.state.serviceType];
-    console.log(this.state.serviceType)
+    let serviceType = this.state.serviceType
+    let content = ServiceDesciptions[serviceType];
+    let img = require("./ServicePics/" + serviceType + ".jpg").default
+    console.log(img)
 
     if(content === undefined){
       return <Four04/>
@@ -30,7 +33,8 @@ class Services extends React.Component {
     return (
       <div id = "services">
         <h2>{this.state.serviceType}</h2>
-        <p>{ServiceDesciptions[this.state.serviceType]}</p>
+        <img src = {img} alt = {serviceType}/>
+        <p>{ServiceDesciptions[serviceType]}</p>
       </div>
     );
   }
