@@ -37,7 +37,7 @@ class Services extends React.Component {
     return (
       <div id = "services">
         <h2>{this.state.serviceType}</h2>
-        <img src = {img} alt = {serviceType}/>
+        <img id = "serviceImg" src = {img} alt = {serviceType}/>
         <p>{ServiceDesciptions[serviceType]}</p>
       </div>
     );
