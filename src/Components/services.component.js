@@ -23,8 +23,12 @@ class Services extends React.Component {
   render() {
     let serviceType = this.state.serviceType
     let content = ServiceDesciptions[serviceType];
-    let img = require("./ServicePics/" + serviceType + ".jpg").default
-    console.log(img)
+    let img = "";
+    try{
+    img = require("./ServicePics/" + serviceType + ".jpg").default
+    }catch(e){
+      return <Four04/> 
+    }
 
     if(content === undefined){
       return <Four04/>
