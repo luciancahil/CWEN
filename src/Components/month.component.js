@@ -51,12 +51,6 @@ class Month extends React.Component {
         // url to get entrepreur information
         let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
 
-        // url to get product information
-        let productURL = "https://cwen-backend.herokuapp.com/eOfMonthProduct?productNum=";
-
-        // false if there are no more products
-        let moreProducts = true;
-
         // product array we will place in state
         let fetchingProducts = [];
 
@@ -65,59 +59,36 @@ class Month extends React.Component {
         fetch(entrepreurURL)
             .then(response => response.json())
             .then(data => {
+                console.log(data.products);
+
                 this.setState({
                     name: data.name,
                     buisiness: data.company,
                     pic: data.picURL,
                     status: "info"
-                })
+                });
+
+                for(let q = 0; q < data.products.length; q++){
+                    fetchingProducts[q] = {
+                        image: data.products[q],
+                        heading : "",
+                        blub : "",
+                        link : ""
+                    }
+                }
+                this.setState({
+                    products: fetchingProducts,
+                    status: "products"
+                });
+                
             })
             .catch(err => console.log(err));
-
-
-            // getting product information
-        for(let i = 1; moreProducts; i++){
-            let currentProductURL = productURL + i;
-            fetch(currentProductURL)
-                .then(response => response.text())
-                .then(text =>{
-                    if(text === "404" && moreProducts){
-                        moreProducts = false;
-
-                        // remove every undefined element
-                        let filtered = fetchingProducts.filter(function(x) {
-                            return x !== undefined;
-                        });
-
-                        
-                        if(this.state.products.length < filtered.length){ // to make sure a smaller array doesn't come later
-
-                            // We are done, and we are altering states for the complete array
-                            this.setState({
-                                products: filtered,
-                                status: "products"
-                            });
-                        }
-                    }else if(text !== "404"){ // there is a product with this number
-                        fetchingProducts[i - 1] = {
-                            image: text,
-                            heading : "",
-                            blub : "",
-                            link : ""
-                        }
-                    }
-                })
-                .catch(err => console.log(err));
-
-            if(i >= 100){
-                break;
-            }
-        }
     }
 
 
     
     render() {
+        console.log(this.state.status);
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>

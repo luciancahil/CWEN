@@ -798,9 +798,16 @@ a.social:hover {
 }
 
 #services{
-  width: 80%;
+  width: 60%;
   margin:auto;
   margin-bottom: 90px;
+  text-align: justify;
+}
+
+#services #serviceImg{
+  width: 90%;
+  margin: auto;
+  display: block;
 }
 
 #services p, #services h2{
