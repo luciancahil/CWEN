@@ -51,12 +51,6 @@ class Month extends React.Component {
         // url to get entrepreur information
         let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
 
-        // url to get product information
-        let productURL = "https://cwen-backend.herokuapp.com/eOfMonthProduct?productNum=";
-
-        // false if there are no more products
-        let moreProducts = true;
-
         // product array we will place in state
         let fetchingProducts = [];
 

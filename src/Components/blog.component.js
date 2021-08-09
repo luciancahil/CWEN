@@ -1,4 +1,5 @@
 import React from 'react';
+import Four04 from './404.component';
 
 class Blog extends React.Component {
   componentDidMount() {
@@ -6,7 +7,7 @@ class Blog extends React.Component {
   }
 
   render() {
-    return <h2>Blog Page</h2>;
+    return <Four04/>;
   }
 }
 
