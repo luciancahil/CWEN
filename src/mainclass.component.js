@@ -20,6 +20,7 @@ import ResetRequest from './Components/resetRequest.component';
 import Requested from './Components/requested.component';
 import ChangedPassword from './Components/changedPassword.component';
 import EditMonth from './Components/editMonth.component';
+import Join from './Components/join.component';
 
 
 
@@ -47,6 +48,7 @@ class MainClass extends React.Component{
                     <Route path="/request_sent" render ={(props) => <Requested {...props} />} />
                     <Route path="/changed_password" render ={(props) => <ChangedPassword {...props} />} />
                     <Route path="/edit_month" render = {(props) => <EditMonth {...props}/>}/>
+                    <Route path="/join" render = {(props) => <Join {...props}/>}/>
                     <Redirect to="/404"/>
                 </Switch>
 
