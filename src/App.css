@@ -920,6 +920,11 @@ input[type=number] {
   border-radius: 3px;
 }
 
+#joinInfo #submitLink:active{
+  background-color: white;
+  color:#800000;
+}
+
 #joinPage #errors{
   width: 100%;
   background-color: white;
