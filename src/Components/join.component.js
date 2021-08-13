@@ -188,10 +188,12 @@ class Join extends React.Component {
                         <h3>Tell us about your buissness!</h3>
                         <textarea rows="3" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
                         <br/>
-                        <button onClick = {this.onSubmit}>Join!</button>
-                        <div id = "errors">
-                        {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
+                        <div id = "submitLink">
+                            <a onClick = {this.onSubmit}>Join!</a>
+                        </div>
                     </div>
+                    <div id = "errors">
+                            {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
                     </div>
                 </div>
             </div>
