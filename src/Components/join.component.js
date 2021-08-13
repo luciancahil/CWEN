@@ -116,7 +116,6 @@ class Join extends React.Component {
         + "&district=" + this.state.District.replaceAll(" ", "+")
         + "&town=" + this.state.Town.replaceAll(" ", "+")
         URL = encodeURI(URL);
-
         if(this.state.Name === ""){
             errors.push("Your name is required");
             valid = false;
@@ -134,12 +133,10 @@ class Join extends React.Component {
             return;
         }
 
-        console.log(URL);
 
         fetch(URL)
             .then(response => response.text())
             .then((text) =>{
-                console.log(text);
                 if(text === "Succes!"){
                     this.setState({
                         joined: true
@@ -193,7 +190,7 @@ class Join extends React.Component {
                         </div>
                     </div>
                     <div id = "errors">
-                            {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
+                            {this.state.ErrorMessage.map((content, index) => <p key={index}>{content}</p>)}
                     </div>
                 </div>
             </div>
