@@ -85,14 +85,11 @@ class Project extends React.Component {
                                     <h2>#CWENMeets</h2>
                                     <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
                                 </div>
-                                <div id = "buttonwrap">
-                                    <a id = "signupButton" href = "/">BECOME A MEMBER</a>
-                                </div>
                             </div>
                         </div>
                     ): (
                         <div id = "buttonwrap">
-                            <a id = "signupButton" href = "/">BECOME A MEMBER</a>
+                            <a id = "signupButton" href = "/join">BECOME A MEMBER</a>
                             
                         </div>
                     )}
