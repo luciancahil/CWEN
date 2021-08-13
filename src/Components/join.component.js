@@ -104,8 +104,17 @@ class Join extends React.Component {
     onSubmit(e){
         e.preventDefault();
         let valid = true;
-        console.log(this.state.Name === "");
         let errors = [];
+        let URL = "https://cwen-backend.herokuapp.com/join?name=" + this.state.Name.replaceAll(" ", "+")
+        + "&email=" + this.state.Email.replaceAll(" ", "+")
+        + "&phoneNum=" + this.state.Phone.replaceAll(" ", "+")
+        + "&buisness=" + this.state.Buisness.replaceAll(" ", "+")
+        + "&description=" + this.state.Description.replaceAll(" ", "+")
+        + "&region=" + this.state.Region.replaceAll(" ", "+")
+        + "&district=" + this.state.District.replaceAll(" ", "+")
+        + "&town=" + this.state.Town.replaceAll(" ", "+")
+        URL = encodeURI(URL);
+
         if(this.state.Name === ""){
             errors.push("Your name is required");
             valid = false;
@@ -120,9 +129,25 @@ class Join extends React.Component {
             this.setState({
                 ErrorMessage: errors
             });
-            console.log(this.state.ErrorMessage);
             return;
         }
+
+        console.log(URL);
+
+        fetch(URL)
+            .then(response => response.text())
+            .then((text) =>{
+                console.log(text);
+                if(text === "Success!"){
+                    alert("Congragulatiosn! Welcome to CWEN");
+                    window.location.href = "/"
+                }else if(text === "duplicate"){
+                    errors[0] = "This email is already registered"
+                    this.setState({
+                        ErrorMessage: errors
+                    });
+                }
+            })
 
     }
 
