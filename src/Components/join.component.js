@@ -13,7 +13,8 @@ class Join extends React.Component {
             Region: "",
             District: "",
             Town: "",
-            ErrorMessage: []
+            ErrorMessage: [],
+            joined: false
         }
 
         this.onChangeName = this.onChangeName.bind(this);
@@ -138,9 +139,10 @@ class Join extends React.Component {
             .then(response => response.text())
             .then((text) =>{
                 console.log(text);
-                if(text === "Success!"){
-                    alert("Congragulatiosn! Welcome to CWEN");
-                    window.location.href = "/"
+                if(text === "Succes!"){
+                    this.setState({
+                        joined: true
+                    })
                 }else if(text === "duplicate"){
                     errors[0] = "This email is already registered"
                     this.setState({
@@ -152,6 +154,10 @@ class Join extends React.Component {
     }
 
     render() {
+        if(this.state.joined){
+            return <h2 className = "generic">Congragulations {this.state.name}! Welcome to CWEN</h2>
+        }
+
         return (
             <div id = "joinPage">
                 <h3>Name*</h3>
