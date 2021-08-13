@@ -870,13 +870,29 @@ input[type=number] {
   vertical-align: top;
 }
 
+#joinWrapper{
+  width: 90%;
+  margin: auto;
+}
+
+#joinInfo input{
+  width: 100%;
+}
+
+#joinInfo #descrption{
+  display:inline-block;
+  width: 100%;
+}
+
 #joinDecoration, #joinInfo{
   display: inline-block;
   width: 50%;
 }
 
 #joinDecoration img{
-  width: 100%;
+  width: 60%;
+  margin: auto;
+  display: block;
 }
 
 

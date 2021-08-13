@@ -167,13 +167,14 @@ class Join extends React.Component {
                     <p>Networking with CWEN will help you develop and improve your entrepreneurial skills, stay on top of your game in your business, keep an eye on the latest trends in the marketplace and gain access to the necessary resources that will foster your business career going forward. Join CWEN today!</p>
                 </div>
                 <div id = "joinInfo">
-                    <h3>Name*</h3>
+                    <div id = "joinWrapper">
+                        <h3>Name*</h3>
                         <input type = "text" id = "Name" value={this.state.Name} onChange={this.onChangeName}/>
                         <h3>Email*</h3>
                         <input type = "text" id = "Email" value={this.state.Email} onChange={this.onChangeEmail}/>
                         <h3>Phone Number</h3>
                         <input type = "number" id="Phone" value={this.state.Phone} onChange={this.onChangePhone}/>
-                    <h3>Region</h3>
+                        <h3>Region</h3>
                         <input type = "text" id = "Region" value={this.state.Region} onChange={this.onChangeRegion}/>
                         <h3>District</h3>
                         <input type = "text" id = "District" value={this.state.District} onChange={this.onChangeDistrict}/>
@@ -182,11 +183,12 @@ class Join extends React.Component {
                         <h3>Buisness Name</h3>
                         <input type = "text" id = "Buisness" value={this.state.Buisness} onChange={this.onChangeBuisness}/>
                         <h3>Tell us about your buissness!</h3>
-                        <input type = "text" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}/>
-                    <br/> <br/> <br/>
-                    <button onClick = {this.onSubmit}>Join!</button>
-                    <div id = "errors">
+                        <textarea rows="5" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
+                        <br/> <br/> <br/>
+                        <button onClick = {this.onSubmit}>Join!</button>
+                        <div id = "errors">
                         {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
+                    </div>
                     </div>
                 </div>
             </div>
