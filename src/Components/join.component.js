@@ -12,7 +12,8 @@ class Join extends React.Component {
             Description: "",
             Region: "",
             District: "",
-            Town: ""
+            Town: "",
+            ErrorMessage: []
         }
 
         this.onChangeName = this.onChangeName.bind(this);
@@ -102,19 +103,38 @@ class Join extends React.Component {
 
     onSubmit(e){
         e.preventDefault();
+        let valid = true;
+        console.log(this.state.Name === "");
+        let errors = [];
+        if(this.state.Name === ""){
+            errors.push("Your name is required");
+            valid = false;
+        }
 
-        console.log(this.state);
+        if(this.state.Email === ""){
+            errors.push("Your email is required");
+            valid = false;
+        }
+        
+        if(!valid){
+            this.setState({
+                ErrorMessage: errors
+            });
+            console.log(this.state.ErrorMessage);
+            return;
+        }
+
     }
 
     render() {
         return (
             <div id = "joinPage">
-                <h3>Name</h3>
+                <h3>Name*</h3>
                 <input type = "text" id = "Name" value={this.state.Name} onChange={this.onChangeName}/>
-                <h3>Phone Number</h3>
-                <input type = "text" id = "Phone" value={this.state.Phone} onChange={this.onChangePhone}/>
-                <h3>Email</h3>
+                <h3>Email*</h3>
                 <input type = "text" id = "Email" value={this.state.Email} onChange={this.onChangeEmail}/>
+                <h3>Phone Number</h3>
+                <input type = "number" id="Phone" value={this.state.Phone} onChange={this.onChangePhone}/>
                 <h3>Buisness Name</h3>
                 <input type = "text" id = "Buisness" value={this.state.Buisness} onChange={this.onChangeBuisness}/>
                 <h3>Tell us about your buissness!</h3>
@@ -127,6 +147,9 @@ class Join extends React.Component {
                 <input type = "text" id = "Town" value={this.state.Town} onChange={this.onChangeTown}/>
                 <br/> <br/> <br/>
                 <button onClick = {this.onSubmit}>Join!</button>
+                <div id = "errors">
+                    {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
+                </div>
             </div>
 
         );
