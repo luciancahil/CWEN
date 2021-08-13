@@ -868,6 +868,18 @@ input[type=number] {
 #joinInfo{
   height: 100%;
   vertical-align: top;
+  background-color: orange;
+}
+
+#joinTop{
+  background-color: #800000;
+}
+
+#joinTop h3{
+  width: 100%;
+  text-align: center;
+  color: white;
+  margin: 5px 0;
 }
 
 #joinWrapper{
@@ -877,6 +889,10 @@ input[type=number] {
 
 #joinInfo input{
   width: 100%;
+}
+
+#joinInfo button{
+  margin-bottom: 20px;
 }
 
 #joinInfo #descrption{

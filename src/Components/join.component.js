@@ -167,6 +167,9 @@ class Join extends React.Component {
                     <p>Networking with CWEN will help you develop and improve your entrepreneurial skills, stay on top of your game in your business, keep an eye on the latest trends in the marketplace and gain access to the necessary resources that will foster your business career going forward. Join CWEN today!</p>
                 </div>
                 <div id = "joinInfo">
+                    <div id = "joinTop">
+                        <h3>Tell us about yourself!</h3>
+                    </div>
                     <div id = "joinWrapper">
                         <h3>Name*</h3>
                         <input type = "text" id = "Name" value={this.state.Name} onChange={this.onChangeName}/>
@@ -183,8 +186,8 @@ class Join extends React.Component {
                         <h3>Buisness Name</h3>
                         <input type = "text" id = "Buisness" value={this.state.Buisness} onChange={this.onChangeBuisness}/>
                         <h3>Tell us about your buissness!</h3>
-                        <textarea rows="5" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
-                        <br/> <br/> <br/>
+                        <textarea rows="3" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
+                        <br/>
                         <button onClick = {this.onSubmit}>Join!</button>
                         <div id = "errors">
                         {this.state.ErrorMessage.map((content) => <p>{content}</p>)}
