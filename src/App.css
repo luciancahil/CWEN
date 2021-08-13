@@ -846,6 +846,8 @@ a.social:hover {
   margin: auto;
 }
 
+/*Join */
+
 /*Remove Arrows*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -856,6 +858,34 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+#joinPage{
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+#joinInfo{
+  height: 100%;
+  vertical-align: top;
+}
+
+#joinDecoration, #joinInfo{
+  display: inline-block;
+  width: 50%;
+}
+
+#joinDecoration img{
+  width: 100%;
+}
+
+
+#joinInfo h3{
+  margin: 0;
+}
+
+
+
 
 @keyframes App-logo-spin {
   from {
