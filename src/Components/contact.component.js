@@ -15,6 +15,7 @@ class Contact extends React.Component {
     this.onChangeTopic = this.onChangeTopic.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangeMessage = this.onChangeMessage.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -57,10 +58,25 @@ class Contact extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
+    let URL = "https://cwen-backend.herokuapp.com/recieve_contact?name=" + encodeURI(this.state.Name).replaceAll(" ", "+")
+    +  "&email=" + encodeURI(this.state.Email).replaceAll(" ", "+")
+    + "&subject=" + encodeURI(this.state.Subject).replaceAll(" ", "+")
+    +"&message=" + encodeURI(this.state.Message).replaceAll(" ", "+")
+    console.log(URL);
+    fetch(URL)
+      .then(response => response.text())
+      .then((text) =>{
+        console.log(text);
+          if(text === "Succes!"){
+              this.setState({
+                Submitted: true
+              })}})
   }
 
   render() {
-    console.log(this.state);
+    if(this.state.Submitted){
+      return <h2 className = "generic">Thank you for your message. We will get back to you as soon as possible.</h2>
+    }
     return (
         <div id = "contactPage">
           <h3>Name</h3>
