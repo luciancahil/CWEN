@@ -3,6 +3,7 @@ import Logo from './logo.jpg';
 
 class Join extends React.Component { 
     constructor(props){
+        document.title = 'CWEN - Join Us!';
         super(props);
 
         this.state = {
