@@ -79,17 +79,29 @@ class Contact extends React.Component {
     }
     return (
         <div id = "contactPage">
-          <h3>Name</h3>
-          <input type = "text" id = "Name" value={this.state.Name} onChange={this.onChangeName}/>
-          <h3>Email</h3>
-          <input type = "text" id = "Email" value={this.state.Email} onChange={this.onChangeEmail}/>
-          <h3>Topic</h3>
-          <input type = "text" id = "Topic" value={this.state.Topic} onChange={this.onChangeTopic}/>
-          <h3>Message</h3>
-          <textarea rows="3" id = "Message" value={this.state.Message} onChange={this.onChangeMessage}> </textarea>
-          <br/>
-          <div id = "submitLink">
-              <a onClick = {this.onSubmit}>Send Message!</a>
+          <div id = "contactInfo">
+            <h2>CWEN Contact Page</h2>
+            <h3>Please use the form below to get in touch.</h3>
+          </div>
+          <div id = "contactForm">
+            <div>
+              <div className = "contactFormTop">
+                <h3>Name</h3>
+                <input type = "text" id = "Name" value={this.state.Name} onChange={this.onChangeName}/>
+              </div>
+              <div className = "contactFormTop">
+                <h3>Email</h3>
+                <input type = "text" id = "Email" value={this.state.Email} onChange={this.onChangeEmail}/>
+              </div>
+            </div>
+            <h3>Topic</h3>
+            <input type = "text" id = "Topic" value={this.state.Topic} onChange={this.onChangeTopic}/>
+            <h3>Message</h3>
+            <textarea rows="5" id = "Message" value={this.state.Message} onChange={this.onChangeMessage}> </textarea>
+            <br/>
+            <div id = "submitLink">
+                <a onClick = {this.onSubmit}>Send Message!</a>
+            </div>
           </div>
         </div>
     );
