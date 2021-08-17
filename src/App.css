@@ -519,7 +519,7 @@ nav .vline {
 .social-container {
   background: black;
   padding: 25px 50px;
-  width: 40%;
+  width: 100%;
   margin: 0;
   box-sizing:border-box;
 
@@ -561,6 +561,13 @@ a.social:hover {
 .social-container a{
   color:grey;
 }
+
+@media only screen and (max-width: 490px){
+  .social-container{
+    padding: 10px;
+  }
+}
+
 
 
 /* The next bit is the rich text editor */
