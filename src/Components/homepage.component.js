@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   The rest is self-explanatory
   */
   render() {
-    
+    console.log(window.innerHeight)
 
     return (
       <div id = "Homepage">

@@ -26,6 +26,7 @@ import Join from './Components/join.component';
 
 class MainClass extends React.Component{
     render(){
+        console.log(window.innerWidth);
         return (
             <Router>
                 <Navbar/>

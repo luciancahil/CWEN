@@ -4,8 +4,13 @@ class StairRight extends React.Component {
     render() {
         // generates url
         let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
+        console.log(window.innerWidth);
+
+        
 
         return (
+            
+
             <div className = "StairRight">
                 <div className = "SR-Pic">
                     <img src = {this.props.pic} alt = {this.props.Heading}/>
