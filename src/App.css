@@ -497,6 +497,14 @@ nav .vline {
   padding-bottom: 10px;
 }
 
+@media only screen and (max-width: 700px){
+  .footPart{
+    display: block;
+    width: 90%;
+    margin: auto; 
+  }
+}
+
 #Miscellaneous a{
   text-decoration: none;
   display: inline-block;
