@@ -173,8 +173,23 @@ nav .vline {
   }
 
   #Homepage_Banner_Text p{
+    width: 100%;
     margin: auto;
     padding: 30px 0;
+  }
+
+  #Homepage #Homepage_Banner #Homepage_Banner_Text{
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  #Homepage #Homepage_Banner_Text{
+    float: none;
+    width: 100%;
+  }
+
+  #Homepage #Homepage_Banner, #Homepage_Banner_Image{
+    height: 350px;
   }
 }
 
@@ -564,7 +579,8 @@ a.social:hover {
 
 @media only screen and (max-width: 490px){
   .social-container{
-    padding: 10px;
+    padding: 1
+    0px;
   }
 }
 
