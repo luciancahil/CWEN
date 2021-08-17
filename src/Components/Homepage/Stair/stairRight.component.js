@@ -4,7 +4,6 @@ class StairRight extends React.Component {
     render() {
         // generates url
         let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
-        console.log(window.innerWidth);
 
         
 
@@ -19,7 +18,7 @@ class StairRight extends React.Component {
                     <div className = "SR-Text">
                         <h2>{this.props.Heading}</h2>
                         <p>{this.props.Blurb}</p>
-                        <a href= {url}>View Project</a>
+                        <a href= {url}>View Project</a><br></br>
                     </div>
                 </div>
             </div>

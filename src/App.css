@@ -97,6 +97,7 @@ nav .vline {
   }
 }
 
+
 #Homepage_Banner_Text a, #signupButton{
   text-decoration: none;
 }
@@ -196,6 +197,13 @@ nav .vline {
 }
 
 
+@media only screen and (max-width: 470px){
+  #slogan{
+    margin-top: 10px;
+  }
+}
+
+
 #HomeStairs{
   max-width: 1230px;
   margin:auto;
@@ -269,6 +277,43 @@ nav .vline {
   margin-top: 10%;
 }
 
+
+@media only screen and (max-width: 1000px){
+  .SR-Pic, .SL-Pic, .SR-TextWrapper, .SL-TextWrapper{
+    display: block;
+  }
+
+  #HomeStairs .StairRight, .StairLeft{
+    height: auto;
+  }
+
+  .SR-TextWrapper{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 10%;
+    margin-top: 0px;
+  }
+  
+  .SR-Pic{
+    width: 70%;
+    margin: auto;
+  }
+
+  .StairRight img{
+    width: 100%;
+    height: auto;
+  }
+
+  .SR-Text{
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .SR-Text h2{
+    margin-top: 0px;
+    padding: 0;
+  }
+}
 #rotation{
   white-space: nowrap;
   overflow: hidden;
