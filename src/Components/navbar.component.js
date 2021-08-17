@@ -6,10 +6,12 @@ class Navbar extends React.Component {
     super(props);
 
     this.state ={
-      width: window.innerWidth
+      width: window.innerWidth,
+      showLinks: false
     }
 
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.toggleLinks = this.toggleLinks.bind(this);
   }
 
   componentDidMount() {
@@ -22,21 +24,32 @@ class Navbar extends React.Component {
     })
   }
 
+  toggleLinks(){
+    let links = this.state.showLinks;
+
+    this.setState({
+      showLinks: !links
+    })
+  }
+
   render() {
 
     if(this.state.width <= 590){
       return(
         <nav>
           <a href = "/"><img alt = "logo" src = {logo}/></a>
-          <button>≡</button>
-          <div id = "mobileLinks">
-            <a href="/">Home</a> <br/>
-            <a href="/join">Join</a> <br/>
-            <a href="/about">About</a> <br/>
-            <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a> <br/>
-            <a href="/contact">Contact</a> <br/>
-            <a href="/blog">Blog</a>
-          </div>
+          <button onClick = {this.toggleLinks}>≡</button>
+          {this.state.showLinks ? (
+            <div id = "mobileLinks">
+              <a href="/">Home</a> <br/>
+              <a href="/join">Join</a> <br/>
+              <a href="/about">About</a> <br/>
+              <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a> <br/>
+              <a href="/contact">Contact</a> <br/>
+              <a href="/blog">Blog</a>
+            </div>
+          ):(<div/>)}
+          
         </nav>
       )
     }

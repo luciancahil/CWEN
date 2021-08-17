@@ -67,7 +67,6 @@ nav .vline {
 @media only screen and (max-width: 590px){
   nav button{
     float: right;
-    margin-top: 3%;
     background-color: black;
     color: white;
     border: none;
