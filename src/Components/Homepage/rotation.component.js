@@ -1,10 +1,15 @@
 import React from 'react';
 import Rotpart from "./rotpart.component"
 
+
+// todo change it so that only 3 elements load when the screen is small enough
+// Maybe write a function to construct the initial arrays?
 class Rotation extends React.Component { 
     // to scale this image, change the font size, and then change the width of a wrapper class around this component
     constructor(props) {
         super(props);
+
+
 
         this.lefRef= React.createRef();
 
