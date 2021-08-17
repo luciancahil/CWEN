@@ -25,7 +25,20 @@ class Navbar extends React.Component {
   render() {
 
     if(this.state.width <= 590){
-      return null;
+      return(
+        <nav>
+          <a href = "/"><img alt = "logo" src = {logo}/></a>
+          <button>≡</button>
+          <div id = "mobileLinks">
+            <a href="/">Home</a> <br/>
+            <a href="/join">Join</a> <br/>
+            <a href="/about">About</a> <br/>
+            <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a> <br/>
+            <a href="/contact">Contact</a> <br/>
+            <a href="/blog">Blog</a>
+          </div>
+        </nav>
+      )
     }
 
     

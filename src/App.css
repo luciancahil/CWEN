@@ -64,6 +64,39 @@ nav .vline {
   margin: 0 15;
 }
 
+@media only screen and (max-width: 590px){
+  nav button{
+    float: right;
+    margin-top: 3%;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 40px;
+
+  }
+
+  nav button:active{
+    background-color: red;
+    color: black;
+  }
+
+  nav #mobileLinks{
+    background-color: black;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    z-index: 1;
+  }
+
+  nav #mobileLinks a{
+    font-size: 50px;
+  }
+
+  nav a:hover{
+    text-decoration: underline;
+  }
+}
+
 #Homepage_Banner_Text a, #signupButton{
   text-decoration: none;
 }
