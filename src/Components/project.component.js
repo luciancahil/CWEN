@@ -12,8 +12,17 @@ class Project extends React.Component {
         this.state = {
           url: "start",
           text: "",
-          projectName: ""
+          projectName: "",
+          width: window.innerWidth,
         };
+
+        this.updateDimensions = this.updateDimensions.bind(this);
+    }
+
+    updateDimensions(){
+        this.setState({
+          width: window.innerWidth
+        })
     }
 
     componentDidMount(){
@@ -22,6 +31,8 @@ class Project extends React.Component {
         let name = query.substring(projectNameIndex + "projectName=".length);
         let getURL = "https://cwen-backend.herokuapp.com/projectData?projectName=" + name;
         
+        window.addEventListener('resize', this.updateDimensions);
+
         this.setState({
             projectName: name.replaceAll("+"," ").replaceAll("%27","'")
             
@@ -74,19 +85,35 @@ class Project extends React.Component {
                                     <p>{this.state.text}</p>
                                 </div>
                             </div>
+                            {this.state.width <= 910 /*width check */?
+                                    (<br/>):
+                                    (null)}
                             <img src = {this.state.url} alt = {this.state.projectName}/>                 
                         </div>
                     </div>
                     {isOnEvents ? (
-                        <div id = "CWENMeets">
-                            <img src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
-                            <div className = "projectText">
-                                <div className = "ProjectTextWrapper">
-                                    <h2>#CWENMeets</h2>
-                                    <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
+                        [this.state.width <= 910 /*width check */?(
+                            <div id = "CWENMeets">
+                                <div className = "projectText">
+                                    <div className = "ProjectTextWrapper">
+                                        <h2>#CWENMeets</h2>
+                                        <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                    <img src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
+                            </div>):
+                            (
+                                <div id = "CWENMeets">
+                                    <img src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
+                                    <div className = "projectText">
+                                        <div className = "ProjectTextWrapper">
+                                            <h2>#CWENMeets</h2>
+                                            <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
+                                        </div>
+                                    </div>
+                                 </div> 
+                            )]
+                        
                     ): (
                         <div id = "buttonwrap">
                             <a id = "signupButton" href = "/join">BECOME A MEMBER</a>
