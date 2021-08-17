@@ -26,7 +26,7 @@ class StairLeft extends React.Component {
         let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
 
         // when width too small
-        if(window.innerWidth <= 1000){
+        if(window.innerWidth <= 1110){
             return <StairRight Heading = {this.props.Heading} Blurb = {this.props.Blurb} pic = {this.props.pic}/>
         }
 

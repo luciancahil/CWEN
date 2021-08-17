@@ -18,7 +18,7 @@ class StairRight extends React.Component {
                     <div className = "SR-Text">
                         <h2>{this.props.Heading}</h2>
                         <p>{this.props.Blurb}</p>
-                        <a href= {url}>View Project</a><br></br>
+                        <a href= {url}>View Project</a><br/>
                     </div>
                 </div>
             </div>

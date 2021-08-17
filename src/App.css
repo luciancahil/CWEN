@@ -200,6 +200,7 @@ nav .vline {
 @media only screen and (max-width: 470px){
   #slogan{
     margin-top: 10px;
+    background-color: pink;
   }
 }
 
@@ -278,7 +279,7 @@ nav .vline {
 }
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1110px){
   .SR-Pic, .SL-Pic, .SR-TextWrapper, .SL-TextWrapper{
     display: block;
   }
@@ -309,8 +310,9 @@ nav .vline {
     text-align: center;
   }
 
-  .SR-Text h2{
+  #HomeStairs .StairRight .SR-TextWrapper h2{
     margin-top: 0px;
+    margin: auto;
     padding: 0;
   }
 }
