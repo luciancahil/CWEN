@@ -198,9 +198,8 @@ nav .vline {
 
 
 @media only screen and (max-width: 470px){
-  #slogan{
-    margin-top: 10px;
-    background-color: pink;
+  #Homepage #Slogan{
+    margin-top: 30px;
   }
 }
 
@@ -310,10 +309,20 @@ nav .vline {
     text-align: center;
   }
 
+  #HomeStairs .StairRight .SR-TextWrapper p{
+    padding: 0;
+  }
+
   #HomeStairs .StairRight .SR-TextWrapper h2{
     margin-top: 0px;
     margin: auto;
     padding: 0;
+  }
+
+  
+
+  .StairRight{
+    margin-top: 50px;
   }
 }
 #rotation{
