@@ -512,7 +512,13 @@ nav .vline {
   padding-bottom: 10px;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 1050px){
+  .footPart{
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 760px){
   .footPart{
     display: block;
     width: 90%;
@@ -1112,6 +1118,17 @@ input[type=number] {
 
 #joinInfo h3{
   margin: 0;
+}
+
+@media only screen and (max-width: 900px){
+  #joinDecoration, #joinInfo{
+    display: block;
+    width: 90%;
+  }
+
+  #joinWrapper{
+    padding-bottom: 10px;
+  }
 }
 
 #contactPage{
