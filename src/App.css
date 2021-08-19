@@ -463,6 +463,18 @@ nav .vline {
   #rotation{
     width: 90%;
   }
+
+  #rotating{
+    width: 500%;
+  }
+
+  .rotPart p{
+    font-size: 20px;
+  }
+
+  .rotPart h2{
+    font-size: 30px;
+  }
 }
 
 #foot-wrapper{
