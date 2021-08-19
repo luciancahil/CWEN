@@ -191,6 +191,9 @@ nav .vline {
   #Homepage #Homepage_Banner, #Homepage_Banner_Image{
     height: 350px;
   }
+
+  
+
 }
 
 #Homepage #Slogan{
@@ -334,10 +337,12 @@ nav .vline {
     padding: 0;
   }
 
-  
-
   .StairRight{
     margin-top: 50px;
+  }
+
+  #HomeStairs .StairRight .SR-TextWrapper p, .SL-TextWrapper p{
+    margin: auto;
   }
 }
 #rotation{
@@ -540,6 +545,10 @@ nav .vline {
     display: block;
     width: 90%;
     margin: auto; 
+  }
+
+  #footer{
+    width: 100%;
   }
 }
 
@@ -774,7 +783,6 @@ a.social:hover {
 }
 
 
-
 #CWENMeets #signupButton{
   width: 75%;
 }
@@ -833,9 +841,13 @@ a.social:hover {
   
   .project img{
     width: 100%;
+    height: auto;
   }
 
   .allProject #signupButton{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
     margin-top: 20px;
   }
 
@@ -853,6 +865,35 @@ a.social:hover {
     height: auto;
     margin-top: 30px;
     padding: 20px;
+  }
+
+  #EofMonthInfo{
+    width: 90%;
+    height: auto;
+  }
+
+  #EofMonth #rot-buttons a, #rot-text h2{
+    font-size: 40px;
+  }
+
+  .project{
+    height: auto;
+  }
+
+  .project h2{
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .project p{
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 590px){
+  #EofMonth #EofMonthFace{
+    width: 80%;
+    height: auto;
   }
 }
 
@@ -997,6 +1038,19 @@ a.social:hover {
   margin: 0;
 }
 
+
+
+
+@media only screen and (max-width: 1000px){
+  #teamMembers .teamMember{
+    display: block;
+  }
+
+  #teamMembers .teamMember{
+    width: 100%;
+  }
+}
+
 #services{
   width: 60%;
   margin:auto;
@@ -1060,7 +1114,7 @@ input[type=number] {
 }
 
 #joinPage{
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-top: 30px;
 }
@@ -1131,6 +1185,17 @@ input[type=number] {
   color: red;
 }
 
+#joinDecoration h3{
+  text-align: center;
+}
+
+
+#joinDecoration p{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 #errors p{
   margin-bottom: 0;
 }
@@ -1144,10 +1209,23 @@ input[type=number] {
   #joinDecoration, #joinInfo{
     display: block;
     width: 90%;
+    margin: auto;
   }
 
   #joinWrapper{
     padding-bottom: 10px;
+  }
+
+  #joinInfo #submitLink{
+    width: 100%;
+  }
+
+  #joinPage #errors{
+    border: white 3px solid;
+  }
+
+  #joinDecoration p{
+    margin-bottom: 30px;
   }
 }
 
