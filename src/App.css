@@ -854,6 +854,22 @@ a.social:hover {
     margin-top: 30px;
     padding: 20px;
   }
+
+  #EofMonthInfo{
+    width: 90%;
+    height: auto;
+  }
+
+  #EofMonth #rot-buttons a, #rot-text h2{
+    font-size: 45px;
+  }
+}
+
+@media only screen and (max-width: 590px){
+  #EofMonth #EofMonthFace{
+    width: 80%;
+    height: auto;
+  }
 }
 
 /*Styling for Login Box*/

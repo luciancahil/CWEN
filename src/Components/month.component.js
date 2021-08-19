@@ -109,7 +109,7 @@ class Month extends React.Component {
                             (<div/>)}
                     </div>
                     
-
+                    <br/>
                     {  
                         (this.state.admin) ?
                             (<a href="/edit_month"><button>Edit page</button></a>) : (<div/>)
