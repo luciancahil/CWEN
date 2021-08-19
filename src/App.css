@@ -1021,6 +1021,19 @@ a.social:hover {
   margin: 0;
 }
 
+
+
+
+@media only screen and (max-width: 1000px){
+  #teamMembers .teamMember{
+    display: block;
+  }
+
+  #teamMembers .teamMember{
+    width: 100%;
+  }
+}
+
 #services{
   width: 60%;
   margin:auto;
