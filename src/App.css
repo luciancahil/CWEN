@@ -602,8 +602,11 @@ a.social:hover {
 
 @media only screen and (max-width: 490px){
   .social-container{
-    padding: 1
-    0px;
+    padding: 10px 0;
+  }
+
+  .footPart button{
+    width: 70px;
   }
 }
 
