@@ -191,6 +191,8 @@ nav .vline {
   #Homepage #Homepage_Banner, #Homepage_Banner_Image{
     height: 350px;
   }
+
+
 }
 
 #Homepage #Slogan{
@@ -334,10 +336,12 @@ nav .vline {
     padding: 0;
   }
 
-  
-
   .StairRight{
     margin-top: 50px;
+  }
+
+  #HomeStairs .StairRight .SR-TextWrapper p, .SL-TextWrapper p{
+    margin: auto;
   }
 }
 #rotation{
@@ -540,6 +544,10 @@ nav .vline {
     display: block;
     width: 90%;
     margin: auto; 
+  }
+
+  #footer{
+    width: 100%;
   }
 }
 
@@ -861,7 +869,7 @@ a.social:hover {
   }
 
   #EofMonth #rot-buttons a, #rot-text h2{
-    font-size: 45px;
+    font-size: 40px;
   }
 }
 
