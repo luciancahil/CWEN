@@ -459,6 +459,11 @@ nav .vline {
   -moz-transition: all 2s ease-in-out; /** Firefox **/
   -o-transition: all 2s ease-in-out; /** Opera **/
 }
+@media only screen and (max-width: 1050px){
+  #rotation{
+    width: 90%;
+  }
+}
 
 #foot-wrapper{
   background-color: black;
