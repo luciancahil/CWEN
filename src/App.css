@@ -64,6 +64,40 @@ nav .vline {
   margin: 0 15;
 }
 
+@media only screen and (max-width: 590px){
+  nav button{
+    float: right;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 40px;
+
+  }
+
+  nav button:active{
+    background-color: red;
+    color: black;
+  }
+
+  nav #mobileLinks{
+    background-color: black;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    z-index: 1;
+  }
+
+  nav #mobileLinks a{
+    font-size: 50px;
+    padding: 0 20px;
+  }
+
+  nav a:hover{
+    text-decoration: underline;
+  }
+}
+
+
 #Homepage_Banner_Text a, #signupButton{
   text-decoration: none;
 }
@@ -110,6 +144,7 @@ nav .vline {
 }
 
 
+
 #Homepage #Homepage_Banner #Homepage_Banner_Image #banner_square{
   height: 100%;
   position: relative;
@@ -124,6 +159,38 @@ nav .vline {
   top: 80px;
   right: 22%;
   height: 50%;
+}
+
+@media only screen and (max-width:1080px){
+  #Homepage_Banner_Image img{
+    display: none;
+  }
+
+  #Homepage_Banner_Text{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+
+  #Homepage_Banner_Text p{
+    width: 100%;
+    margin: auto;
+    padding: 30px 0;
+  }
+
+  #Homepage #Homepage_Banner #Homepage_Banner_Text{
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  #Homepage #Homepage_Banner_Text{
+    float: none;
+    width: 100%;
+  }
+
+  #Homepage #Homepage_Banner, #Homepage_Banner_Image{
+    height: 350px;
+  }
 }
 
 #Homepage #Slogan{
@@ -142,6 +209,13 @@ nav .vline {
 
 #Homepage #Slogan #second_line{
   font-style:italic;
+}
+
+
+@media only screen and (max-width: 470px){
+  #Homepage #Slogan{
+    margin-top: 30px;
+  }
 }
 
 
@@ -218,6 +292,54 @@ nav .vline {
   margin-top: 10%;
 }
 
+
+@media only screen and (max-width: 1110px){
+  .SR-Pic, .SL-Pic, .SR-TextWrapper, .SL-TextWrapper{
+    display: block;
+  }
+
+  #HomeStairs .StairRight, .StairLeft{
+    height: auto;
+  }
+
+  .SR-TextWrapper{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 10%;
+    margin-top: 0px;
+  }
+  
+  .SR-Pic{
+    width: 70%;
+    margin: auto;
+  }
+
+  .StairRight img{
+    width: 100%;
+    height: auto;
+  }
+
+  .SR-Text{
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  #HomeStairs .StairRight .SR-TextWrapper p{
+    padding: 0;
+  }
+
+  #HomeStairs .StairRight .SR-TextWrapper h2{
+    margin-top: 0px;
+    margin: auto;
+    padding: 0;
+  }
+
+  
+
+  .StairRight{
+    margin-top: 50px;
+  }
+}
 #rotation{
   white-space: nowrap;
   overflow: hidden;
@@ -337,6 +459,11 @@ nav .vline {
   -moz-transition: all 2s ease-in-out; /** Firefox **/
   -o-transition: all 2s ease-in-out; /** Opera **/
 }
+@media only screen and (max-width: 1050px){
+  #rotation{
+    width: 90%;
+  }
+}
 
 #foot-wrapper{
   background-color: black;
@@ -390,6 +517,20 @@ nav .vline {
   padding-bottom: 10px;
 }
 
+@media only screen and (max-width: 1050px){
+  .footPart{
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 760px){
+  .footPart{
+    display: block;
+    width: 90%;
+    margin: auto; 
+  }
+}
+
 #Miscellaneous a{
   text-decoration: none;
   display: inline-block;
@@ -404,7 +545,7 @@ nav .vline {
 .social-container {
   background: black;
   padding: 25px 50px;
-  width: 40%;
+  width: 100%;
   margin: 0;
   box-sizing:border-box;
 
@@ -446,6 +587,14 @@ a.social:hover {
 .social-container a{
   color:grey;
 }
+
+@media only screen and (max-width: 490px){
+  .social-container{
+    padding: 1
+    0px;
+  }
+}
+
 
 
 /* The next bit is the rich text editor */
@@ -548,6 +697,7 @@ a.social:hover {
   display:inline-block;
   background-color: 	#ffd7b5;
   height: 550px;
+  vertical-align: top;
 }
 
 
@@ -562,10 +712,6 @@ a.social:hover {
   height: 550px;
 }
 
-.projectText{
-  display:inline-block;
-  vertical-align: top;
-}
 
 #loading{
   margin-bottom: 400px;
@@ -587,11 +733,12 @@ a.social:hover {
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  width: 23%;
+  width: 23%
 }
 
 .allProject #signupButton{
   margin:auto;
+  text-align: center;
 }
 
 #CWENMeets img{
@@ -610,6 +757,8 @@ a.social:hover {
   width: 75%;
   margin: auto;
 }
+
+
 
 #CWENMeets #signupButton{
   width: 75%;
@@ -655,6 +804,42 @@ a.social:hover {
   display: inline-block;
 }
 
+
+@media only screen and (max-width: 910px){
+  .projectText{
+    width:100%;
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .ProjectTextWrapper{
+    height:auto;
+  }
+  
+  .project img{
+    width: 100%;
+  }
+
+  .allProject #signupButton{
+    margin-top: 20px;
+  }
+
+  .allProject #buttonwrap{
+    width: 50%;
+  }
+
+  #CWENMeets img{
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+  }
+
+  #CWENMeets .projectText{
+    height: auto;
+    margin-top: 30px;
+    padding: 20px;
+  }
+}
 
 /*Styling for Login Box*/
 .Box{
@@ -940,6 +1125,17 @@ input[type=number] {
   margin: 0;
 }
 
+@media only screen and (max-width: 900px){
+  #joinDecoration, #joinInfo{
+    display: block;
+    width: 90%;
+  }
+
+  #joinWrapper{
+    padding-bottom: 10px;
+  }
+}
+
 #contactPage{
   width: 80%;
   margin: auto;
@@ -975,12 +1171,19 @@ input[type=number] {
   color:white;
   border-radius: 3px;
   width: 10%;
+  padding: 3px;
   text-align: center;
 }
 
 #contactPage #submitLink:active{
   background-color: orange;
   color:#800000;
+}
+
+@media only screen and (max-width: 800px){
+  #contactPage #submitLink{
+    width: 25%;
+  }
 }
 
 

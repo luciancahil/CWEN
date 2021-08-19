@@ -1,8 +1,34 @@
 import React from 'react';
+import StairRight from "./stairRight.component"
 
 class StairLeft extends React.Component { 
+    constructor(props){
+        super(props);
+    
+        this.state ={
+          width: window.innerWidth,
+        }
+    
+        this.updateDimensions = this.updateDimensions.bind(this);
+      }
+    
+      componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+      }
+    
+      updateDimensions(){
+        this.setState({
+          width: window.innerWidth
+        })
+      }
+
     render() {
         let url = "/projects?projectName=" + this.props.Heading.replaceAll(" ", "+").replaceAll("!","");
+
+        // when width too small
+        if(window.innerWidth <= 1110){
+            return <StairRight Heading = {this.props.Heading} Blurb = {this.props.Blurb} pic = {this.props.pic}/>
+        }
 
         return (
             <div className = "StairLeft">

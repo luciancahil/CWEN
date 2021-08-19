@@ -27,8 +27,6 @@ class HomePage extends React.Component {
   The rest is self-explanatory
   */
   render() {
-    
-
     return (
       <div id = "Homepage">
         <Banner/>
