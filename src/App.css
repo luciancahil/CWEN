@@ -1097,7 +1097,7 @@ input[type=number] {
 }
 
 #joinPage{
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-top: 30px;
 }
@@ -1168,6 +1168,17 @@ input[type=number] {
   color: red;
 }
 
+#joinDecoration h3{
+  text-align: center;
+}
+
+
+#joinDecoration p{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 #errors p{
   margin-bottom: 0;
 }
@@ -1181,6 +1192,7 @@ input[type=number] {
   #joinDecoration, #joinInfo{
     display: block;
     width: 90%;
+    margin: auto;
   }
 
   #joinWrapper{
@@ -1189,6 +1201,14 @@ input[type=number] {
 
   #joinInfo #submitLink{
     width: 100%;
+  }
+
+  #joinPage #errors{
+    border: white 3px solid;
+  }
+
+  #joinDecoration p{
+    margin-bottom: 30px;
   }
 }
 
