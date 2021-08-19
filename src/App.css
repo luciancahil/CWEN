@@ -1166,12 +1166,19 @@ input[type=number] {
   color:white;
   border-radius: 3px;
   width: 10%;
+  padding: 3px;
   text-align: center;
 }
 
 #contactPage #submitLink:active{
   background-color: orange;
   color:#800000;
+}
+
+@media only screen and (max-width: 800px){
+  #contactPage #submitLink{
+    width: 25%;
+  }
 }
 
 
