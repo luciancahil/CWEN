@@ -192,6 +192,7 @@ nav .vline {
     height: 350px;
   }
 
+  
 
 }
 
@@ -782,7 +783,6 @@ a.social:hover {
 }
 
 
-
 #CWENMeets #signupButton{
   width: 75%;
 }
@@ -841,9 +841,13 @@ a.social:hover {
   
   .project img{
     width: 100%;
+    height: auto;
   }
 
   .allProject #signupButton{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
     margin-top: 20px;
   }
 
@@ -870,6 +874,19 @@ a.social:hover {
 
   #EofMonth #rot-buttons a, #rot-text h2{
     font-size: 40px;
+  }
+
+  .project{
+    height: auto;
+  }
+
+  .project h2{
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .project p{
+    width: 85%;
   }
 }
 

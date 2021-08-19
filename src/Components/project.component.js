@@ -115,7 +115,9 @@ class Project extends React.Component {
                             )]
                         
                     ): (
+                        
                         <div id = "buttonwrap">
+                            <br/>
                             <a id = "signupButton" href = "/join">BECOME A MEMBER</a>
                             
                         </div>
