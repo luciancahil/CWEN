@@ -107,7 +107,7 @@ class Project extends React.Component {
                                     <img src = "https://cwen-storage.s3.us-east-2.amazonaws.com/CWEN+Meets.jpg" alt = "#CWEN Meets"/>
                                     <div className = "projectText">
                                         <div className = "ProjectTextWrapper">
-                                            <h2>#CWENMeets</h2>
+                                            <h2>#CWENMEETS</h2>
                                             <p>Launched in May 2019, these are small intimate events hosted by women entrepreneurs at their business premises or homes. The goal is to drive sales, increase leads and most importantly partnership amongst the women entrepreneurs.</p>
                                         </div>
                                     </div>
