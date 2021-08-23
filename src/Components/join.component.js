@@ -10,7 +10,7 @@ class Join extends React.Component {
             Name: "",
             Phone: "",
             Email: "",
-            Buisness: "",
+            business: "",
             Description: "",
             Region: "",
             District: "",
@@ -22,7 +22,7 @@ class Join extends React.Component {
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangePhone = this.onChangePhone.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeBuisness = this.onChangeBuisness.bind(this);
+        this.onChangebusiness = this.onChangebusiness.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeRegion = this.onChangeRegion.bind(this);
         this.onChangeDistrict = this.onChangeDistrict.bind(this);
@@ -59,11 +59,11 @@ class Join extends React.Component {
         
     }
 
-    onChangeBuisness(e){
+    onChangebusiness(e){
         e.preventDefault();
 
         this.setState({
-            Buisness: e.target.value
+            business: e.target.value
         })
         
     }
@@ -111,7 +111,7 @@ class Join extends React.Component {
         let URL = "https://cwen-backend.herokuapp.com/join?name=" + this.state.Name.replaceAll(" ", "+")
         + "&email=" + this.state.Email.replaceAll(" ", "+")
         + "&phoneNum=" + this.state.Phone.replaceAll(" ", "+")
-        + "&buisness=" + this.state.Buisness.replaceAll(" ", "+")
+        + "&business=" + this.state.business.replaceAll(" ", "+")
         + "&description=" + this.state.Description.replaceAll(" ", "+")
         + "&region=" + this.state.Region.replaceAll(" ", "+")
         + "&district=" + this.state.District.replaceAll(" ", "+")
@@ -181,8 +181,8 @@ class Join extends React.Component {
                         <input type = "text" id = "District" value={this.state.District} onChange={this.onChangeDistrict}/>
                         <h3>Town</h3>
                         <input type = "text" id = "Town" value={this.state.Town} onChange={this.onChangeTown}/>
-                        <h3>Buisness Name</h3>
-                        <input type = "text" id = "Buisness" value={this.state.Buisness} onChange={this.onChangeBuisness}/>
+                        <h3>Business Name</h3>
+                        <input type = "text" id = "business" value={this.state.business} onChange={this.onChangebusiness}/>
                         <h3>Tell us about your buissness!</h3>
                         <textarea rows="3" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
                         <br/>
