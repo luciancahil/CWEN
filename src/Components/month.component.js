@@ -31,7 +31,7 @@ class Month extends React.Component {
         if(this.props.checkProps){
             this.getFromProps();
         }else{
-            this.getFromAWS();
+           // this.getFromAWS();
             this.getFromAWSNew();
         }
     }
@@ -94,21 +94,49 @@ class Month extends React.Component {
 
         fetch(infoURL)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {
+                this.setState({
+                    name: data.name,
+                    buisiness: data.company,
+                    pic: data.picURL,
+                    status: "info"
+                });
+            });
 
         fetch(blurbURL)
             .then(response => response.text())
-            .then(data => console.log(data));
+            .then(text => {
+                console.log(text);
+                this.setState({
+                    blurb: text,
+                    status: "info"
+                })
+            });
 
         fetch(productsURL)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {
+                let fetchingProducts = [];
+
+                for(let q = 0; q < data.products.length; q++){
+                    fetchingProducts[q] = {
+                        image: data.products[q],
+                        heading : "",
+                        blub : "",
+                        link : ""
+                    }
+                }
+                this.setState({
+                    products: fetchingProducts,
+                    status: "products"
+                });
+            });
     }
 
 
     
     render() {
-        console.log(this.state.status);
+        console.log(this.state.blurb);
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>
@@ -123,6 +151,7 @@ class Month extends React.Component {
                         <div id = "EofMonthText">
                             <h2>{this.state.name}</h2>
                             <h3><em>{this.state.buisiness}</em></h3>
+                            <p key = {this.state.blurb}>{this.state.blurb}</p>
                         </div>
                         <Rotation key = {this.state.products} type = "Products" parts = {this.state.products}/>
                     </div>
