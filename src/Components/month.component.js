@@ -17,12 +17,14 @@ class Month extends React.Component {
           pic: "",
           products: [],
           status: "none",
-          admin: isAdmin
+          admin: isAdmin,
+          blurb: ""
         };
 
 
         this.getFromAWS = this.getFromAWS.bind(this);
         this.getFromProps = this.getFromProps.bind(this);
+        this.getFromAWSNew = this.getFromAWSNew.bind(this);
     }
 
     componentDidMount(){
@@ -30,6 +32,7 @@ class Month extends React.Component {
             this.getFromProps();
         }else{
             this.getFromAWS();
+            this.getFromAWSNew();
         }
     }
 
@@ -59,8 +62,6 @@ class Month extends React.Component {
         fetch(entrepreurURL)
             .then(response => response.json())
             .then(data => {
-                console.log(data.products);
-
                 this.setState({
                     name: data.name,
                     buisiness: data.company,
@@ -83,6 +84,25 @@ class Month extends React.Component {
                 
             })
             .catch(err => console.log(err));
+    }
+
+
+    getFromAWSNew(){
+        let infoURL = "https://cwen-backend.herokuapp.com/eOfMonthInfo";
+        let blurbURL = "https://cwen-backend.herokuapp.com/eOfMonthBlurb";
+        let productsURL = "https://cwen-backend.herokuapp.com/eOfMonthProducts";
+
+        fetch(infoURL)
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+        fetch(blurbURL)
+            .then(response => response.text())
+            .then(data => console.log(data));
+
+        fetch(productsURL)
+            .then(response => response.json())
+            .then(data => console.log(data));
     }
 
 
