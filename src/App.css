@@ -827,6 +827,21 @@ a.social:hover {
   display: inline-block;
 }
 
+#EofMonth #monthBlurb{
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  width: 80%;
+  margin: auto;
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 1060px){
+  #EofMonthInfo{
+    height: auto;
+    margin: auto;
+    display: block;
+  }
+}
+
 
 @media only screen and (max-width: 910px){
   .projectText{

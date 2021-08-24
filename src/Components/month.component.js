@@ -97,7 +97,6 @@ class Month extends React.Component {
 
     
     render() {
-        console.log(this.state.blurb);
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>
@@ -111,10 +110,10 @@ class Month extends React.Component {
                     <div id = "EofMonthInfo">
                         <div id = "EofMonthText">
                             <h2>{this.state.name}</h2>
-                            <h3><em>{this.state.buisiness}</em></h3>
-                            <p key = {this.state.blurb}>{this.state.blurb}</p>
+                            <h3><em>{this.state.buisiness}</em></h3>   
                         </div>
                         <Rotation key = {this.state.products} type = "Products" parts = {this.state.products}/>
+                        <p id = "monthBlurb" key = {this.state.blurb}>{this.state.blurb}</p>
                     </div>
                     
                     <br/>
