@@ -24,15 +24,13 @@ class Month extends React.Component {
 
         this.getFromAWS = this.getFromAWS.bind(this);
         this.getFromProps = this.getFromProps.bind(this);
-        this.getFromAWSNew = this.getFromAWSNew.bind(this);
     }
 
     componentDidMount(){
         if(this.props.checkProps){
             this.getFromProps();
         }else{
-           // this.getFromAWS();
-            this.getFromAWSNew();
+            this.getFromAWS();
         }
     }
 
@@ -51,43 +49,6 @@ class Month extends React.Component {
 
     // used to get information from AWS. Default use
     getFromAWS(){
-        // url to get entrepreur information
-        let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
-
-        // product array we will place in state
-        let fetchingProducts = [];
-
-
-        // get information of the entreprenur herself
-        fetch(entrepreurURL)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    name: data.name,
-                    buisiness: data.company,
-                    pic: data.picURL,
-                    status: "info"
-                });
-
-                for(let q = 0; q < data.products.length; q++){
-                    fetchingProducts[q] = {
-                        image: data.products[q],
-                        heading : "",
-                        blub : "",
-                        link : ""
-                    }
-                }
-                this.setState({
-                    products: fetchingProducts,
-                    status: "products"
-                });
-                
-            })
-            .catch(err => console.log(err));
-    }
-
-
-    getFromAWSNew(){
         let infoURL = "https://cwen-backend.herokuapp.com/eOfMonthInfo";
         let blurbURL = "https://cwen-backend.herokuapp.com/eOfMonthBlurb";
         let productsURL = "https://cwen-backend.herokuapp.com/eOfMonthProducts";
