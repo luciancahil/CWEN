@@ -16,8 +16,9 @@ class Month extends React.Component {
           buisiness: "",
           pic: "",
           products: [],
-          status: "none",
-          admin: isAdmin
+          status: "s",
+          admin: isAdmin,
+          blurb: ""
         };
 
 
@@ -48,25 +49,35 @@ class Month extends React.Component {
 
     // used to get information from AWS. Default use
     getFromAWS(){
-        // url to get entrepreur information
-        let entrepreurURL = "https://cwen-backend.herokuapp.com/eOfMonth";
+        let infoURL = "https://cwen-backend.herokuapp.com/eOfMonthInfo";
+        let blurbURL = "https://cwen-backend.herokuapp.com/eOfMonthBlurb";
+        let productsURL = "https://cwen-backend.herokuapp.com/eOfMonthProducts";
 
-        // product array we will place in state
-        let fetchingProducts = [];
-
-
-        // get information of the entreprenur herself
-        fetch(entrepreurURL)
+        fetch(infoURL)
             .then(response => response.json())
             .then(data => {
-                console.log(data.products);
-
                 this.setState({
                     name: data.name,
                     buisiness: data.company,
                     pic: data.picURL,
                     status: "info"
                 });
+            });
+
+        fetch(blurbURL)
+            .then(response => response.text())
+            .then(text => {
+                console.log(text);
+                this.setState({
+                    blurb: text,
+                    status: "info"
+                })
+            });
+
+        fetch(productsURL)
+            .then(response => response.json())
+            .then(data => {
+                let fetchingProducts = [];
 
                 for(let q = 0; q < data.products.length; q++){
                     fetchingProducts[q] = {
@@ -80,15 +91,12 @@ class Month extends React.Component {
                     products: fetchingProducts,
                     status: "products"
                 });
-                
-            })
-            .catch(err => console.log(err));
+            });
     }
 
 
     
     render() {
-        console.log(this.state.status);
         if(this.state.status === "none"){
             // still fetching information
             return <p id = "loading">loading...</p>
@@ -102,11 +110,10 @@ class Month extends React.Component {
                     <div id = "EofMonthInfo">
                         <div id = "EofMonthText">
                             <h2>{this.state.name}</h2>
-                            <h3><em>{this.state.buisiness}</em></h3>
+                            <h3><em>{this.state.buisiness}</em></h3>   
                         </div>
-                        {(this.state.status === "products")?
-                            (<Rotation key = {this.state.products} type = "Products" parts = {this.state.products}/>):
-                            (<div/>)}
+                        <Rotation key = {this.state.products} type = "Products" parts = {this.state.products}/>
+                        <p id = "monthBlurb" key = {this.state.blurb}>{this.state.blurb}</p>
                     </div>
                     
                     <br/>
