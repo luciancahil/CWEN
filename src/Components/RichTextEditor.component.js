@@ -10,11 +10,13 @@ class RichTextEditor extends React.Component {
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
-      uploadedImages: []
+      uploadedImages: [],
+      title: ""
     };
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
   }
 
   onEditorStateChange(editorState){
@@ -26,6 +28,7 @@ class RichTextEditor extends React.Component {
     // look at entity map for image information 
     console.log(convertToRaw(this.state.editorState.getCurrentContent()));
     console.log(this.state.uploadedImages);
+    console.log("title: " + this.state.title);
 
     /*
     Uploading Steps:
@@ -89,7 +92,15 @@ class RichTextEditor extends React.Component {
         resolve({ data: { link: imageObject.localSrc } });
       }
     );
-    } 
+  } 
+
+  onChangeTitle(e){
+    e.preventDefault();
+
+    this.setState({
+      title: e.target.value
+    })
+  }
     
 
     render() {
@@ -97,7 +108,7 @@ class RichTextEditor extends React.Component {
       return (
         
         <div className='editor'>
-          <input type = "text" id = "articleTitle" placeholder = "Title"></input>
+          <input type = "text" id = "articleTitle" placeholder = "Title" value = {this.state.title} onChange = {this.onChangeTitle}></input>
           <div id = "mainPhoto">
             <label for="articleHeader">Choose a main photo:</label><br/>
             <input type = "file" id = "articleHeader"/>
