@@ -11,12 +11,15 @@ class RichTextEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       uploadedImages: [],
-      title: ""
+      title: "",
+      pic: "",
+      picData: ""
     };
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangePic = this.onChangePic.bind(this);
   }
 
   onEditorStateChange(editorState){
@@ -101,42 +104,55 @@ class RichTextEditor extends React.Component {
       title: e.target.value
     })
   }
+
+  onChangePic(e){
+    e.preventDefault();
+    let data = new FormData();
+    let file = e.target.files[0];
+
+    data.append('pic', file, file.name)
+
+    this.setState({
+        pic: URL.createObjectURL(e.target.files[0]),
+        picData: e.target.files[0]
+    })
+  }
     
 
-    render() {
-      const { editorState } = this.state;
-      return (
+  render() {
+    const { editorState } = this.state;
+    return (
         
-        <div className='editor'>
-          <input type = "text" id = "articleTitle" placeholder = "Title" value = {this.state.title} onChange = {this.onChangeTitle}></input>
-          <div id = "mainPhoto">
-            <label for="articleHeader">Choose a main photo:</label><br/>
-            <input type = "file" id = "articleHeader"/>
-          </div>
-          <div id = "trueEditor">
-            <Editor
-              editorState={editorState}
-              onEditorStateChange={this.onEditorStateChange}
-              //onContentStateChange = {this.onContentStateChange}    
-              toolbar={{
-                inline: { inDropdown: true },
-                list: { inDropdown: true },
-                textAlign: { inDropdown: true },
-                link: { inDropdown: true },
-                history: { inDropdown: true },
-                image: { 
-                  uploadCallback: this.uploadImageCallBack, 
-                  alt: { present: true, mandatory: false }, 
-                  previewImage: false,
-                },
-              }}
-            />
-          </div>
-          <button>Preview</button>
-          <button>Save</button>
+      <div className='editor'>
+        <input type = "text" id = "articleTitle" placeholder = "Title" value = {this.state.title} onChange = {this.onChangeTitle}></input>
+        <div id = "mainPhoto">
+          <label for="articleHeader">Choose a main photo:</label><br/>
+          <input type = "file" id = "articleHeader" onChange = {this.onChangePic}/>
         </div>
-      );
-    }
+        <div id = "trueEditor">
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={this.onEditorStateChange}
+            //onContentStateChange = {this.onContentStateChange}    
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+              image: { 
+                uploadCallback: this.uploadImageCallBack, 
+                alt: { present: true, mandatory: false }, 
+                previewImage: false,
+              },
+            }}
+          />
+        </div>
+        <button>Preview</button>
+        <button>Save</button>
+      </div>
+    );
   }
+}
 
-  export default RichTextEditor;
+export default RichTextEditor;
