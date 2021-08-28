@@ -736,6 +736,16 @@ div.rdw-editor-toolbar{
   margin: 30px 0;
 }
 
+.editor #mainPhoto{
+  margin-top: 30px;
+}
+
+.editor button{
+  margin-right: 40px;
+  text-align: center;
+  padding: 0 10px;
+}
+
 .project{
   width: 100%;
   height: 550px;
@@ -1157,6 +1167,8 @@ div.rdw-editor-toolbar{
   width: 85%;
   margin: auto;
 }
+
+
 
 /*Join */
 

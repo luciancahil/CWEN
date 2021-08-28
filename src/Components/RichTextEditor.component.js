@@ -98,6 +98,10 @@ class RichTextEditor extends React.Component {
         
         <div className='editor'>
           <input type = "text" id = "articleTitle" placeholder = "Title"></input>
+          <div id = "mainPhoto">
+            <label for="articleHeader">Choose a main photo:</label><br/>
+            <input type = "file" id = "articleHeader"/>
+          </div>
           <div id = "trueEditor">
             <Editor
               editorState={editorState}
