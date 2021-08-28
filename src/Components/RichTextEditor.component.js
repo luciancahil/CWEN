@@ -97,24 +97,26 @@ class RichTextEditor extends React.Component {
       return (
         
         <div className='editor'>
-          <input type = "text" id = "articleTitle"></input>
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={this.onEditorStateChange}
-            //onContentStateChange = {this.onContentStateChange}    
-            toolbar={{
-              inline: { inDropdown: true },
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: true },
-              image: { 
-                uploadCallback: this.uploadImageCallBack, 
-                alt: { present: true, mandatory: false }, 
-                previewImage: false,
-              },
-            }}
-          />
+          <input type = "text" id = "articleTitle" placeholder = "Title"></input>
+          <div id = "trueEditor">
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={this.onEditorStateChange}
+              //onContentStateChange = {this.onContentStateChange}    
+              toolbar={{
+                inline: { inDropdown: true },
+                list: { inDropdown: true },
+                textAlign: { inDropdown: true },
+                link: { inDropdown: true },
+                history: { inDropdown: true },
+                image: { 
+                  uploadCallback: this.uploadImageCallBack, 
+                  alt: { present: true, mandatory: false }, 
+                  previewImage: false,
+                },
+              }}
+            />
+          </div>
           <button>Preview</button>
           <button>Save</button>
         </div>

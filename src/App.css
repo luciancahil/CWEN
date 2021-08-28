@@ -690,12 +690,15 @@ a.social:hover {
 .editor{
   width: 80%;
   margin: auto;
+  margin-top: 30px;
 }
 
   
 .editor h2{
   text-align:center;
 }
+
+
 
 div.DraftEditor-root {
   border: 1px solid #000;
@@ -706,6 +709,27 @@ div.DraftEditor-root {
 div.DraftEditor-editorContainer,
 div.public-DraftEditor-content {
   height: 100%;
+}
+
+.editor #articleTitle{
+  font-size: 50px;
+  margin-top: 20px;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+div.rdw-editor-toolbar, div.rdw-option-wrapper, div.rdw-history-dropdown, div.rdw-dropdown-selectedtext, div.rdw-dropdown-wrapper{
+  border: 1px solid #000;
+}
+
+div.rdw-editor-toolbar{
+  background-color: orange;
+}
+
+
+#trueEditor{
+  margin: 30px 0;
 }
 
 .project{
@@ -726,7 +750,7 @@ div.public-DraftEditor-content {
   font-family: Arial, sans-serif;
   font-size: 17px;
   width: 100%;
-  margin-top: 50px;
+  margin-bottom: 50px;
   width: 60%;
   vertical-align: bottom;
 }
