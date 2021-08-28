@@ -60,7 +60,7 @@ class RichTextEditor extends React.Component {
       contentState,
     });
 
-    console.log(convertToRaw(this.state.contentState.getCurrentContent()));
+    console.log(convertToRaw(this.state.contentState.getCurrentContent().json()));
   };
 
   uploadImageCallBack(file) {
@@ -97,6 +97,7 @@ class RichTextEditor extends React.Component {
       return (
         
         <div className='editor'>
+          <input type = "text" id = "articleTitle"></input>
           <Editor
             editorState={editorState}
             onEditorStateChange={this.onEditorStateChange}
@@ -114,6 +115,8 @@ class RichTextEditor extends React.Component {
               },
             }}
           />
+          <button>Preview</button>
+          <button>Save</button>
         </div>
       );
     }

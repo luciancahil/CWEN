@@ -687,10 +687,25 @@ a.social:hover {
   color: #5890ff;
 }
 
+.editor{
+  width: 80%;
+  margin: auto;
+}
 
   
 .editor h2{
   text-align:center;
+}
+
+div.DraftEditor-root {
+  border: 1px solid #000;
+  height: 200px;
+  overflow-y: auto;
+}
+
+div.DraftEditor-editorContainer,
+div.public-DraftEditor-content {
+  height: 100%;
 }
 
 .project{
