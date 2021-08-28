@@ -702,7 +702,7 @@ a.social:hover {
 
 div.DraftEditor-root {
   border: 1px solid #000;
-  height: 200px;
+  min-height: 600px;
   overflow-y: auto;
 }
 
@@ -727,6 +727,10 @@ div.rdw-editor-toolbar{
   background-color: orange;
 }
 
+div.rdw-editor-toolbar{
+  margin-bottom: 0;
+  border-bottom: none;
+}
 
 #trueEditor{
   margin: 30px 0;
