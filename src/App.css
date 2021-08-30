@@ -732,6 +732,12 @@ div.rdw-editor-toolbar{
   border-bottom: none;
 }
 
+/*Color of selected option*/
+li.rdw-dropdownoption-active {
+  background: lightcoral;
+  color: white;
+}
+
 #trueEditor{
   margin: 30px 0;
 }

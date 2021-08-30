@@ -33,9 +33,10 @@ class RichTextEditor extends React.Component {
     });
     
     // look at entity map for image information 
-    console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
-    console.log(this.state.uploadedImages);
-    console.log("title: " + this.state.title);
+      //console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
+      console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+      console.log(this.state.uploadedImages);
+   // console.log("title: " + this.state.title);
 
     /*
     Uploading Steps:
@@ -126,27 +127,58 @@ class RichTextEditor extends React.Component {
     // first, we add the content state as JSON
     // then, we store the main image at the top of the article
     let fd = new FormData();
+    let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
 
     //TODO CHANGE THIS
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "localhost:4000/saveMonth?token=" + localStorage.getItem("token") + "&title=" + sanitizedTitle
+    let url = "http://localhost:4000/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
 
 
     // the content state storing information about blog text
-    console.log("hi");
-    fd.append('data', JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
+    
+    fd.append('data', JSON.stringify(rawContentObj));
 
     fd.append('mainPhoto', this.state.pic);
 
 
-    for(let i = 0; i < this.state.uploadedImages.length(); i++){
+
+    /*
+    All images will be in the uploadedImages array, including deleted and un uploaded images.
+    To check if they should be there, check the entitymap.data.src in the content state. Only 
+    imates that appear there should be uploaded
+    */
+    let imageSrcSets = new Set();
+
+    console.log(rawContentObj.entityMap[0]);
+    console.log(rawContentObj.entityMap[3]);
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      console.log("Entity: " + entity.data.src);
+      imageSrcSets.add(entity.data.src);
+    }
+
+    console.log("set: " + Array.from(imageSrcSets));
+
+    for(let i = 0; i < this.state.uploadedImages.length; i++){
       fd.append('photos', this.state.uploadedImages[i]);
     }
 
-    
-    console.log(fd)
+/*
+    console.log("fetching");
+    fetch(url, {
+      method: 'POST',
+      body: fd,
+    })
+      .then(response => response.text())
+      .then(data => {
+          console.log(data);
+      });*/
   }
     
 
