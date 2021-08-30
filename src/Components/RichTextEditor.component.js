@@ -29,16 +29,22 @@ class RichTextEditor extends React.Component {
     let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
     tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
 
-    fetch(tokenCheckURL)
-            .then(response => response.text())
-            .then(data =>{
-              console.log(data.title !== "admin" && data.title !== "writer");
-                if(data.title !== "admin" && data.title !== "writer"){
-                    this.setState({
-                        isWriter: false
-                    })
-                }
+    if(token === null){
+      this.setState({
+        isWriter: false
+     })
+    }else{
+      fetch(tokenCheckURL)
+        .then(response => response.json())
+        .then(data =>{
+          console.log(data)
+          if(data.title !== "admin" && data.title !== "writer"){
+            this.setState({
+              isWriter: false
+            })
+          }
         })
+      }
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
