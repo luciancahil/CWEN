@@ -34,8 +34,8 @@ class RichTextEditor extends React.Component {
     
     // look at entity map for image information 
       //console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
-      console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-      console.log(this.state.uploadedImages);
+     // console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+     // console.log(this.state.uploadedImages);
    // console.log("title: " + this.state.title);
 
     /*
@@ -139,9 +139,10 @@ class RichTextEditor extends React.Component {
 
     // the content state storing information about blog text
     
+    console.log(JSON.stringify(rawContentObj));
     fd.append('data', JSON.stringify(rawContentObj));
 
-    fd.append('mainPhoto', this.state.pic);
+    fd.append('mainPhoto', this.state.picData);
 
 
 
@@ -176,6 +177,9 @@ class RichTextEditor extends React.Component {
     })
       .then(response => response.text())
       .then(data => {
+          if(data === "done!"){
+            console.log("good");
+          }
           console.log(data);
       });
   }
