@@ -20,16 +20,13 @@ class RichTextEditor extends React.Component {
       errorMessage: []
     };
 
-
-  }
-
-  componentDidMount(){
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangePic = this.onChangePic.bind(this);
     this.sendData = this.sendData.bind(this);
   }
+
 
   onEditorStateChange(editorState){
     // console.log(editorState)
@@ -145,10 +142,12 @@ class RichTextEditor extends React.Component {
     }
 
 
+    this.setState({
+      errorMessage: errors
+    })
+
     if(!valid){
-      this.setState({
-        errorMessage: errors
-      })
+      
       return;
     }
     
@@ -160,7 +159,7 @@ class RichTextEditor extends React.Component {
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "http://localhost:4000/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
+    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
 
 
     // the content state storing information about blog text
