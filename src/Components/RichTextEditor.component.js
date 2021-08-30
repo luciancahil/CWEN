@@ -3,6 +3,7 @@ import {ContentState, EditorState} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
 import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import Invalid from './invalid.component';
 
 /*
   Props:
@@ -11,14 +12,33 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
+    console.log(props);
     this.state = {
       editorState: EditorState.createEmpty(),
       uploadedImages: [],
       title: "",
       pic: "",
       picData: "",
-      errorMessage: []
+      errorMessage: [],
+      isWriter: true
     };
+
+    
+
+    let token = localStorage.getItem("token");
+    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
+    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
+
+    fetch(tokenCheckURL)
+            .then(response => response.text())
+            .then(data =>{
+              console.log(data.title !== "admin" && data.title !== "writer");
+                if(data.title !== "admin" && data.title !== "writer"){
+                    this.setState({
+                        isWriter: false
+                    })
+                }
+        })
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
@@ -212,6 +232,12 @@ class RichTextEditor extends React.Component {
 
   render() {
     const { editorState } = this.state;
+
+    // invalid
+    if(!this.state.isWriter){
+      return <Invalid/>
+  }
+
     return (
         
       <div className='editor'>
