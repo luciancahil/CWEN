@@ -3,19 +3,56 @@ import {ContentState, EditorState} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
 import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import Invalid from './invalid.component';
 
-
+/*
+  Props:
+  editing will be true if we are editing a file that already exists, flase if we are making something new
+*/
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
+    console.log(props);
     this.state = {
       editorState: EditorState.createEmpty(),
-      uploadedImages: []
+      uploadedImages: [],
+      title: "",
+      pic: "",
+      picData: "",
+      errorMessage: [],
+      isWriter: true
     };
+
+    
+
+    let token = localStorage.getItem("token");
+    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
+    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
+
+    if(token === null){
+      this.setState({
+        isWriter: false
+     })
+    }else{
+      fetch(tokenCheckURL)
+        .then(response => response.json())
+        .then(data =>{
+          console.log(data)
+          if(data.title !== "admin" && data.title !== "writer"){
+            this.setState({
+              isWriter: false
+            })
+          }
+        })
+      }
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangePic = this.onChangePic.bind(this);
+    this.sendData = this.sendData.bind(this);
   }
+
 
   onEditorStateChange(editorState){
     // console.log(editorState)
@@ -24,8 +61,10 @@ class RichTextEditor extends React.Component {
     });
     
     // look at entity map for image information 
-    console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-    console.log(this.state.uploadedImages);
+      //console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
+     // console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+     // console.log(this.state.uploadedImages);
+   // console.log("title: " + this.state.title);
 
     /*
     Uploading Steps:
@@ -60,7 +99,7 @@ class RichTextEditor extends React.Component {
       contentState,
     });
 
-    console.log(convertToRaw(this.state.contentState.getCurrentContent()));
+    console.log(convertToRaw(this.state.contentState.getCurrentContent().json()));
   };
 
   uploadImageCallBack(file) {
@@ -89,14 +128,131 @@ class RichTextEditor extends React.Component {
         resolve({ data: { link: imageObject.localSrc } });
       }
     );
-    } 
+  } 
+
+  onChangeTitle(e){
+    e.preventDefault();
+
+    this.setState({
+      title: e.target.value
+    })
+  }
+
+  onChangePic(e){
+    e.preventDefault();
+    let data = new FormData();
+    let file = e.target.files[0];
+
+    data.append('pic', file, file.name)
+
+    this.setState({
+        pic: URL.createObjectURL(e.target.files[0]),
+        picData: e.target.files[0]
+    })
+  }
+
+  sendData(){
+    // first, we add the content state as JSON
+    // then, we store the main image at the top of the article
+    let valid = true;
+    let errors = [];
+
+    if(this.state.title === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a title");
+    }
+
+    if(this.state.picData === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a main image");
+    }
+
+
+    this.setState({
+      errorMessage: errors
+    })
+
+    if(!valid){
+      
+      return;
+    }
+    
+    let fd = new FormData();
+    let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
+    let upladedImageArray = this.state.uploadedImages;
+
+    //TODO CHANGE THIS
+
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+
+    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
+
+
+    // the content state storing information about blog text
+    
+    console.log(JSON.stringify(rawContentObj));
+    fd.append('data', JSON.stringify(rawContentObj));
+
+    fd.append('mainPhoto', this.state.picData);
+
+
+
+    /*
+    All images will be in the uploadedImages array, including deleted and un uploaded images.
+    To check if they should be there, check the entitymap.data.src in the content state. Only 
+    imates that appear there should be uploaded
+    */
+    let imageSrcSets = new Set();
+
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      imageSrcSets.add(entity.data.src);
+    }
+
+    //console.log(upladedImageArray[0].localSrc);
+    upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
+
+    for(let i = 0; i < upladedImageArray.length; i++){
+      fd.append('photos', upladedImageArray[i].file);
+    }
+
+
+    console.log("fetching");
+    fetch(url, {
+      method: 'POST',
+      body: fd,
+    })
+      .then(response => response.text())
+      .then(data => {
+          if(data === "done!"){
+            console.log("good");
+          }
+          console.log(data);
+      });
+  }
     
 
-    render() {
-      const { editorState } = this.state;
-      return (
+  render() {
+    const { editorState } = this.state;
+
+    // invalid
+    if(!this.state.isWriter){
+      return <Invalid/>
+  }
+
+    return (
         
-        <div className='editor'>
+      <div className='editor'>
+        <input type = "text" id = "articleTitle" placeholder = "Title" value = {this.state.title} onChange = {this.onChangeTitle}></input>
+        <div id = "mainPhoto">
+          <label for="articleHeader">Choose a main photo:</label><br/>
+          <input type = "file" id = "articleHeader" onChange = {this.onChangePic}/>
+        </div>
+        <div id = "trueEditor">
           <Editor
             editorState={editorState}
             onEditorStateChange={this.onEditorStateChange}
@@ -115,8 +271,12 @@ class RichTextEditor extends React.Component {
             }}
           />
         </div>
-      );
-    }
+        {this.state.errorMessage.map((message) => <p className = "blogError" key = {message}>{message}</p>)}
+        <button>Preview</button>
+        <button onClick = {() => this.sendData()}>Save</button>
+      </div>
+    );
   }
+}
 
-  export default RichTextEditor;
+export default RichTextEditor;

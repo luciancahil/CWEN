@@ -7,44 +7,44 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons';
 class EditMonth extends React.Component { 
     constructor(props){
         super(props);
-            let isAdmin = false;
-            let token = localStorage.getItem("token");
-            let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
-            tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
-    
-            if(localStorage.getItem("title") === "admin"){
-                isAdmin = true;
-            }
-            
-        
-            this.state = {
-              name: "",
-              buisiness: "",
-              pic: "",
-              products: [],
-              status: "none",
-              admin: isAdmin,
-              picData: null,
-              productData: [],
-              onPreview: false
-            };
+        let isAdmin = false;
+        let token = localStorage.getItem("token");
+        let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
+        tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
 
-            fetch(tokenCheckURL)
-                .then(response => response.json())
-                .then(data =>{
-                    if(data.title !== "admin"){
-                        this.setState({
-                            admin: false
-                        })
-                    }
-            })
-            
-            this.onChangeName = this.onChangeName.bind(this);
-            this.onChangeBuisness = this.onChangeBuisness.bind(this);
-            this.onChangePic = this.onChangePic.bind(this);
-            this.onChangeProducts = this.onChangeProducts.bind(this);
-            this.updateMonth = this.updateMonth.bind(this);
-    }
+        if(localStorage.getItem("title") === "admin"){
+            isAdmin = true;
+        }
+        
+
+        this.state = {
+            name: "",
+            buisiness: "",
+            pic: "",
+            products: [],
+            status: "none",
+            admin: isAdmin,
+            picData: null,
+            productData: [],
+            onPreview: false
+        };
+
+        fetch(tokenCheckURL)
+            .then(response => response.json())
+            .then(data =>{
+                if(data.title !== "admin"){
+                    this.setState({
+                        admin: false
+                    })
+                }
+        })
+        
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeBuisness = this.onChangeBuisness.bind(this);
+        this.onChangePic = this.onChangePic.bind(this);
+        this.onChangeProducts = this.onChangeProducts.bind(this);
+        this.updateMonth = this.updateMonth.bind(this);
+}
     
     
     
