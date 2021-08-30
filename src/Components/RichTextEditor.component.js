@@ -127,6 +127,12 @@ class RichTextEditor extends React.Component {
     // then, we store the main image at the top of the article
     let fd = new FormData();
 
+    //TODO CHANGE THIS
+
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+
+    let url = "localhost:4000/saveMonth?token=" + localStorage.getItem("token") + "&title=" + sanitizedTitle
+
 
     // the content state storing information about blog text
     console.log("hi");
