@@ -16,9 +16,14 @@ class RichTextEditor extends React.Component {
       uploadedImages: [],
       title: "",
       pic: "",
-      picData: ""
+      picData: "",
+      errorMessage: []
     };
 
+
+  }
+
+  componentDidMount(){
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -126,6 +131,27 @@ class RichTextEditor extends React.Component {
   sendData(){
     // first, we add the content state as JSON
     // then, we store the main image at the top of the article
+    let valid = true;
+    let errors = [];
+
+    if(this.state.title === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a title");
+    }
+
+    if(this.state.picData === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a main image");
+    }
+
+
+    if(!valid){
+      this.setState({
+        errorMessage: errors
+      })
+      return;
+    }
+    
     let fd = new FormData();
     let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
     let upladedImageArray = this.state.uploadedImages;
@@ -214,6 +240,7 @@ class RichTextEditor extends React.Component {
             }}
           />
         </div>
+        {this.state.errorMessage.map((message) => <p key = {message}>{message}</p>)}
         <button>Preview</button>
         <button onClick = {() => this.sendData()}>Save</button>
       </div>
