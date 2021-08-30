@@ -752,6 +752,10 @@ li.rdw-dropdownoption-active {
   padding: 0 10px;
 }
 
+.editor .blogError{
+  color: red;
+}
+
 .project{
   width: 100%;
   height: 550px;

@@ -240,7 +240,7 @@ class RichTextEditor extends React.Component {
             }}
           />
         </div>
-        {this.state.errorMessage.map((message) => <p key = {message}>{message}</p>)}
+        {this.state.errorMessage.map((message) => <p className = "blogError" key = {message}>{message}</p>)}
         <button>Preview</button>
         <button onClick = {() => this.sendData()}>Save</button>
       </div>
