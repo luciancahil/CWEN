@@ -4,7 +4,10 @@ import {Editor} from "react-draft-wysiwyg";
 import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-
+/*
+  Props:
+  editing will be true if we are editing a file that already exists, flase if we are making something new
+*/
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
@@ -20,6 +23,7 @@ class RichTextEditor extends React.Component {
     this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangePic = this.onChangePic.bind(this);
+    this.sendData = this.sendData.bind(this);
   }
 
   onEditorStateChange(editorState){
@@ -117,6 +121,27 @@ class RichTextEditor extends React.Component {
         picData: e.target.files[0]
     })
   }
+
+  sendData(){
+    // first, we add the content state as JSON
+    // then, we store the main image at the top of the article
+    let fd = new FormData();
+
+
+    // the content state storing information about blog text
+    console.log("hi");
+    fd.append('data', JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
+
+    fd.append('mainPhoto', this.state.pic);
+
+
+    for(let i = 0; i < this.state.uploadedImages.length(); i++){
+      fd.append('photos', this.state.uploadedImages[i]);
+    }
+
+    
+    console.log(fd)
+  }
     
 
   render() {
@@ -149,7 +174,7 @@ class RichTextEditor extends React.Component {
           />
         </div>
         <button>Preview</button>
-        <button>Save</button>
+        <button onClick = {() => this.sendData()}>Save</button>
       </div>
     );
   }
