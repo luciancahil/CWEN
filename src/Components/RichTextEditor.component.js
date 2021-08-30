@@ -162,17 +162,13 @@ class RichTextEditor extends React.Component {
     }
 
     //console.log(upladedImageArray[0].localSrc);
-
-    console.log(upladedImageArray);
-    console.log("set: " + Array.from(imageSrcSets));
     upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
-    console.log(upladedImageArray);
 
     for(let i = 0; i < upladedImageArray.length; i++){
-      fd.append('photos', upladedImageArray[i]);
+      fd.append('photos', upladedImageArray[i].file);
     }
 
-/*
+
     console.log("fetching");
     fetch(url, {
       method: 'POST',
@@ -181,7 +177,7 @@ class RichTextEditor extends React.Component {
       .then(response => response.text())
       .then(data => {
           console.log(data);
-      });*/
+      });
   }
     
 
