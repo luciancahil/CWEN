@@ -128,6 +128,7 @@ class RichTextEditor extends React.Component {
     // then, we store the main image at the top of the article
     let fd = new FormData();
     let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
+    let upladedImageArray = this.state.uploadedImages;
 
     //TODO CHANGE THIS
 
@@ -151,22 +152,24 @@ class RichTextEditor extends React.Component {
     */
     let imageSrcSets = new Set();
 
-    console.log(rawContentObj.entityMap[0]);
-    console.log(rawContentObj.entityMap[3]);
     for(let i = 0; i < Math.pow(2, 10); i++){
       let entity = rawContentObj.entityMap[i]      
       if(entity === undefined){
         break;
       }
 
-      console.log("Entity: " + entity.data.src);
       imageSrcSets.add(entity.data.src);
     }
 
-    console.log("set: " + Array.from(imageSrcSets));
+    //console.log(upladedImageArray[0].localSrc);
 
-    for(let i = 0; i < this.state.uploadedImages.length; i++){
-      fd.append('photos', this.state.uploadedImages[i]);
+    console.log(upladedImageArray);
+    console.log("set: " + Array.from(imageSrcSets));
+    upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
+    console.log(upladedImageArray);
+
+    for(let i = 0; i < upladedImageArray.length; i++){
+      fd.append('photos', upladedImageArray[i]);
     }
 
 /*
