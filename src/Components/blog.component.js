@@ -22,7 +22,7 @@ class Blog extends React.Component {
   componentDidMount() {
     document.title = 'CWEN Blog';
     let query = this.props.location.search;
-    let baseURL = "http://localhost:4000/"
+    let baseURL = "https://cwen-backend.herokuapp.com//"
     let id = ""
     let author = ""
 
