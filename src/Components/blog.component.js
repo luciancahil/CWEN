@@ -7,7 +7,9 @@ class Blog extends React.Component {
     this.state = {
       status: "loading",
       valid: false,
-      contentState: null,
+      contentBlocks: null,
+      contentReady: false,
+      contentEntityMap: null,
       mainBlogPhoto: "",
       blogPhotos: null,
       title: "",
@@ -52,9 +54,11 @@ class Blog extends React.Component {
           let date = new Date();
 
 
-          console.log(content.sqlStuff[0].lastUpdated);
+          console.log(content);
           this.setState({
-            contentState: content,
+            contentBlocks: content.blocks,
+            contentEntityMap: content.entityMap,
+            contentReady: true,
             author: content.sqlStuff[0].author,
             title: content.sqlStuff[0].title,
             date: content.sqlStuff[0].lastUpdated,
@@ -94,13 +98,15 @@ class Blog extends React.Component {
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      console.log(this.state.date);
+      console.log(this.state.contentReady);
       return <div id = "blog">
         <h1>{this.state.title}</h1>
         <h4>By {this.state.author}</h4>
         <h4>Published {this.state.date}</h4>
-        <img src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
-      </div>
+        <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
+        {this.state.contentReady ? 
+          ([this.state.contentBlocks.map((block) => <p key = {block.key}>{block.text}</p>)]) : (<div/>)}
+        </div>
     }
     
   }
