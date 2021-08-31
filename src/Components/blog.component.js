@@ -45,7 +45,17 @@ class Blog extends React.Component {
 
       fetch(mainPhtoURL)
         .then((response) => response.text())
-        .then((mainPhoto) => this.setState({mainBlogPhoto: mainPhoto}))
+        .then((mainPhoto) => {
+          if(mainPhoto === "unfound"){
+            // no blog post with the give characteristics
+            this.setState({
+              valid: false
+            })
+          }else{
+            this.setState({mainBlogPhoto: mainPhoto})
+          }
+          
+        })
 
       fetch(photosURL)
         .then((response) => response.json())
@@ -54,7 +64,6 @@ class Blog extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     if(!this.state.valid){
       return <Four04/>;
     }else{
