@@ -25,10 +25,22 @@ class RichTextEditor extends React.Component {
 
     
 
+    
+
+    this.onEditorStateChange = this.onEditorStateChange.bind(this);
+    this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangePic = this.onChangePic.bind(this);
+    this.sendData = this.sendData.bind(this);
+  }
+
+  componentDidMount(){
     let token = localStorage.getItem("token");
     let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
     tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
 
+    console.log(token);
+    console.log(token === null);
     if(token === null){
       this.setState({
         isWriter: false
@@ -45,12 +57,6 @@ class RichTextEditor extends React.Component {
           }
         })
       }
-
-    this.onEditorStateChange = this.onEditorStateChange.bind(this);
-    this.uploadImageCallBack = this.uploadImageCallBack.bind(this);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangePic = this.onChangePic.bind(this);
-    this.sendData = this.sendData.bind(this);
   }
 
 
@@ -242,10 +248,12 @@ class RichTextEditor extends React.Component {
   render() {
     const { editorState } = this.state;
 
+    console.log("if: " + this.state.isWriter);
+
     // invalid
     if(!this.state.isWriter){
       return <Invalid/>
-  }
+    }
 
     return (
         
