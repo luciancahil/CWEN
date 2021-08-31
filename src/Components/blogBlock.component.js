@@ -9,6 +9,10 @@ class BlogBlock extends React.Component {
     }
 
     render() {
+        if(this.props.block.text === ""){
+            return <br/>
+        }
+
         return <p>{this.props.block.text}</p>
     }
 }
