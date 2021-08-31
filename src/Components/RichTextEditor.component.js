@@ -216,7 +216,7 @@ class RichTextEditor extends React.Component {
     //console.log(upladedImageArray[0].localSrc);
     upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
 
-    url += "numPhotos=" + upladedImageArray.length;
+    url += "&numPhotos=" + upladedImageArray.length;
 
     for(let i = 0; i < upladedImageArray.length; i++){
       fd.append('photos', upladedImageArray[i].file);
@@ -224,6 +224,7 @@ class RichTextEditor extends React.Component {
 
 
     console.log("fetching");
+    console.log(url);
     fetch(url, {
       method: 'POST',
       body: fd,
