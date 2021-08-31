@@ -5,10 +5,11 @@ class Blog extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      status: "loading",
       valid: false,
       contentState: null,
       mainBlogPhoto: "",
-      blogPhotos: null
+      blogPhotos: null,
     }
   }
 
@@ -26,8 +27,9 @@ class Blog extends React.Component {
     let idIndex = query.indexOf("id=");
 
     if(authorIndex != -1 && ampIndex != -1 && idIndex != -1){
+      console.log("hi");
       this.setState({
-        valid: true
+        valid: true,
       })
       id = query.substring(idIndex + "id=".length);
       author = query.substring(authorIndex + "author=".length, ampIndex);
@@ -60,13 +62,23 @@ class Blog extends React.Component {
       fetch(photosURL)
         .then((response) => response.json())
         .then((photos) => this.setState({blogPhotos: photos}))
+    }else{
+      console.log("hi");
+      this.setState({
+        status: "done"
+      })
     }
   }
 
   render() {
+    if(this.state.status === "loading"){
+      return <p id = "loading">loading...</p>
+    }
+
     if(!this.state.valid){
       return <Four04/>;
     }else{
+      if()
       return <h2>valid</h2>
     }
     
