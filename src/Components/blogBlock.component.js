@@ -24,7 +24,7 @@ class BlogBlock extends React.Component {
 
         // handling inline style ranges
         if(ranges.length != 0){
-            let str = this.props.block.text;
+            let str = this.props.block.text.replaceAll("<",	"&#60");
             let changes = [];
 
             for(let i = 0; i < ranges.length; i++){
@@ -69,6 +69,7 @@ class BlogBlock extends React.Component {
             }
 
             console.log(changes);
+            return <p dangerouslySetInnerHTML ={{__html: str}} />
         }
 
 
