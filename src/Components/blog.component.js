@@ -10,6 +10,9 @@ class Blog extends React.Component {
       contentState: null,
       mainBlogPhoto: "",
       blogPhotos: null,
+      title: "",
+      author: "",
+      date: null
     }
   }
 
@@ -40,10 +43,23 @@ class Blog extends React.Component {
       let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
       let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
 
-      console.log(contentURL);
+      this.setState({
+        status: "done"
+      })
       fetch(contentURL)
         .then((response) => response.json())
-        .then((content) => this.setState({contentState: content}))
+        .then((content) => {
+          let date = new Date();
+
+
+          console.log(content.sqlStuff[0].lastUpdated);
+          this.setState({
+            contentState: content,
+            author: content.sqlStuff[0].author,
+            title: content.sqlStuff[0].title,
+            date: content.sqlStuff[0].lastUpdated,
+          })
+        })
 
       fetch(mainPhtoURL)
         .then((response) => response.text())
@@ -78,8 +94,13 @@ class Blog extends React.Component {
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      if()
-      return <h2>valid</h2>
+      console.log(this.state.date);
+      return <div id = "blog">
+        <h1>{this.state.title}</h1>
+        <h4>By {this.state.author}</h4>
+        <h4>Published {this.state.date}</h4>
+        <img src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
+      </div>
     }
     
   }
