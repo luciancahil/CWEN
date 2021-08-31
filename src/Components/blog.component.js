@@ -5,7 +5,10 @@ class Blog extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      valid: false
+      valid: false,
+      contentState: null,
+      mainBlogPhoto: "",
+      blogPhotos: null
     }
   }
 
@@ -31,11 +34,27 @@ class Blog extends React.Component {
       console.log("author: " + author);
       console.log("id: " + id);
 
-      let contentURL = baseURL + ""
+      let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
+      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
+      let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
+
+      console.log(contentURL);
+      fetch(contentURL)
+        .then((response) => response.json())
+        .then((content) => this.setState({contentState: content}))
+
+      fetch(mainPhtoURL)
+        .then((response) => response.text())
+        .then((mainPhoto) => this.setState({mainBlogPhoto: mainPhoto}))
+
+      fetch(photosURL)
+        .then((response) => response.json())
+        .then((photos) => this.setState({blogPhotos: photos}))
     }
   }
 
   render() {
+    console.log(this.state);
     if(!this.state.valid){
       return <Four04/>;
     }else{
