@@ -32,14 +32,11 @@ class Blog extends React.Component {
     let idIndex = query.indexOf("id=");
 
     if(authorIndex != -1 && ampIndex != -1 && idIndex != -1){
-      console.log("hi");
       this.setState({
         valid: true,
       })
       id = query.substring(idIndex + "id=".length);
       author = query.substring(authorIndex + "author=".length, ampIndex);
-      console.log("author: " + author);
-      console.log("id: " + id);
 
       let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
       let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
@@ -54,7 +51,18 @@ class Blog extends React.Component {
           let date = new Date();
 
 
-          console.log(content);
+          //mapping entitymaps with contentstates
+          let mapID = 0;
+
+          for(let i = 0; i < content.blocks.length; i++){
+            //console.log(content.blocks[i].entityRanges.length !== 0)
+            console.log(mapID);
+            if(content.blocks[i].entityRanges.length !== 0){
+              content.blocks[i].entityMap = content.entityMap[mapID];
+              mapID++;
+            }
+          }
+
           this.setState({
             contentBlocks: content.blocks,
             contentEntityMap: content.entityMap,
@@ -83,7 +91,6 @@ class Blog extends React.Component {
         .then((response) => response.json())
         .then((photos) => this.setState({blogPhotos: photos}))
     }else{
-      console.log("hi");
       this.setState({
         status: "done"
       })
@@ -98,7 +105,7 @@ class Blog extends React.Component {
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      console.log(this.state.contentReady);
+      console.log(this.state.contentBlocks);
       return <div id = "blog">
         <h1>{this.state.title}</h1>
         <h4>By {this.state.author}</h4>
