@@ -54,11 +54,18 @@ class Blog extends React.Component {
 
           //mapping entitymaps with contentstates
           let mapID = 0;
+          let imageID = 0;
 
           for(let i = 0; i < content.blocks.length; i++){
-            console.log(mapID);
+            
             if(content.blocks[i].entityRanges.length !== 0){
               content.blocks[i].entityMap = content.entityMap[mapID];
+              
+              if(content.entityMap[mapID].type === "IMAGE"){
+                content.blocks[i].imgID = imageID;
+                imageID++;
+              }
+
               mapID++;
             }
           }
@@ -111,7 +118,7 @@ class Blog extends React.Component {
         <h4>Published {this.state.date}</h4>
         <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
         {this.state.contentReady ? 
-          ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} block = {contentBlock}/>)]) : (<div/>)}
+          ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} imageArray = {this.state.blogPhotos} block = {contentBlock}/>)]) : (<div/>)}
         </div>
     }
     
