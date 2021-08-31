@@ -1,5 +1,6 @@
 import React from 'react';
 import Four04 from './404.component';
+import BlogBlock from './blogBlock.component';
 
 class Blog extends React.Component {
   constructor(props){
@@ -55,7 +56,6 @@ class Blog extends React.Component {
           let mapID = 0;
 
           for(let i = 0; i < content.blocks.length; i++){
-            //console.log(content.blocks[i].entityRanges.length !== 0)
             console.log(mapID);
             if(content.blocks[i].entityRanges.length !== 0){
               content.blocks[i].entityMap = content.entityMap[mapID];
@@ -105,14 +105,13 @@ class Blog extends React.Component {
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      console.log(this.state.contentBlocks);
       return <div id = "blog">
         <h1>{this.state.title}</h1>
         <h4>By {this.state.author}</h4>
         <h4>Published {this.state.date}</h4>
         <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
         {this.state.contentReady ? 
-          ([this.state.contentBlocks.map((block) => <p key = {block.key}>{block.text}</p>)]) : (<div/>)}
+          ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} block = {contentBlock}/>)]) : (<div/>)}
         </div>
     }
     
