@@ -1379,6 +1379,7 @@ input[type=number] {
   width: 33%;
   margin: auto;
   display: inline-block;
+  margin-bottom: 30px;
 }
 
 .blogPart img{
@@ -1389,6 +1390,16 @@ input[type=number] {
 
 .blogPart h2{
   text-align: center;
+}
+
+
+#blog{
+  width: 90%;
+  margin: auto;
+}
+
+#blog img{
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 800px){

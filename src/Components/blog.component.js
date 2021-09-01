@@ -22,7 +22,7 @@ class Blog extends React.Component {
   componentDidMount() {
     document.title = 'CWEN Blog';
     let query = this.props.location.search;
-    let baseURL = "https://cwen-backend.herokuapp.com//"
+    let baseURL = "https://cwen-backend.herokuapp.com/"
     let id = ""
     let author = ""
 
@@ -40,7 +40,7 @@ class Blog extends React.Component {
       author = query.substring(authorIndex + "author=".length, ampIndex);
 
       let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
-      let mainPhtoURL= baseURL + "getUnplublishedBlogMainPhoto?author=" + author + "&id=" + id;
+      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
       let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
 
       
@@ -75,6 +75,7 @@ class Blog extends React.Component {
             author: content.sqlStuff.author,
             title: content.sqlStuff.title,
             date: content.sqlStuff.lastUpdated,
+            status: "done"
           })
         })
 
@@ -103,6 +104,8 @@ class Blog extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+
     if(this.state.status === "loading"){
       return <p id = "loading">loading...</p>
     }
