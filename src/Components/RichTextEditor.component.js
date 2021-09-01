@@ -16,6 +16,7 @@ class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
     let startingContent = null;
+    let startingTitle = "";
     let oldPics = this.props.oldPics;
 
     //console.log(this.props.oldContent);
@@ -27,7 +28,6 @@ class RichTextEditor extends React.Component {
 
       while(entMap[entIndex] !== undefined){
         let ent = entMap[entIndex];
-        //console.log(ent);
         if(ent.type === "IMAGE"){
           ent.data.src = oldPics[imgIndex];
           imgIndex++;
@@ -35,13 +35,15 @@ class RichTextEditor extends React.Component {
         entIndex++;
       }
 
+      startingTitle = content.sqlStuff.title
+
       startingContent = EditorState.createWithContent(convertFromRaw(content))
     }
 
     this.state = {
       editorState: startingContent,
       uploadedImages: [],
-      title: "",
+      title: startingTitle,
       pic: "",
       picData: "",
       errorMessage: [],
