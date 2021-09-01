@@ -63,6 +63,7 @@ class RichTextEditor extends React.Component {
     this.sendData = this.sendData.bind(this);
     this.updateBlog = this.updateBlog.bind(this);
     this.createNewBlog = this.createNewBlog.bind(this);
+    this.goToPreview = this.goToPreview.bind(this);
   }
 
   componentDidMount(){
@@ -199,7 +200,7 @@ class RichTextEditor extends React.Component {
     }
   }
 
-  updateBlog(){
+  async updateBlog(){
     // very similar to createNew blog, just different url and attach an "oringial ID" to all images that don't have an src starting with localhost.
     // or maybe not?
     // wait. Yes. I just need to change the blog so that only the localhosts get replaced with AWS. Other images should be fine just the way they are
@@ -405,6 +406,20 @@ class RichTextEditor extends React.Component {
       }});
   }
     
+  goToPreview(){
+    if(this.props.oldContent === undefined){
+      let errors = []
+      errors[0] = "You must save before you preview";
+      
+      this.setState({
+        errorMessage: errors
+      })
+    }else{
+      this.updateBlog()
+        .then(window.location.href = "/preview" + this.props.location)
+      
+    }
+  }
 
   render() {
     const { editorState } = this.state;
@@ -446,7 +461,7 @@ class RichTextEditor extends React.Component {
           />
         </div>
         {this.state.errorMessage.map((message) => <p className = "blogError" key = {message}>{message}</p>)}
-        <button>Preview</button>
+        <button onClick = {() => this.goToPreview()}>Preview</button>
         <button onClick = {() => this.sendData()}>Save</button>
       </div>
     );
