@@ -317,6 +317,11 @@ class RichTextEditor extends React.Component {
       errors.push("Error! Blog posts need a main image");
     }
 
+    if(this.state.editorState === null){
+      valid = false;
+      errors.push("Error! Blog posts need a body");
+    }
+
 
     this.setState({
       errorMessage: errors
