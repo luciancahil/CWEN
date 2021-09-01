@@ -24,6 +24,8 @@ import Join from './Components/join.component';
 import WritingCenter from "./Components/writingCenter.component"
 import EditBlog from "./Components/editBlog.component"
 import FirstSaved from './Components/firstSave.component';
+import Preview from "./Components/preview.component";
+import Generic from "./Components/generic.component"
 
 
 
@@ -56,6 +58,8 @@ class MainClass extends React.Component{
                     <Route path="/writing" render = {(props) => <WritingCenter {...props}/>} />
                     <Route path="/edit_blog" render = {(props) => <EditBlog {...props}/>} />
                     <Route path="/saved" render = {(props) => <FirstSaved {...props}/>} />
+                    <Route path="/preview" render = {(props) => <Preview {...props}/>} />
+                    <Route path="/update" render = {(props) => <Generic {...props}/>} />
                     <Redirect to="/404"/>
                 </Switch>
 

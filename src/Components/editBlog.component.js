@@ -107,7 +107,7 @@ class EditBlog extends React.Component {
             allKey[0] = this.state.oldContent;
             allKey[1] = this.state.mainBlogPhoto;
             allKey[2] = this.state.blogPhotos
-            return <RichTextEditor key = {allKey} oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} idNum = {this.state.idNum} oldPics = {this.state.blogPhotos}/>
+            return <RichTextEditor location = {this.props.location.search} key = {allKey} oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} idNum = {this.state.idNum} oldPics = {this.state.blogPhotos}/>
         }
     }
 }

@@ -33,7 +33,6 @@ class BlogBlock extends React.Component {
             for(let i = 0; i < ranges.length; i++){
                 let start = ranges[i].offset;
                 let end = ranges[i].offset + ranges[i].length;
-                console.log(ranges);
 
 
                 let open = "";
@@ -57,10 +56,27 @@ class BlogBlock extends React.Component {
                         break; 
                 }
 
-                closed = "</" + open.substr(1);
+                // looking at font families
+                let insert1 = {insert: 0, text: ""};
+                let insert2 = {insert: 0, text: ""};
 
-                let insert1 = {insert: start, text: open};
-                let insert2 = {insert: end, text: closed};
+                if(ranges[i].style.substr(0,8) === "fontsize"){
+                    let size = ranges[i].style.substr(9);
+                    insert1 = {insert: start, text: "<span style =\"font-size:" + size + "px;\">"};
+                    insert2 = {insert: end, text: "</span>"};
+                    
+                }else if(ranges[i].style.substr(0,10) === "fontfamily"){
+                    let font = ranges[i].style.substr(11);
+                    insert1 = {insert: start, text: "<span style =\"font-family:" + font + "px;\">"};
+                    insert2 = {insert: end, text: "</span>"};
+
+                }else{
+
+                    closed = "</" + open.substr(1);
+
+                    insert1 = {insert: start, text: open};
+                    insert2 = {insert: end, text: closed};
+                }
                 changes.push(insert1);
                 changes.push(insert2);
             }
@@ -80,11 +96,9 @@ class BlogBlock extends React.Component {
 
         let DynamicTag = "p"
 
-        console.log(this.props.block.type);
         switch(this.props.block.type){
             case "header-one":
                 DynamicTag = "h1"
-                console.log(DynamicTag);
                 break;
             
             case "header-two":
@@ -97,7 +111,6 @@ class BlogBlock extends React.Component {
                 
             case "header-four":
                 DynamicTag = "h4"
-                console.log(DynamicTag);
                 break;
             
             case "header-five":

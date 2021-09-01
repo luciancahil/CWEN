@@ -7,7 +7,7 @@ class Blog extends React.Component {
     super(props);
     this.state = {
       status: "loading",
-      valid: false,
+      valid: true,
       contentBlocks: null,
       contentReady: false,
       contentEntityMap: null,
@@ -15,16 +15,27 @@ class Blog extends React.Component {
       blogPhotos: null,
       title: "",
       author: "",
-      date: null
+      date: null,
+      isPublished: false
     }
+
+    this.publish = this.publish.bind(this);
+    this.unpublish = this.unpublish.bind(this);
   }
 
   componentDidMount() {
     document.title = 'CWEN Blog';
-    let query = this.props.location.search;
+    let query;
+    if(this.props.locale === undefined){
+      query = this.props.location.search;
+    }else{
+      query = this.props.locale;
+    }
     let baseURL = "https://cwen-backend.herokuapp.com/"
     let id = ""
     let author = ""
+
+    
 
 
     // getting the name and ID
@@ -32,16 +43,35 @@ class Blog extends React.Component {
     let ampIndex = query.indexOf("&");
     let idIndex = query.indexOf("id=");
 
-    if(authorIndex != -1 && ampIndex != -1 && idIndex != -1){
+    if(authorIndex != -1 && ampIndex != -1 && idIndex != -1 || this.props.locale !== undefined && idIndex != -1){
       this.setState({
         valid: true,
       })
       id = query.substring(idIndex + "id=".length);
       author = query.substring(authorIndex + "author=".length, ampIndex);
+      let contentURL;
+      let mainPhtoURL;
+      let photosURL;
 
-      let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
-      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
-      let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
+
+      if(this.props.locale === undefined){
+        contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
+        mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
+        photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
+      }else{
+        let id = ""
+        let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+        // getting the name and ID
+        let idIndex = query.indexOf("id=");
+        id = query.substring(idIndex + "id=".length);
+
+        contentURL = baseURL + "getUnpublishedBlogContent?token=" + token + "&id=" + id;
+        mainPhtoURL= baseURL + "getUnpublishedBlogMainPhoto?token=" + token + "&id=" + id;
+        photosURL = baseURL + "getUnpublishedBlogPhotos?token=" + token + "&id=" + id;
+      }
+
 
       
       fetch(contentURL)
@@ -75,6 +105,7 @@ class Blog extends React.Component {
             author: content.sqlStuff.author,
             title: content.sqlStuff.title,
             date: content.sqlStuff.lastUpdated,
+            isPublished: content.sqlStuff.isPublished,
             status: "done"
           })
         })
@@ -103,22 +134,86 @@ class Blog extends React.Component {
     }
   }
 
+  publish(){
+    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let query = this.props.locale;
+
+
+    let id = ""
+    let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+    // getting the name and ID
+    let idIndex = query.indexOf("id=");
+    id = query.substring(idIndex + "id=".length);
+
+    let URL = baseURL + "publish?token=" + token + "&id=" + id;
+    console.log(URL);
+
+    fetch(URL)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text === "published");
+        if(text === "published"){
+          localStorage.setItem("Message", "Congragulations! Your piece has been published!");
+          window.location.href = "/update"
+        }
+      })
+  }
+
+  unpublish(){
+    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let query = this.props.locale;
+
+
+    let id = ""
+    let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+    // getting the name and ID
+    let idIndex = query.indexOf("id=");
+    id = query.substring(idIndex + "id=".length);
+
+    let URL = baseURL + "unpublish?token=" + token + "&id=" + id;
+    console.log(URL);
+
+    fetch(URL)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text === "unpublished");
+        if(text === "unpublished"){
+          localStorage.setItem("Message", "Your piece has been successfully hidden. Please make what changes you must, so that we can all see it again!");
+          window.location.href = "/update"
+        }
+      })
+  }
+
   render() {
     if(this.state.status === "loading"){
       return <p id = "loading">loading...</p>
     }
 
+    console.log(this.state.isPublished);
+
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      return <div id = "blog">
-        <h1>{this.state.title}</h1>
-        <h4>By {this.state.author}</h4>
-        <h4>Published {this.state.date}</h4>
-        <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
-        {this.state.contentReady ? 
-          ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} imageArray = {this.state.blogPhotos} block = {contentBlock}/>)]) : (<div/>)}
+      return (
+        <div id = "blog">
+          <h1>{this.state.title}</h1>
+          <h4>By {this.state.author}</h4>
+          <h4>Published {this.state.date}</h4>
+          <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
+          {this.state.contentReady ? 
+            ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} imageArray = {this.state.blogPhotos} block = {contentBlock}/>)]) 
+            : (<div/>)}
+          {(this.props.locale !== undefined) ?
+            ([this.state.isPublished === 1 ? 
+              <button onClick = {() => this.unpublish()}>Unpublish</button> 
+              :<button onClick = {() => this.publish()}>Publish</button>]):
+            (<div/>)}
         </div>
+      )
     }
     
   }
