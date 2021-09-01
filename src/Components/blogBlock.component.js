@@ -15,6 +15,8 @@ class BlogBlock extends React.Component {
         let ranges = this.props.block.inlineStyleRanges
 
         if(this.props.block.imgID !== undefined){
+            // returning an image using a presigned AWS URL
+            // change this function so that we only do this with src's begining with "localhost"
             return <img style = {{height: [this.props.block.entityMap.data.height]}, {width: [this.props.block.entityMap.data.width]}} src = {this.props.imageArray[this.props.block.imgID]} alt = "not found"/>
         }
 

@@ -5,9 +5,13 @@ class Navbar extends React.Component {
   constructor(props){
     super(props);
 
+    let isWriter = localStorage.getItem("title") === "author" || localStorage.getItem("title") === "admin"
+    
+
     this.state ={
       width: window.innerWidth,
-      showLinks: false
+      showLinks: false,
+      isWriterorAdmin: isWriter
     }
 
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -33,7 +37,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-
     if(this.state.width <= 590){
       return(
         <nav>
@@ -46,7 +49,8 @@ class Navbar extends React.Component {
               <a href="/about">About</a> <br/>
               <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a> <br/>
               <a href="/contact">Contact</a> <br/>
-              <a href="/blog">Blog</a>
+              <a href="/blog">Blog</a> <br/>
+              <a href="/writing">Writing</a>
             </div>
           ):(<div/>)}
           
@@ -66,6 +70,7 @@ class Navbar extends React.Component {
         <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a>
         <a href="/contact">Contact</a>
         <a href="/blog">Blog</a>
+        {this.state.isWriterorAdmin ? (<a href="/writing">Writing Center</a>) : (<div/>)}
       </nav>
     );
   }

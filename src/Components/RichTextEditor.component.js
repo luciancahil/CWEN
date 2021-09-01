@@ -4,26 +4,55 @@ import {Editor} from "react-draft-wysiwyg";
 import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Invalid from './invalid.component';
+import { convertFromRaw } from 'draft-js';
 
 /*
   Props:
-  editing will be true if we are editing a file that already exists, flase if we are making something new
+  this.props.oldContent will store contentBLock if we are editing, undefined if not
+  this.props.oldMainPic  will store MainPic if we are editing, undefined if not
+  this.props.oldPics will store old blog photos if we are editing, undefined if not
+  this.props.idNum will store an index if editing
 */
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
+    let startingContent = null;
+    let startingTitle = "";
+    let oldPics = this.props.oldPics;
+    let startingPic = "";
+
+    if(this.props.oldContent !== undefined && this.props.oldContent !== null && oldPics != null){
+      let content = this.props.oldContent;
+      let entMap = content.entityMap;
+      let imgIndex = 0;
+      let entIndex = 0;
+
+      while(entMap[entIndex] !== undefined){
+        let ent = entMap[entIndex];
+        if(ent.type === "IMAGE"){
+          ent.data.src = oldPics[imgIndex];
+          imgIndex++;
+        }
+        entIndex++;
+      }
+
+      startingTitle = content.sqlStuff.title;
+      startingPic = this.props.oldMainPic;
+
+      startingContent = EditorState.createWithContent(convertFromRaw(content))
+    }
+
     this.state = {
-      editorState: EditorState.createEmpty(),
+      editorState: startingContent,
       uploadedImages: [],
-      title: "",
-      pic: "",
+      title: startingTitle,
+      pic: startingPic,
       picData: "",
       errorMessage: [],
-      isWriter: true
+      isWriter: true,
+      index: -1
     };
 
-    
 
     
 
@@ -32,15 +61,17 @@ class RichTextEditor extends React.Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangePic = this.onChangePic.bind(this);
     this.sendData = this.sendData.bind(this);
+    this.updateBlog = this.updateBlog.bind(this);
+    this.createNewBlog = this.createNewBlog.bind(this);
   }
 
   componentDidMount(){
     let token = localStorage.getItem("token");
-    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
-    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
+    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token);
+    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B");
+   
 
-    console.log(token);
-    console.log(token === null);
+
     if(token === null){
       this.setState({
         isWriter: false
@@ -49,14 +80,13 @@ class RichTextEditor extends React.Component {
       fetch(tokenCheckURL)
         .then(response => response.json())
         .then(data =>{
-          console.log(data)
-          if(data.title !== "admin" && data.title !== "writer"){
+          if(data.title !== "admin" && data.title !== "author"){
             this.setState({
               isWriter: false
             })
           }
         })
-      }
+    }
   }
 
 
@@ -67,9 +97,9 @@ class RichTextEditor extends React.Component {
     });
     
     // look at entity map for image information 
-      //console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
-     // console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-     // console.log(this.state.uploadedImages);
+  //    console.log((convertToRaw(this.state.editorState.getCurrentContent())));
+   //   console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+    //  console.log(this.state.uploadedImages);
    // console.log("title: " + this.state.title);
 
     /*
@@ -158,7 +188,121 @@ class RichTextEditor extends React.Component {
   }
 
   sendData(){
-    // first, we add the content state as JSON
+    if(this.props.oldContent === undefined){
+      this.createNewBlog();
+    }else{
+      this.updateBlog()
+    }
+  }
+
+  updateBlog(){
+    // very similar to createNew blog, just different url and attach an "oringial ID" to all images that don't have an src starting with localhost.
+    // or maybe not?
+    // wait. Yes. I just need to change the blog so that only the localhosts get replaced with AWS. Other images should be fine just the way they are
+    let valid = true;
+    let errors = [];
+
+    
+
+    if(this.state.title === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a title");
+    }
+
+    this.setState({
+      errorMessage: errors
+    })
+
+
+    if(!valid){
+      return;
+    }
+
+    let fd = new FormData();
+    let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
+    let upladedImageArray = this.state.uploadedImages;
+    let oldPics = this.props.oldPics
+
+    //TODO CHANGE THIS
+
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+
+    let url = "https://cwen-backend.herokuapp.com/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+      + "&title=" + sanitizedTitle + "&id=" + this.props.idNum
+
+    
+
+    /*
+    All images will be in the uploadedImages array, including deleted and un uploaded images.
+    To check if they should be there, check the entitymap.data.src in the content state. Only 
+    imates that appear there should be uploaded
+    */
+    let imageSrcSets = new Set();
+
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      imageSrcSets.add(entity.data.src);
+    }
+
+    //console.log(upladedImageArray[0].localSrc);
+    upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
+
+    // now we need to add an indexValue to every entityMap that starts with aws
+    
+    const urlIndex = new Map();
+    for(let i = 0; i < oldPics.length; i++){
+      urlIndex.set(oldPics[i], i);
+    }
+  
+    
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      if(entity.type !== "IMAGE"){
+        continue;
+      }
+
+      if (urlIndex.has(entity.data.src)){
+        entity.originalIndex = urlIndex.get(entity.data.src);
+      }
+
+    }
+
+    // I think that's everything. Now just add the formdatas, while understanding that the formdata for the mainPhoto might be null
+
+    fd.append('data', JSON.stringify(rawContentObj));
+
+    if(this.state.picData !== ""){
+      fd.append('mainPhoto', this.state.picData);
+    }
+
+    for(let i = 0; i < upladedImageArray.length; i++){
+      fd.append('photos', upladedImageArray[i].file);
+    }
+
+    console.log("fetching...");
+    fetch(url, {
+      method: 'POST',
+      body: fd,
+    })
+      .then(response => response.text())
+      .then(data => {
+          if(data === "done!"){
+            console.log("good");
+          }
+          console.log(data);
+      });
+  }
+
+  createNewBlog(){
+        // first, we add the content state as JSON
     // then, we store the main image at the top of the article
     let valid = true;
     let errors = [];
@@ -191,12 +335,12 @@ class RichTextEditor extends React.Component {
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
+    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+      + "&title=" + sanitizedTitle
 
 
     // the content state storing information about blog text
     
-    console.log(JSON.stringify(rawContentObj));
     fd.append('data', JSON.stringify(rawContentObj));
 
     fd.append('mainPhoto', this.state.picData);
@@ -248,12 +392,11 @@ class RichTextEditor extends React.Component {
   render() {
     const { editorState } = this.state;
 
-    console.log("if: " + this.state.isWriter);
-
     // invalid
     if(!this.state.isWriter){
       return <Invalid/>
     }
+    
 
     return (
         
@@ -263,6 +406,9 @@ class RichTextEditor extends React.Component {
           <label for="articleHeader">Choose a main photo:</label><br/>
           <input type = "file" id = "articleHeader" onChange = {this.onChangePic}/>
         </div>
+        {this.state.pic !== "" ? 
+          (<div><img id = "blogMianPicDisplay" alt = "mainpic" src = {this.state.pic}/><h1 className = "blogMianPicDisplayText">Main Photo</h1></div>) : 
+          (<div/>)}
         <div id = "trueEditor">
           <Editor
             editorState={editorState}

@@ -756,6 +756,18 @@ li.rdw-dropdownoption-active {
   color: red;
 }
 
+.editor #blogMianPicDisplay {
+  width: 60%;
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.editor h1.blogMianPicDisplayText{
+  text-align: center;
+  margin: 0;
+}
+
 .project{
   width: 100%;
   height: 550px;

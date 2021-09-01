@@ -22,7 +22,7 @@ class Blog extends React.Component {
   componentDidMount() {
     document.title = 'CWEN Blog';
     let query = this.props.location.search;
-    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let baseURL = "https://cwen-backend.herokuapp.com//"
     let id = ""
     let author = ""
 
@@ -40,12 +40,10 @@ class Blog extends React.Component {
       author = query.substring(authorIndex + "author=".length, ampIndex);
 
       let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
-      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
+      let mainPhtoURL= baseURL + "getUnplublishedBlogMainPhoto?author=" + author + "&id=" + id;
       let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
 
-      this.setState({
-        status: "done"
-      })
+      
       fetch(contentURL)
         .then((response) => response.json())
         .then((content) => {
@@ -74,9 +72,9 @@ class Blog extends React.Component {
             contentBlocks: content.blocks,
             contentEntityMap: content.entityMap,
             contentReady: true,
-            author: content.sqlStuff[0].author,
-            title: content.sqlStuff[0].title,
-            date: content.sqlStuff[0].lastUpdated,
+            author: content.sqlStuff.author,
+            title: content.sqlStuff.title,
+            date: content.sqlStuff.lastUpdated,
           })
         })
 
