@@ -221,7 +221,7 @@ class RichTextEditor extends React.Component {
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+    let url = "http://localhost:4000/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
       + "&title=" + sanitizedTitle
 
     
@@ -253,7 +253,6 @@ class RichTextEditor extends React.Component {
     }
   
     
-    console.log(urlIndex);
     for(let i = 0; i < Math.pow(2, 10); i++){
       let entity = rawContentObj.entityMap[i]      
       if(entity === undefined){
@@ -268,10 +267,32 @@ class RichTextEditor extends React.Component {
         entity.originalIndex = urlIndex.get(entity.data.src);
       }
 
-      console.log(entity);
-
     }
 
+    // I think that's everything. Now just add the formdatas, while understanding that the formdata for the mainPhoto might be null
+
+    fd.append('data', JSON.stringify(rawContentObj));
+
+    if(this.state.picData !== ""){
+      fd.append('mainPhoto', this.state.picData);
+    }
+
+    for(let i = 0; i < upladedImageArray.length; i++){
+      fd.append('photos', upladedImageArray[i].file);
+    }
+
+    console.log("fetching...");
+    fetch(url, {
+      method: 'POST',
+      body: fd,
+    })
+      .then(response => response.text())
+      .then(data => {
+          if(data === "done!"){
+            console.log("good");
+          }
+          console.log(data);
+      });
   }
 
   createNewBlog(){
