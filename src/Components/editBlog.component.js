@@ -1,4 +1,5 @@
 import React from 'react';
+import RichTextEditor from './RichTextEditor.component';
 
 class EditBlog extends React.Component { 
     componentDidMount(){

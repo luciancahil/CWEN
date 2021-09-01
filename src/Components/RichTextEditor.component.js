@@ -7,7 +7,7 @@ import Invalid from './invalid.component';
 
 /*
   Props:
-  editing will be true if we are editing a file that already exists, flase if we are making something new
+  this.props.oldContent will exist if we are editing, undefined if not
 */
 class RichTextEditor extends React.Component {
   constructor(props){
@@ -23,7 +23,6 @@ class RichTextEditor extends React.Component {
       isWriter: true
     };
 
-    
 
     
 
@@ -50,13 +49,17 @@ class RichTextEditor extends React.Component {
         .then(response => response.json())
         .then(data =>{
           console.log(data)
-          if(data.title !== "admin" && data.title !== "writer"){
+          if(data.title !== "admin" && data.title !== "author"){
             this.setState({
               isWriter: false
             })
           }
         })
+
+      if(this.props.oldContent !== undefined){
+        console.log("hi");
       }
+    }
   }
 
 
@@ -158,7 +161,15 @@ class RichTextEditor extends React.Component {
   }
 
   sendData(){
-    // first, we add the content state as JSON
+    if(this.props.oldContent === undefined){
+      createNewBlog();
+    }else{
+      updateBlog()
+    }
+  }
+
+  createNewBlog(){
+        // first, we add the content state as JSON
     // then, we store the main image at the top of the article
     let valid = true;
     let errors = [];
