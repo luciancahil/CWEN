@@ -7,7 +7,7 @@ class Blog extends React.Component {
     super(props);
     this.state = {
       status: "loading",
-      valid: false,
+      valid: true,
       contentBlocks: null,
       contentReady: false,
       contentEntityMap: null,
@@ -17,14 +17,23 @@ class Blog extends React.Component {
       author: "",
       date: null
     }
+
+    
   }
 
   componentDidMount() {
     document.title = 'CWEN Blog';
-    let query = this.props.location.search;
+    let query;
+    if(this.props.locale === undefined){
+      query = this.props.location.search;
+    }else{
+      query = this.props.locale;
+    }
     let baseURL = "https://cwen-backend.herokuapp.com/"
     let id = ""
     let author = ""
+
+    
 
 
     // getting the name and ID
@@ -32,16 +41,37 @@ class Blog extends React.Component {
     let ampIndex = query.indexOf("&");
     let idIndex = query.indexOf("id=");
 
-    if(authorIndex != -1 && ampIndex != -1 && idIndex != -1){
+    if(authorIndex != -1 && ampIndex != -1 && idIndex != -1 || this.props.locale !== undefined && idIndex != -1){
       this.setState({
         valid: true,
       })
       id = query.substring(idIndex + "id=".length);
       author = query.substring(authorIndex + "author=".length, ampIndex);
+      let contentURL;
+      let mainPhtoURL;
+      let photosURL;
 
-      let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
-      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
-      let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
+
+      console.log(this.props.locale === undefined);
+      if(this.props.locale === undefined){
+        contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
+        mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
+        photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
+      }else{
+        let id = ""
+        let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+        // getting the name and ID
+        let idIndex = query.indexOf("id=");
+        id = query.substring(idIndex + "id=".length);
+
+        contentURL = baseURL + "getUnpublishedBlogContent?token=" + token + "&id=" + id;
+        mainPhtoURL= baseURL + "getUnpublishedBlogMainPhoto?token=" + token + "&id=" + id;
+        photosURL = baseURL + "getUnpublishedBlogPhotos?token=" + token + "&id=" + id;
+      }
+
+      console.log(this.props.locale);
 
       
       fetch(contentURL)

@@ -3,7 +3,12 @@ import Blog from "./blog.component"
 
 class Preview extends React.Component { 
     render() {
-        return <h2>Featured Page</h2>;
+        console.log("hi");
+        return (
+            <div id = "previewBlog">
+                <Blog locale = {this.props.location.search} />
+            </div>
+        )
     }
 }
 
