@@ -97,7 +97,11 @@ class EditBlog extends React.Component {
         if(this.state.status === "loading"){
             return <p id = "loading">loading...</p>
         }else{
-            return <RichTextEditor oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
+            let allKey = []
+            allKey[0] = this.state.oldContent;
+            allKey[1] = this.state.mainBlogPhoto;
+            allKey[2] = this.state.blogPhotos
+            return <RichTextEditor key = {allKey} oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
         }
     }
 }
