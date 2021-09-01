@@ -11,6 +11,7 @@ import { convertFromRaw } from 'draft-js';
   this.props.oldContent will store contentBLock if we are editing, undefined if not
   this.props.oldMainPic  will store MainPic if we are editing, undefined if not
   this.props.oldPics will store old blog photos if we are editing, undefined if not
+  this.props.idNum will store an index if editing
 */
 class RichTextEditor extends React.Component {
   constructor(props){
@@ -48,7 +49,8 @@ class RichTextEditor extends React.Component {
       pic: startingPic,
       picData: "",
       errorMessage: [],
-      isWriter: true
+      isWriter: true,
+      index: -1
     };
 
 
@@ -65,8 +67,10 @@ class RichTextEditor extends React.Component {
 
   componentDidMount(){
     let token = localStorage.getItem("token");
-    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
-    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
+    let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token);
+    tokenCheckURL = tokenCheckURL.replaceAll("+","%2B");
+   
+
 
     if(token === null){
       this.setState({
@@ -198,6 +202,8 @@ class RichTextEditor extends React.Component {
     let valid = true;
     let errors = [];
 
+    
+
     if(this.state.title === ""){
       valid = false;
       errors.push("Error! Blog posts need a title");
@@ -222,7 +228,7 @@ class RichTextEditor extends React.Component {
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
     let url = "http://localhost:4000/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
-      + "&title=" + sanitizedTitle
+      + "&title=" + sanitizedTitle + "&id=" + this.props.idNum
 
     
 

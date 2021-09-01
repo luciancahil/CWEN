@@ -18,7 +18,8 @@ class EditBlog extends React.Component {
             blogPhotos: null,
             title: "",
             author: "",
-            date: null
+            date: null,
+            idNum: -1
         }
     }
 
@@ -38,6 +39,12 @@ class EditBlog extends React.Component {
         let contentURL = baseURL + "getUnpublishedBlogContent?token=" + token + "&id=" + id;
         let mainPhtoURL= baseURL + "getUnpublishedBlogMainPhoto?token=" + token + "&id=" + id;
         let photosURL = baseURL + "getUnpublishedBlogPhotos?token=" + token + "&id=" + id;
+
+
+        this.setState({
+          idNum: id
+        })
+
         
         fetch(contentURL)
         .then((response) => response.json())
@@ -100,7 +107,7 @@ class EditBlog extends React.Component {
             allKey[0] = this.state.oldContent;
             allKey[1] = this.state.mainBlogPhoto;
             allKey[2] = this.state.blogPhotos
-            return <RichTextEditor key = {allKey} oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
+            return <RichTextEditor key = {allKey} oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} idNum = {this.state.idNum} oldPics = {this.state.blogPhotos}/>
         }
     }
 }
