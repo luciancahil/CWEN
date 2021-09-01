@@ -23,6 +23,7 @@ class WritingCenter extends React.Component {
     render() {
         return (
             <div id = "Blog Preview">
+                <a href = "/edit"><button>Start a new Blog Post!</button></a>
                 {this.state.blogInfo.map((blogStuff) => <SelfDisplay blogInfo = {blogStuff} key = {blogStuff}/>)}
             </div>
         )
