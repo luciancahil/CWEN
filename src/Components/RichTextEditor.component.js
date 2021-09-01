@@ -18,8 +18,9 @@ class RichTextEditor extends React.Component {
     let startingContent = null;
     let startingTitle = "";
     let oldPics = this.props.oldPics;
+    let startingPic = "";
 
-    //console.log(this.props.oldContent);
+    console.log(this.props.oldMainPic);
     if(this.props.oldContent !== undefined && this.props.oldContent !== null && oldPics != null){
       let content = this.props.oldContent;
       let entMap = content.entityMap;
@@ -35,7 +36,8 @@ class RichTextEditor extends React.Component {
         entIndex++;
       }
 
-      startingTitle = content.sqlStuff.title
+      startingTitle = content.sqlStuff.title;
+      startingPic = this.props.oldMainPic;
 
       startingContent = EditorState.createWithContent(convertFromRaw(content))
     }
@@ -44,7 +46,7 @@ class RichTextEditor extends React.Component {
       editorState: startingContent,
       uploadedImages: [],
       title: startingTitle,
-      pic: "",
+      pic: startingPic,
       picData: "",
       errorMessage: [],
       isWriter: true
@@ -289,6 +291,8 @@ class RichTextEditor extends React.Component {
     if(!this.state.isWriter){
       return <Invalid/>
     }
+    
+    console.log(this.state.pic);
 
     return (
         
@@ -298,6 +302,9 @@ class RichTextEditor extends React.Component {
           <label for="articleHeader">Choose a main photo:</label><br/>
           <input type = "file" id = "articleHeader" onChange = {this.onChangePic}/>
         </div>
+        {this.state.pic !== "" ? 
+          (<div><img id = "blogMianPicDisplay" alt = "mainpic" src = {this.state.pic}/><h1 className = "blogMianPicDisplayText">Main Photo</h1></div>) : 
+          (<div/>)}
         <div id = "trueEditor">
           <Editor
             editorState={editorState}
