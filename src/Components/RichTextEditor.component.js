@@ -16,10 +16,26 @@ class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
     let startingContent = null;
+    let oldPics = this.props.oldPics;
 
-    console.log(this.props.oldContent);
-    if(this.props.oldContent !== undefined && this.props.oldContent !== null){
-      startingContent = EditorState.createWithContent(convertFromRaw(this.props.oldContent))
+    //console.log(this.props.oldContent);
+    if(this.props.oldContent !== undefined && this.props.oldContent !== null && oldPics != null){
+      let content = this.props.oldContent;
+      let entMap = content.entityMap;
+      let imgIndex = 0;
+      let entIndex = 0;
+
+      while(entMap[entIndex] !== undefined){
+        let ent = entMap[entIndex];
+        //console.log(ent);
+        if(ent.type === "IMAGE"){
+          ent.data.src = oldPics[imgIndex];
+          imgIndex++;
+        }
+        entIndex++;
+      }
+
+      startingContent = EditorState.createWithContent(convertFromRaw(content))
     }
 
     this.state = {

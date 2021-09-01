@@ -5,7 +5,7 @@ class Navbar extends React.Component {
   constructor(props){
     super(props);
 
-    let isWriter = localStorage.getItem("title") == "author" || localStorage.getItem("title") == "admin"
+    let isWriter = localStorage.getItem("title") === "author" || localStorage.getItem("title") === "admin"
     
 
     this.state ={

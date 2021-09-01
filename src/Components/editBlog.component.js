@@ -93,7 +93,6 @@ class EditBlog extends React.Component {
     }
 
     render() {
-        console.log(this.state.oldContent);
         if(this.state.status === "loading"){
             return <p id = "loading">loading...</p>
         }else{
