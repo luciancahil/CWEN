@@ -23,6 +23,7 @@ import EditMonth from './Components/editMonth.component';
 import Join from './Components/join.component';
 import WritingCenter from "./Components/writingCenter.component"
 import EditBlog from "./Components/editBlog.component"
+import FirstSaved from './Components/firstSave.component';
 
 
 
@@ -54,6 +55,7 @@ class MainClass extends React.Component{
                     <Route path="/join" render = {(props) => <Join {...props}/>}/>
                     <Route path="/writing" render = {(props) => <WritingCenter {...props}/>} />
                     <Route path="/edit_blog" render = {(props) => <EditBlog {...props}/>} />
+                    <Route path="/saved" render = {(props) => <FirstSaved {...props}/>} />
                     <Redirect to="/404"/>
                 </Switch>
 

@@ -401,12 +401,7 @@ class RichTextEditor extends React.Component {
       .then(response => response.text())
       .then(data => {
           if(data === "Done!"){
-            console.log("good");
-            let message = []
-            message[0] = "Saved";
-            this.setState({
-              errorMessage: message
-            })
+           window.location.href = "/saved"
       }});
   }
     
