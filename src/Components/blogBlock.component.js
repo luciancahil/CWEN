@@ -18,6 +18,10 @@ class BlogBlock extends React.Component {
         if(this.props.block.imgID !== undefined){
             // returning an image using a presigned AWS URL
             // change this function so that we only do this with src's begining with "localhost"
+            if(this.props === null || this.props.imageArray === null){
+                return null;
+            }
+
             return <img style = {{height: [this.props.block.entityMap.data.height]}, {width: [this.props.block.entityMap.data.width]}} src = {this.props.imageArray[this.props.block.imgID]} alt = "not found"/>
         }
 
