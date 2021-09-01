@@ -1365,9 +1365,10 @@ input[type=number] {
   color:#800000;
 }
 
-#Writing_Center{
+#Writing_Center, #blogs{
   width: 80%;
   margin: auto;
+  margin-top: 40px;
 }
 
 #Writing_Center button{
@@ -1379,7 +1380,7 @@ input[type=number] {
   width: 33%;
   margin: auto;
   display: inline-block;
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .blogPart img{

@@ -5,7 +5,14 @@ class SelfDisplay extends React.Component {
     render() {
         let info = this.props.blogInfo
         console.log(info);
-        let link = "/edit_blog?id=" + info.idNum;
+        let link;
+        if(this.props.public === undefined){
+            link = "/edit_blog?id=" + info.idNum;
+        }else{
+            link = "/blog/" + info.idNum + "/" + info.title.replaceAll(" ", "+") + "?author=" + info.author  + "&id=" + info.idNum;
+            console.log(link);
+            //blog/6/various+things?author=royhe62&id=6
+        }
         let imgSrc = info.mainPicURL;
         let title = info.title
         console.log(imgSrc);
