@@ -13,6 +13,7 @@ class BlogBlock extends React.Component {
     render() {
         console.log(this.props.block);
         let ranges = this.props.block.inlineStyleRanges
+        this.props.block.text = this.props.block.text.replaceAll("<",	"&#60");
 
         if(this.props.block.imgID !== undefined){
             // returning an image using a presigned AWS URL
@@ -26,7 +27,7 @@ class BlogBlock extends React.Component {
 
         // handling inline style ranges
         if(ranges.length != 0){
-            let str = this.props.block.text.replaceAll("<",	"&#60");
+            let str = this.props.block.text
             let changes = [];
 
             for(let i = 0; i < ranges.length; i++){
