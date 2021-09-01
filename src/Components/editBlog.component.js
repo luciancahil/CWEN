@@ -24,7 +24,7 @@ class EditBlog extends React.Component {
     }
 
     componentDidMount(){
-        let baseURL = "http://localhost:4000/"
+        let baseURL = "https://cwen-backend.herokuapp.com/"
         let query = this.props.location.search;
 
 

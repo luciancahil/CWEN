@@ -227,7 +227,7 @@ class RichTextEditor extends React.Component {
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "http://localhost:4000/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+    let url = "https://cwen-backend.herokuapp.com/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
       + "&title=" + sanitizedTitle + "&id=" + this.props.idNum
 
     
