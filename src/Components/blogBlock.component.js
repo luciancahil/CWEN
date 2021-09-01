@@ -11,7 +11,7 @@ class BlogBlock extends React.Component {
     }
 
     render() {
-        console.log()
+        console.log(this.props.block);
         let ranges = this.props.block.inlineStyleRanges
 
         if(this.props.block.imgID !== undefined){
@@ -69,14 +69,11 @@ class BlogBlock extends React.Component {
                 str = str.slice(0, changes[i].insert) + changes[i].text + str.slice(changes[i].insert)
                 this.props.block.text = str;
             }
-
-            console.log(changes);
-            return <p dangerouslySetInnerHTML ={{__html: str}} />
         }
 
 
         // regular text
-        return <p>{this.props.block.text}</p>
+        return <p dangerouslySetInnerHTML ={{__html: this.props.block.text}} />
     }
 }
 
