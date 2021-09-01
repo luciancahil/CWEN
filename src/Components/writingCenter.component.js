@@ -13,7 +13,6 @@ class WritingCenter extends React.Component {
     componentDidMount(){
         let URL =  "https://cwen-backend.herokuapp.com/allBlogs?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
 
-        console.log(URL);
 
         fetch(URL)
             .then((response) => response.json())

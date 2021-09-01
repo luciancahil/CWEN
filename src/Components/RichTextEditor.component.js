@@ -140,7 +140,7 @@ class RichTextEditor extends React.Component {
       contentState,
     });
 
-    console.log(convertToRaw(this.state.contentState.getCurrentContent().json()));
+   // console.log(convertToRaw(this.state.contentState.getCurrentContent().json()));
   };
 
   uploadImageCallBack(file) {
