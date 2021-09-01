@@ -11,8 +11,9 @@ class BlogBlock extends React.Component {
     }
 
     render() {
-        console.log()
+        //console.log(this.props.block);
         let ranges = this.props.block.inlineStyleRanges
+        this.props.block.text = this.props.block.text.replaceAll("<",	"&#60");
 
         if(this.props.block.imgID !== undefined){
             // returning an image using a presigned AWS URL
@@ -26,13 +27,13 @@ class BlogBlock extends React.Component {
 
         // handling inline style ranges
         if(ranges.length != 0){
-            let str = this.props.block.text.replaceAll("<",	"&#60");
+            let str = this.props.block.text
             let changes = [];
 
             for(let i = 0; i < ranges.length; i++){
-                console.log(ranges[i]);
                 let start = ranges[i].offset;
                 let end = ranges[i].offset + ranges[i].length;
+                console.log(ranges);
 
 
                 let open = "";
@@ -49,6 +50,11 @@ class BlogBlock extends React.Component {
                     
                     case "UNDERLINE":
                         open = "<u>"
+                        break;
+                    
+                    case "STRIKETHROUGH":
+                        open = "<s>"
+                        break; 
                 }
 
                 closed = "</" + open.substr(1);
@@ -69,14 +75,55 @@ class BlogBlock extends React.Component {
                 str = str.slice(0, changes[i].insert) + changes[i].text + str.slice(changes[i].insert)
                 this.props.block.text = str;
             }
+        }
 
-            console.log(changes);
-            return <p dangerouslySetInnerHTML ={{__html: str}} />
+
+        let DynamicTag = "p"
+
+        console.log(this.props.block.type);
+        switch(this.props.block.type){
+            case "header-one":
+                DynamicTag = "h1"
+                console.log(DynamicTag);
+                break;
+            
+            case "header-two":
+                DynamicTag = "h2"
+                break;
+
+            case "header-three":
+                DynamicTag = "h3"
+                break;
+                
+            case "header-four":
+                DynamicTag = "h4"
+                console.log(DynamicTag);
+                break;
+            
+            case "header-five":
+                DynamicTag = "h5"
+                break;
+
+            case "header-six":
+                DynamicTag = "h6"
+                break;
+            
+            case "blockquote":
+                DynamicTag = "em"
+                break;
+            
+            case "unordered-list-item":
+                DynamicTag = "li"
+                break;
+            
+            case "ordered-list-item":
+                DynamicTag = "li"
+                break;
         }
 
 
         // regular text
-        return <p>{this.props.block.text}</p>
+        return <DynamicTag dangerouslySetInnerHTML ={{__html: this.props.block.text}} />
     }
 }
 
