@@ -20,7 +20,6 @@ class RichTextEditor extends React.Component {
     let oldPics = this.props.oldPics;
     let startingPic = "";
 
-    console.log(this.props.oldMainPic);
     if(this.props.oldContent !== undefined && this.props.oldContent !== null && oldPics != null){
       let content = this.props.oldContent;
       let entMap = content.entityMap;
@@ -94,9 +93,9 @@ class RichTextEditor extends React.Component {
     });
     
     // look at entity map for image information 
-      console.log((convertToRaw(this.state.editorState.getCurrentContent())));
-      console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-      console.log(this.state.uploadedImages);
+  //    console.log((convertToRaw(this.state.editorState.getCurrentContent())));
+   //   console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+    //  console.log(this.state.uploadedImages);
    // console.log("title: " + this.state.title);
 
     /*
@@ -193,7 +192,86 @@ class RichTextEditor extends React.Component {
   }
 
   updateBlog(){
-    console.log("editing");
+    // very similar to createNew blog, just different url and attach an "oringial ID" to all images that don't have an src starting with localhost.
+    // or maybe not?
+    // wait. Yes. I just need to change the blog so that only the localhosts get replaced with AWS. Other images should be fine just the way they are
+    let valid = true;
+    let errors = [];
+
+    if(this.state.title === ""){
+      valid = false;
+      errors.push("Error! Blog posts need a title");
+    }
+
+    this.setState({
+      errorMessage: errors
+    })
+
+
+    if(!valid){
+      return;
+    }
+
+    let fd = new FormData();
+    let rawContentObj = convertToRaw(this.state.editorState.getCurrentContent());
+    let upladedImageArray = this.state.uploadedImages;
+    let oldPics = this.props.oldPics
+
+    //TODO CHANGE THIS
+
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+
+    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+      + "&title=" + sanitizedTitle
+
+    
+
+    /*
+    All images will be in the uploadedImages array, including deleted and un uploaded images.
+    To check if they should be there, check the entitymap.data.src in the content state. Only 
+    imates that appear there should be uploaded
+    */
+    let imageSrcSets = new Set();
+
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      imageSrcSets.add(entity.data.src);
+    }
+
+    //console.log(upladedImageArray[0].localSrc);
+    upladedImageArray = upladedImageArray.filter(image => imageSrcSets.has(image.localSrc));
+
+    // now we need to add an indexValue to every entityMap that starts with aws
+    
+    const urlIndex = new Map();
+    for(let i = 0; i < oldPics.length; i++){
+      urlIndex.set(oldPics[i], i);
+    }
+  
+    
+    console.log(urlIndex);
+    for(let i = 0; i < Math.pow(2, 10); i++){
+      let entity = rawContentObj.entityMap[i]      
+      if(entity === undefined){
+        break;
+      }
+
+      if(entity.type !== "IMAGE"){
+        continue;
+      }
+
+      if (urlIndex.has(entity.data.src)){
+        entity.originalIndex = urlIndex.get(entity.data.src);
+      }
+
+      console.log(entity);
+
+    }
+
   }
 
   createNewBlog(){
@@ -230,12 +308,12 @@ class RichTextEditor extends React.Component {
 
     let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
 
-    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") + "&title=" + sanitizedTitle
+    let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
+      + "&title=" + sanitizedTitle
 
 
     // the content state storing information about blog text
     
-    console.log(JSON.stringify(rawContentObj));
     fd.append('data', JSON.stringify(rawContentObj));
 
     fd.append('mainPhoto', this.state.picData);
@@ -292,7 +370,6 @@ class RichTextEditor extends React.Component {
       return <Invalid/>
     }
     
-    console.log(this.state.pic);
 
     return (
         
