@@ -52,7 +52,6 @@ class Blog extends React.Component {
       let photosURL;
 
 
-      console.log(this.props.locale === undefined);
       if(this.props.locale === undefined){
         contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
         mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
@@ -71,7 +70,6 @@ class Blog extends React.Component {
         photosURL = baseURL + "getUnpublishedBlogPhotos?token=" + token + "&id=" + id;
       }
 
-      console.log(this.props.locale);
 
       
       fetch(contentURL)
