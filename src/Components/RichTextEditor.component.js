@@ -4,6 +4,7 @@ import {Editor} from "react-draft-wysiwyg";
 import {convertToRaw} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Invalid from './invalid.component';
+import { convertFromRaw } from 'draft-js';
 
 /*
   Props:
@@ -14,8 +15,15 @@ import Invalid from './invalid.component';
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
+    let startingContent = null;
+
+    console.log(this.props.oldContent);
+    if(this.props.oldContent !== undefined && this.props.oldContent !== null){
+      startingContent = EditorState.createWithContent(convertFromRaw(this.props.oldContent))
+    }
+
     this.state = {
-      editorState: EditorState.createEmpty(),
+      editorState: startingContent,
       uploadedImages: [],
       title: "",
       pic: "",
@@ -55,10 +63,6 @@ class RichTextEditor extends React.Component {
             })
           }
         })
-
-      if(this.props.oldContent !== undefined){
-        console.log("hi");
-      }
     }
   }
 

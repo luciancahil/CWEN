@@ -4,12 +4,16 @@ import RichTextEditor from './RichTextEditor.component';
 class EditBlog extends React.Component { 
     constructor(props){
         super(props);
+
+        let startingContent = null;
+
+        
+
         this.state = {
             status: "loading",
             valid: false,
-            contentBlocks: null,
+            oldContent: null,
             contentReady: false,
-            contentEntityMap: null,
             mainBlogPhoto: "",
             blogPhotos: null,
             title: "",
@@ -60,8 +64,7 @@ class EditBlog extends React.Component {
           }
 
           this.setState({
-            contentBlocks: content.blocks,
-            contentEntityMap: content.entityMap,
+            oldContent: content,
             contentReady: true,
             author: content.sqlStuff.author,
             title: content.sqlStuff.title,
@@ -90,10 +93,11 @@ class EditBlog extends React.Component {
     }
 
     render() {
+        console.log(this.state.oldContent);
         if(this.state.status === "loading"){
             return <p id = "loading">loading...</p>
         }else{
-            return <RichTextEditor oldContent = {this.state.contentBlocks} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
+            return <RichTextEditor oldContent = {this.state.oldContent} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
         }
     }
 }
