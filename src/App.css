@@ -1365,9 +1365,10 @@ input[type=number] {
   color:#800000;
 }
 
-#Writing_Center{
+#Writing_Center, #blogs{
   width: 80%;
   margin: auto;
+  margin-top: 40px;
 }
 
 #Writing_Center button{
