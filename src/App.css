@@ -1367,11 +1367,18 @@ input[type=number] {
 
 #Writing_Center{
   width: 80%;
+  margin: auto;
+}
+
+#Writing_Center button{
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .blogPart{
-  width: 30%;
+  width: 33%;
   margin: auto;
+  display: inline-block;
 }
 
 .blogPart img{

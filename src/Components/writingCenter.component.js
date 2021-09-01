@@ -23,7 +23,7 @@ class WritingCenter extends React.Component {
     render() {
         return (
             <div id = "Writing_Center">
-                <a href = "/edit"><button>Start a new Blog Post!</button></a>
+                <a href = "/edit"><button>Start a new Blog Post!</button></a><br/>
                 {this.state.blogInfo.map((blogStuff) => <SelfDisplay blogInfo = {blogStuff} key = {blogStuff}/>)}
             </div>
         )
