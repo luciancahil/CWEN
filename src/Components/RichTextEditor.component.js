@@ -7,12 +7,13 @@ import Invalid from './invalid.component';
 
 /*
   Props:
-  this.props.oldContent will exist if we are editing, undefined if not
+  this.props.oldContent will store contentBLock if we are editing, undefined if not
+  this.props.oldMainPic  will store MainPic if we are editing, undefined if not
+  this.props.oldPics will store old blog photos if we are editing, undefined if not
 */
 class RichTextEditor extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {
       editorState: EditorState.createEmpty(),
       uploadedImages: [],
@@ -40,8 +41,6 @@ class RichTextEditor extends React.Component {
     let tokenCheckURL = encodeURI("https://cwen-backend.herokuapp.com/check_token?token=" + token)
     tokenCheckURL = tokenCheckURL.replaceAll("+","%2B")
 
-    console.log(token);
-    console.log(token === null);
     if(token === null){
       this.setState({
         isWriter: false
@@ -50,7 +49,6 @@ class RichTextEditor extends React.Component {
       fetch(tokenCheckURL)
         .then(response => response.json())
         .then(data =>{
-          console.log(data)
           if(data.title !== "admin" && data.title !== "author"){
             this.setState({
               isWriter: false
@@ -264,8 +262,6 @@ class RichTextEditor extends React.Component {
 
   render() {
     const { editorState } = this.state;
-
-    console.log("if: " + this.state.isWriter);
 
     // invalid
     if(!this.state.isWriter){

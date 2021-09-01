@@ -35,8 +35,6 @@ class EditBlog extends React.Component {
         let mainPhtoURL= baseURL + "getUnpublishedBlogMainPhoto?token=" + token + "&id=" + id;
         let photosURL = baseURL + "getUnpublishedBlogPhotos?token=" + token + "&id=" + id;
         
-        console.log(contentURL)
-
         fetch(contentURL)
         .then((response) => response.json())
         .then((content) => {
@@ -70,6 +68,7 @@ class EditBlog extends React.Component {
             date: content.sqlStuff.lastUpdated,
           })
         })
+
         
         fetch(mainPhtoURL)
             .then((response) => response.text())
@@ -87,12 +86,15 @@ class EditBlog extends React.Component {
 
         fetch(photosURL)
             .then((response) => response.json())
-            .then((photos) => this.setState({blogPhotos: photos}))
+            .then((photos) => this.setState({blogPhotos: photos, status: "done"}))
     }
 
     render() {
-        console.log(this.state);
-        return <h2>EditBlog Page</h2>;
+        if(this.state.status === "loading"){
+            return <p id = "loading">loading...</p>
+        }else{
+            return <RichTextEditor oldContent = {this.state.contentBlocks} oldMainPic = {this.state.mainBlogPhoto} oldPics = {this.state.blogPhotos}/>
+        }
     }
 }
 

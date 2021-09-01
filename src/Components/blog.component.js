@@ -43,9 +43,7 @@ class Blog extends React.Component {
       let mainPhtoURL= baseURL + "getUnplublishedBlogMainPhoto?author=" + author + "&id=" + id;
       let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
 
-      this.setState({
-        status: "done"
-      })
+      
       fetch(contentURL)
         .then((response) => response.json())
         .then((content) => {
