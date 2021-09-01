@@ -21,6 +21,7 @@ import Requested from './Components/requested.component';
 import ChangedPassword from './Components/changedPassword.component';
 import EditMonth from './Components/editMonth.component';
 import Join from './Components/join.component';
+import WritingCenter from "./Components/writingCenter.component"
 
 
 
@@ -50,6 +51,7 @@ class MainClass extends React.Component{
                     <Route path="/changed_password" render ={(props) => <ChangedPassword {...props} />} />
                     <Route path="/edit_month" render = {(props) => <EditMonth {...props}/>}/>
                     <Route path="/join" render = {(props) => <Join {...props}/>}/>
+                    <Route path="/writing" render = {(props) => <WritingCenter/>} />
                     <Redirect to="/404"/>
                 </Switch>
 

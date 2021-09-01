@@ -67,9 +67,9 @@ class RichTextEditor extends React.Component {
     });
     
     // look at entity map for image information 
-      //console.log("json: " + JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())));
-     // console.log(convertToRaw(this.state.editorState.getCurrentContent()));
-     // console.log(this.state.uploadedImages);
+      console.log((convertToRaw(this.state.editorState.getCurrentContent())));
+      console.log(convertToRaw(this.state.editorState.getCurrentContent()));
+      console.log(this.state.uploadedImages);
    // console.log("title: " + this.state.title);
 
     /*
