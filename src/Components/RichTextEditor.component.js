@@ -31,6 +31,8 @@ class RichTextEditor extends React.Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangePic = this.onChangePic.bind(this);
     this.sendData = this.sendData.bind(this);
+    this.updateBlog = this.updateBlog.bind(this);
+    this.createNewBlog = this.createNewBlog.bind(this);
   }
 
   componentDidMount(){
@@ -162,10 +164,14 @@ class RichTextEditor extends React.Component {
 
   sendData(){
     if(this.props.oldContent === undefined){
-      createNewBlog();
+      this.createNewBlog();
     }else{
-      updateBlog()
+      this.updateBlog()
     }
+  }
+
+  updateBlog(){
+    console.log("editing");
   }
 
   createNewBlog(){

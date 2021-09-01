@@ -22,7 +22,7 @@ class Blog extends React.Component {
   componentDidMount() {
     document.title = 'CWEN Blog';
     let query = this.props.location.search;
-    let baseURL = "http://localhost:4000/"
+    let baseURL = "https://cwen-backend.herokuapp.com//"
     let id = ""
     let author = ""
 
@@ -40,7 +40,7 @@ class Blog extends React.Component {
       author = query.substring(authorIndex + "author=".length, ampIndex);
 
       let contentURL = baseURL + "getBlogContent?author=" + author + "&id=" + id;
-      let mainPhtoURL= baseURL + "getBlogMainPhoto?author=" + author + "&id=" + id;
+      let mainPhtoURL= baseURL + "getUnplublishedBlogMainPhoto?author=" + author + "&id=" + id;
       let photosURL = baseURL + "getBlogPhotos?author=" + author + "&id=" + id;
 
       this.setState({
