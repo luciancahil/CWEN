@@ -9,7 +9,7 @@ class Generic extends React.Component {
     }
 
     render() {
-        return <h2 className = "generic">{localStorage.getItem("message")}</h2>
+        return <h2 className = "generic">{localStorage.getItem("Message")}</h2>
     }
 }
 

@@ -19,7 +19,8 @@ class Blog extends React.Component {
       isPublished: false
     }
 
-    
+    this.publish = this.publish.bind(this);
+    this.unpublish = this.unpublish.bind(this);
   }
 
   componentDidMount() {
@@ -133,6 +134,60 @@ class Blog extends React.Component {
     }
   }
 
+  publish(){
+    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let query = this.props.locale;
+
+
+    let id = ""
+    let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+    // getting the name and ID
+    let idIndex = query.indexOf("id=");
+    id = query.substring(idIndex + "id=".length);
+
+    let URL = baseURL + "publish?token=" + token + "&id=" + id;
+    console.log(URL);
+
+    fetch(URL)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text === "published");
+        if(text === "published"){
+          localStorage.setItem("Message", "Congragulations! Your piece has been published!");
+          window.location.href = "/update"
+        }
+      })
+  }
+
+  unpublish(){
+    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let query = this.props.locale;
+
+
+    let id = ""
+    let token = encodeURI(localStorage.getItem("token")).replaceAll("+","%2B")
+
+
+    // getting the name and ID
+    let idIndex = query.indexOf("id=");
+    id = query.substring(idIndex + "id=".length);
+
+    let URL = baseURL + "unpublish?token=" + token + "&id=" + id;
+    console.log(URL);
+
+    fetch(URL)
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text === "unpublished");
+        if(text === "unpublished"){
+          localStorage.setItem("Message", "Your piece has been successfully hidden. Please make what changes you must, so that we can all see it again!");
+          window.location.href = "/update"
+        }
+      })
+  }
+
   render() {
     if(this.state.status === "loading"){
       return <p id = "loading">loading...</p>
@@ -154,8 +209,8 @@ class Blog extends React.Component {
             : (<div/>)}
           {(this.props.locale !== undefined) ?
             ([this.state.isPublished === 1 ? 
-              <button>Unpublish</button> 
-              :<button>Publish</button>]):
+              <button onClick = {() => this.unpublish()}>Unpublish</button> 
+              :<button onClick = {() => this.publish()}>Publish</button>]):
             (<div/>)}
         </div>
       )
