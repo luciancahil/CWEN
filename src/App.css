@@ -1365,6 +1365,25 @@ input[type=number] {
   color:#800000;
 }
 
+#Writing_Center{
+  width: 80%;
+}
+
+.blogPart{
+  width: 30%;
+  margin: auto;
+}
+
+.blogPart img{
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+
+.blogPart h2{
+  text-align: center;
+}
+
 @media only screen and (max-width: 800px){
   #contactPage #submitLink{
     width: 25%;
