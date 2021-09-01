@@ -15,7 +15,8 @@ class Blog extends React.Component {
       blogPhotos: null,
       title: "",
       author: "",
-      date: null
+      date: null,
+      isPublished: false
     }
 
     
@@ -103,6 +104,7 @@ class Blog extends React.Component {
             author: content.sqlStuff.author,
             title: content.sqlStuff.title,
             date: content.sqlStuff.lastUpdated,
+            isPublished: content.sqlStuff.isPublished,
             status: "done"
           })
         })
@@ -136,17 +138,27 @@ class Blog extends React.Component {
       return <p id = "loading">loading...</p>
     }
 
+    console.log(this.state.isPublished);
+
     if(!this.state.valid){
       return <Four04/>;
     }else{
-      return <div id = "blog">
-        <h1>{this.state.title}</h1>
-        <h4>By {this.state.author}</h4>
-        <h4>Published {this.state.date}</h4>
-        <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
-        {this.state.contentReady ? 
-          ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} imageArray = {this.state.blogPhotos} block = {contentBlock}/>)]) : (<div/>)}
+      return (
+        <div id = "blog">
+          <h1>{this.state.title}</h1>
+          <h4>By {this.state.author}</h4>
+          <h4>Published {this.state.date}</h4>
+          <img id = "mainBlogPhoto" src = {this.state.mainBlogPhoto} alt = {this.state.title}/>
+          {this.state.contentReady ? 
+            ([this.state.contentBlocks.map((contentBlock) => <BlogBlock key = {contentBlock.key} imageArray = {this.state.blogPhotos} block = {contentBlock}/>)]) 
+            : (<div/>)}
+          {(this.props.locale !== undefined) ?
+            ([this.state.isPublished === 1 ? 
+              <button>Unpublish</button> 
+              :<button>Publish</button>]):
+            (<div/>)}
         </div>
+      )
     }
     
   }

@@ -33,7 +33,6 @@ class BlogBlock extends React.Component {
             for(let i = 0; i < ranges.length; i++){
                 let start = ranges[i].offset;
                 let end = ranges[i].offset + ranges[i].length;
-                console.log(this.props.block);
 
 
                 let open = "";
