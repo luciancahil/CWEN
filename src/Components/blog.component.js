@@ -22,7 +22,7 @@ class Blog extends React.Component {
   componentDidMount() {
     document.title = 'CWEN Blog';
     let query = this.props.location.search;
-    let baseURL = "https://cwen-backend.herokuapp.com/"
+    let baseURL = "http://localhost:4000/"
     let id = ""
     let author = ""
 
@@ -74,9 +74,9 @@ class Blog extends React.Component {
             contentBlocks: content.blocks,
             contentEntityMap: content.entityMap,
             contentReady: true,
-            author: content.sqlStuff[0].author,
-            title: content.sqlStuff[0].title,
-            date: content.sqlStuff[0].lastUpdated,
+            author: content.sqlStuff.author,
+            title: content.sqlStuff.title,
+            date: content.sqlStuff.lastUpdated,
           })
         })
 

@@ -37,8 +37,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(this.state.isWriterorAdmin);
-
     if(this.state.width <= 590){
       return(
         <nav>
