@@ -95,6 +95,10 @@ class RichTextEditor extends React.Component {
     this.setState({
       editorState,
     });
+
+    this.setState({
+      errorMessage: []
+    })
     
     // look at entity map for image information 
   //    console.log((convertToRaw(this.state.editorState.getCurrentContent())));
@@ -209,6 +213,11 @@ class RichTextEditor extends React.Component {
       errors.push("Error! Blog posts need a title");
     }
 
+    if(this.state.editorState === null){
+      valid = false;
+      errors.push("Error! Blog posts need a body");
+    }
+
     this.setState({
       errorMessage: errors
     })
@@ -294,11 +303,16 @@ class RichTextEditor extends React.Component {
     })
       .then(response => response.text())
       .then(data => {
-          if(data === "done!"){
+          if(data === "Done!"){
             console.log("good");
-          }
+            let message = []
+            message[0] = "Saved";
+            console.log(message);
+            this.setState({
+              errorMessage: message
+            })
           console.log(data);
-      });
+      }})
   }
 
   createNewBlog(){
@@ -386,11 +400,14 @@ class RichTextEditor extends React.Component {
     })
       .then(response => response.text())
       .then(data => {
-          if(data === "done!"){
+          if(data === "Done!"){
             console.log("good");
-          }
-          console.log(data);
-      });
+            let message = []
+            message[0] = "Saved";
+            this.setState({
+              errorMessage: message
+            })
+      }});
   }
     
 
@@ -401,10 +418,10 @@ class RichTextEditor extends React.Component {
     if(!this.state.isWriter){
       return <Invalid/>
     }
-    
+    console.log(this.state.errorMessage)
+
 
     return (
-        
       <div className='editor'>
         <input type = "text" id = "articleTitle" placeholder = "Title" value = {this.state.title} onChange = {this.onChangeTitle}></input>
         <div id = "mainPhoto">
