@@ -1,4 +1,5 @@
 import React from 'react';
+import SelfDisplay from "./selfDisplay.component"
 
 class WritingCenter extends React.Component { 
     constructor(props){
@@ -20,8 +21,12 @@ class WritingCenter extends React.Component {
     }
 
     render() {
-        console.log(this.state.blogInfo);
-        return <h2>WritingCenter Page</h2>;
+        return (
+            <div id = "Blog Preview">
+                {this.state.blogInfo.map((blogStuff) => <SelfDisplay blogInfo = {blogStuff} key = {blogStuff}/>)}
+            </div>
+        )
+        
     }
 }
 
