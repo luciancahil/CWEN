@@ -38,7 +38,7 @@ class Blogs extends React.Component {
     render() {
         return <div id = "blogs">
             <input type = "text" value = {this.state.searchField} onChange = {(e) => this.onChangeSearch(e)} placeholder = "search"/> <button onClick = {(e) => this.onSubmit(e)}>Search</button> <br/>
-            {this.state.blogInfo.map((blogStuff) => <SelfDisplay blogInfo = {blogStuff} key = {blogStuff}/>)}
+            {this.state.blogInfo.map((blogStuff) => <SelfDisplay public = {true} blogInfo = {blogStuff} key = {blogStuff}/>)}
         </div>
     }
 }
