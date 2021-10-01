@@ -53,7 +53,7 @@ class Search extends React.Component {
     render() {
         return <div id = "blogs">
             <h2>Results for {this.state.searchTerm}:</h2>
-            {this.state.blogInfo.map((blogStuff) => <SelfDisplay blogInfo = {blogStuff} key = {blogStuff}/>)}
+            {this.state.blogInfo.map((blogStuff) => <SelfDisplay public = {true} blogInfo = {blogStuff} key = {blogStuff}/>)}
         </div>
     }
 }
