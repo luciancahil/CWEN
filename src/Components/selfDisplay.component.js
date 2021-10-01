@@ -1,6 +1,7 @@
 import React from 'react';
 
 // will recieve a prop item based on the blog we are supposed to display
+// a small preview, similar to a YouTube Thumbnail
 class SelfDisplay extends React.Component { 
     render() {
         let info = this.props.blogInfo
