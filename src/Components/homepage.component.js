@@ -32,7 +32,7 @@ class HomePage extends React.Component {
         <Banner/>
         <Slogan inputString = {this.state.slogan}/>
         <Stairs/>
-        <News/>
+        {/*<News/>*/}
       </div>
     );
   }
