@@ -3,6 +3,7 @@ import Banner from "./Homepage/banner.component";
 import Slogan from "./Homepage/slogan.component";
 import Stairs from "./Homepage/stairs.component";
 import News from "./Homepage/news.components";
+import Video from './Homepage/Video.component';
 
 
 
@@ -11,7 +12,7 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      slogan: "CWEN was built by women, for women.The buisness world was not."
+      slogan: "CWEN was built by women, for women.The business world was not."
     };
   }
 
@@ -31,6 +32,7 @@ class HomePage extends React.Component {
       <div id = "Homepage">
         <Banner/>
         <Slogan inputString = {this.state.slogan}/>
+        <Video/>
         <Stairs/>
         {/*<News/>*/}
       </div>

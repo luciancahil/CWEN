@@ -161,7 +161,7 @@ nav .vline {
   height: 50%;
 }
 
-@media only screen and (max-width:1080px){
+@media only screen and (max-width:1151px){
   #Homepage_Banner_Image img{
     display: none;
   }
@@ -214,6 +214,25 @@ nav .vline {
   font-style:italic;
 }
 
+#tv-wrapper {
+  max-width:600px;
+  max-height:338px;
+  width:90vw;
+  height:50.85vw;
+  margin:0 auto;
+  margin-bottom: 100px;
+}
+
+
+#trailer {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #777;
+  display: block;
+  border-style:none;
+  margin-bottom: 100px;
+}
 
 @media only screen and (max-width: 470px){
   #Homepage #Slogan{
