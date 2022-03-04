@@ -11,7 +11,7 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      slogan: "CWEN was built by women, for women.The buisness world was not."
+      slogan: "CWEN was built by women, for women.The business world was not."
     };
   }
 
