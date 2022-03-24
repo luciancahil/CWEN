@@ -1127,13 +1127,13 @@ li.rdw-dropdownoption-active {
 
 #teamMembers{
   width: 95%;
- 
+  text-align: center;
 }
 
 #teamMembers .teamMember{
   width: 30%;
   display: inline-block;
-  margin: 20px;
+  margin: auto;
   text-align: center;
 }
 
@@ -1150,7 +1150,7 @@ li.rdw-dropdownoption-active {
 
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1080px){
   #teamMembers .teamMember{
     display: block;
   }
