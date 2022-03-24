@@ -1150,7 +1150,7 @@ li.rdw-dropdownoption-active {
 
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1080px){
   #teamMembers .teamMember{
     display: block;
   }
