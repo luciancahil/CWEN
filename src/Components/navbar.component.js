@@ -50,7 +50,7 @@ class Navbar extends React.Component {
               <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a> <br/>
               <a href="/contact">Contact</a> <br/>
               <a href="/blogs">Blog</a> <br/>
-              <a href="/writing">Writing</a>
+              {this.state.isWriterorAdmin ? (<a href="/writing">Writing</a>) : (<div/>)}
             </div>
           ):(<div/>)}
           
