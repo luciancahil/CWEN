@@ -5,7 +5,7 @@ class Video extends React.Component {
         return (
             <div id = "tv-wrapper">
                 <iframe id = "trailer" width="420" height="315"
-                    src="https://www.youtube.com/embed/dS8XsKx9V0M">
+                    src="https://www.youtube.com/embed/_l7IGM_Ej4g">
                 </iframe>
             </div>
         );
