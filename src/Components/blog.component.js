@@ -97,12 +97,19 @@ class Blog extends React.Component {
               mapID++;
             }
           }
+          let displayedAuthor = content.sqlStuff.author;
+
+          if(content.sqlStuff.author === "Elizabeth") {
+            displayedAuthor = "Elizabeth Nagasha - Community / IT Manager";
+          } else if(content.sqlStuff.author === "Fathila") {
+            displayedAuthor = "Nanozi Fathila - Head of Programs";
+          }
 
           this.setState({
             contentBlocks: content.blocks,
             contentEntityMap: content.entityMap,
             contentReady: true,
-            author: content.sqlStuff.author,
+            author: displayedAuthor,
             title: content.sqlStuff.title,
             date: content.sqlStuff.lastUpdated,
             isPublished: content.sqlStuff.isPublished,
