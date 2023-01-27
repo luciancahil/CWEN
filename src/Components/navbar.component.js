@@ -71,7 +71,7 @@ class Navbar extends React.Component {
         <a href="/projects?projectName=Woman+Entrepreneur+of+the+Month">Featured</a>
         <a href="/contact">Contact</a>
         <a href="/blogs">Blog</a>
-        <a href="https://cwen.nuixhexa.com/main/home" target="_blank">Shop</a> <br/>
+        <a href="https://www.cwenshop.com/" target="_blank">Shop</a> <br/>
         {this.state.isWriterorAdmin ? (<a href="/writing">Writing Center</a>) : (<div/>)}
       </nav>
     );
