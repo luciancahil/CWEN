@@ -152,7 +152,7 @@ class BlogBlock extends React.Component {
                         break;
                 }
 
-        console.log(this.props.block.text);
+        //console.log(this.props.block.text);
         return <DynamicTag dangerouslySetInnerHTML ={{__html: this.props.block.text}} />
     }
 }

@@ -92,6 +92,19 @@ class Blog extends React.Component {
               if(content.entityMap[mapID].type === "IMAGE"){
                 content.blocks[i].imgID = imageID;
                 imageID++;
+              } else if(content.entityMap[mapID].type === "LINK") { // add a link to the right place
+
+                let linkStart = content.blocks[i].entityRanges[0].offset;
+                let linkEnd = linkStart + content.blocks[i].entityRanges[0].length
+
+                let before = content.blocks[i].text.substring(0, linkStart) // before the link
+                let during = content.blocks[i].text.substring(linkStart, linkEnd) // text that is linked
+                let after = content.blocks[i].text.substring(linkEnd) // after the link
+                let url = content.entityMap[mapID].data.url // link we point to
+
+                let addedLink = before + "<a href=\"" + url + "\">" + during + "</a>" + after;
+
+                content.blocks[i].text = addedLink;
               }
 
               mapID++;
