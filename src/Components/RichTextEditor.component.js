@@ -235,7 +235,7 @@ class RichTextEditor extends React.Component {
 
     //TODO CHANGE THIS
 
-    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+").replace("#","%23");
 
     let url = "https://cwen-backend.herokuapp.com/updateBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
       + "&title=" + sanitizedTitle + "&id=" + this.props.idNum
@@ -353,7 +353,7 @@ class RichTextEditor extends React.Component {
 
     //TODO CHANGE THIS
 
-    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+");
+    let sanitizedTitle = encodeURI(this.state.title).replaceAll(" ", "+").replace("#","%23");
 
     let url = "https://cwen-backend.herokuapp.com/newBlog?token=" + encodeURI(localStorage.getItem("token")).replaceAll("+","%2B") 
       + "&title=" + sanitizedTitle
