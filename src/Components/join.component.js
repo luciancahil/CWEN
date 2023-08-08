@@ -183,7 +183,7 @@ class Join extends React.Component {
                         <input type = "text" id = "Town" value={this.state.Town} onChange={this.onChangeTown}/>
                         <h3>Business Name</h3>
                         <input type = "text" id = "business" value={this.state.business} onChange={this.onChangebusiness}/>
-                        <h3>Tell us about your buissness!</h3>
+                        <h3>Tell us about your business!</h3>
                         <textarea rows="3" id = "descrption" value={this.state.Description} onChange={this.onChangeDescription}> </textarea>
                         <br/>
                         <div id = "submitLink">
