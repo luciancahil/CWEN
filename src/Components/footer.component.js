@@ -12,7 +12,7 @@ class Footer extends React.Component {
                         <p>Community Women</p>
                         <p>Enterprise Network</p>
                         <p>Plot 4805 Kigobe Road Ntinda</p>
-                        <p>P.O. Box 21 418 Kampala, (U)</p>
+                        <p>P.O. Box 8000660 Kampala, (U)</p>
                         <p>Phone: +256 393 255 595</p>
                         <p>E-mail: <a href = "mailto:info@cwen.or.ug">info@cwen.or.ug</a></p>
                     </div>
